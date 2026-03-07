@@ -1,9 +1,9 @@
 <div class="container p-3 flex justify-between items-center">
 <div class="logo flex items-center gap-3">
-    <i class="bi bi-list text-3xl"></i>
-    <div class="flex items-center">
+    <i class="bi bi-list text-3xl cursor-pointer hover:scale-95 transition"></i>
+    <div class="flex items-center justify-center">
 
-        <img class="w-[70px] " src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg" alt="">
+        <img class="w-[60px] " src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg" alt="">
         <span class="text-white font-bold text-xl tracking-tight" style="font-family: 'YouTube Sans', 'Roboto', sans-serif;">
             You<span class="bg-red-600 text-white px-1 rounded-sm">Tube</span>
         </span>
