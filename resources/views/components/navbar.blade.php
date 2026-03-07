@@ -9,5 +9,13 @@
     </div>
 
 </div>
-<div class="account"></div>
+<div class="account flex gap-1 items-center justify-center">
+<div class="flex bg-secondary items-center p-2 rounded-full gap-1 justify-center">
+    <i class="bi bi-plus text-xl"></i>
+    <span>Create</span>
+</div>
+<div class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer">
+    <i class="bi bi-bell"></i>
+</div>
+</div>
 </div>
