@@ -125,6 +125,7 @@
     color: #444;
     transition: color 0.3s ease;
     pointer-events: none;
+
   }
 
   .input-wrapper.focused .search-icon {
@@ -137,10 +138,12 @@
 <div class="input-wrapper" id="wrapper">
   <div class="input-bg"></div>
   <input type="text" placeholder="Search" id="searchInput" />
-  <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="11" cy="11" r="8"/>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-  </svg>
+
+    <svg class="search-icon cursor-pointer" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+
 </div>
 
 <script>
