@@ -138,19 +138,23 @@
 <div class="input-wrapper" id="wrapper">
   <div class="input-bg"></div>
   <input type="text" placeholder="Search" id="searchInput" />
-
-    <svg class="search-icon cursor-pointer" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-
+  <svg id="searchBtn" class="search-icon" style="cursor:pointer" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
 </div>
 
 <script>
   const input = document.getElementById('searchInput');
   const wrapper = document.getElementById('wrapper');
+  const searchBtn = document.getElementById('searchBtn');
+
   input.addEventListener('focus', () => wrapper.classList.add('focused'));
   input.addEventListener('blur', () => wrapper.classList.remove('focused'));
+
+  /* searchBtn.addEventListener('click', () => {
+    alert('Search: ' + input.value);
+  }); */
 </script>
 
 </body>

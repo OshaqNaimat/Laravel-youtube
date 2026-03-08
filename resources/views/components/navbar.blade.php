@@ -29,7 +29,7 @@
       <div class="flex rounded-full bg-[#1a1a1a] items-center  ">
         <x-searchbar />
       </div>
-      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer flex-shrink-0">
+      <button class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
         <i class="bi bi-mic text-lg"></i>
       </button>
     </div>
@@ -37,20 +37,20 @@
     {{-- RIGHT: Actions --}}
     <div class="flex items-center gap-1 flex-shrink-0">
       {{-- Search icon on mobile only --}}
-      <button class="sm:hidden hover:bg-gray-800 transition p-2 rounded-full cursor-pointer">
+      <button class="sm:hidden hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer">
         <i class="bi bi-search text-lg"></i>
       </button>
 
       {{-- Create button: icon-only on md, full on lg+ --}}
-      <button class="hidden sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-[#1b2b3b] transition">
+      <button class="hidden sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
         <i class="bi bi-plus text-xl"></i>
         <span class="hidden lg:inline text-sm">Create</span>
       </button>
 
-      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer">
+      <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
         <i class="bi bi-bell text-lg"></i>
       </button>
-      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer">
+      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
         <i class="bi bi-person text-lg"></i>
       </button>
     </div>
