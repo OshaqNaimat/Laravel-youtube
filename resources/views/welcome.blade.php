@@ -3,4 +3,5 @@
     <x-sidebar/>
     <x-mobilenav/>
     <x-mainpage/>
+    <x-studio/>
 </x-layout>

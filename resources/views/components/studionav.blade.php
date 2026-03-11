@@ -19,7 +19,7 @@
         >
         {{-- Hide text on xs, show from sm+ --}}
         <span class="hidden sm:inline text-white font-bold text-xl tracking-tight" style="font-family:'YouTube Sans','Roboto',sans-serif;">
-          You<span class="bg-red-600 px-1 rounded-sm">Tube</span>
+          Stu<span class="bg-red-600 px-1 rounded-sm">dio</span>
         </span>
       </a>
     </div>
@@ -29,9 +29,9 @@
       <div class="flex rounded-full bg-[#1a1a1a] items-center  ">
         <x-searchbar />
       </div>
-      <button class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
+      {{-- <button class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
         <i class="bi bi-mic text-lg"></i>
-      </button>
+      </button> --}}
     </div>
 
     {{-- RIGHT: Actions --}}
@@ -42,11 +42,11 @@
       </button>
 
       {{-- Create button: icon-only on md, full on lg+ --}}
-      <a href="/studio" class="hidden  sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
+      <button class="hidden firstform sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
         <i class="bi bi-plus text-xl"></i>
         <span class="hidden lg:inline text-sm">Create</span>
 
-      </a>
+      </button>
 
       <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
         <i class="bi bi-bell text-lg"></i>
