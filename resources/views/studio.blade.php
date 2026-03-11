@@ -10,12 +10,7 @@
     <div class="flex items-center justify-between px-4 md:px-6 py-4 border-b border-[#3a3a3a]">
       <h2 class="text-white text-base md:text-xl font-medium">Upload videos</h2>
       <div class="flex items-center gap-3">
-        <button class="text-gray-400 hover:text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-6 4h4M5 4h14a2 2 0 012 2v10a2 2 0 01-2 2H7l-4 4V6a2 2 0 012-2z"/>
-          </svg>
-        </button>
-        <button class="text-gray-400 hover:text-white">
+        <button class="text-gray-400 rounded-full hover:scale-110 hover:text-white h-8 w-8 flex justify-center items-center cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -25,14 +20,14 @@
 
     <!-- Body -->
     <div class="flex flex-col items-center justify-center py-10 md:py-16 px-4 md:px-8">
-      <div class="bg-[#2e2e2e] rounded-full w-24 h-24 md:w-36 md:h-36 flex items-center justify-center mb-6 md:mb-8">
+      <label for="fileInput" class="bg-[#2e2e2e] hover:scale-105 transition cursor-pointer rounded-full w-24 h-24 md:w-36 md:h-36 flex items-center justify-center mb-6 md:mb-8">
         <div class="flex flex-col items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 md:w-14 md:h-14 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12M8 8l4-4 4 4"/>
           </svg>
           <div class="w-8 md:w-10 h-0.5 bg-gray-500 rounded mt-1"></div>
         </div>
-      </div>
+      </label>
 
       <p class="text-white text-base md:text-lg font-medium mb-2 text-center">Drag and drop video files to upload</p>
       <p class="text-gray-400 text-xs md:text-sm mb-6 md:mb-8 text-center">Your videos will be private until you publish them.</p>
@@ -66,14 +61,14 @@
 
 {{-- <div class="bg-black flex items-center justify-center min-h-screen px-4"> --}}
 
-  <div class="bg-[#212121] rounded-xl hidden second-form  w-full sm:w-[480px] md:w-[500px] shadow-2xl overflow-hidden  flex-col max-h-[95vh]">
+  <div class="bg-[#212121] rounded-xl hidden second-form  w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden  flex-col max-h-[95vh]">
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 py-3 border-b border-[#3a3a3a] shrink-0">
-        <div class="h-8 w-8 rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
+        <div class="h-8 w-8 pehla-form rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
             <i class="bi bi-arrow-left"></i>
         </div>
-      <p class="text-gray-300 text-xs truncate w-4/5">Pump House – Gym Management System Google Chrome 2026 02 22 09 ...</p>
+
       <div class="flex items-center gap-2">
 
         <button class="h-8 w-8 rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
@@ -125,7 +120,7 @@
           <!-- Title -->
           <div class="border border-[#3a3a3a] rounded-md p-2">
             <p class="text-gray-400 text-[10px] mb-1">Title (required) ⓘ</p>
-            <textarea class="bg-transparent text-white text-xs w-full resize-none outline-none h-14">Pump House – Gym Management System  Google Chrome 2026 02 22 09 43 20</textarea>
+            <textarea class="bg-transparent text-white text-xs w-full resize-none outline-none h-14"></textarea>
             <p class="text-gray-500 text-[10px] text-right">70/100</p>
           </div>
           <!-- Description -->
@@ -136,9 +131,10 @@
         </div>
 
         <!-- Preview -->
-        <div class="w-28 shrink-0 space-y-2">
+        <div class="w-50 shrink-0 space-y-2">
           <div class="bg-[#2e2e2e] rounded h-20 flex items-center justify-center">
-            <p class="text-gray-400 text-[10px] text-center">Uploading video...</p>
+            {{-- <p class="text-gray-400 text-[10px] text-center">Uploading video...</p> --}}
+            <video src="" controls muted class="video-preview"></video>
           </div>
           <div>
               <p class="text-gray-400 text-[10px]">Video link</p>
@@ -151,7 +147,6 @@
           </div>
           <div>
             <p class="text-gray-400 text-[10px]">Filename</p>
-            <p class="text-gray-300 text-[10px] truncate">Pump House – Gym Management Syst...</p>
           </div>
         </div>
       </div>
@@ -223,14 +218,26 @@
     let form1 = $('.first-form')
     let form2 = $('.second-form')
     let video_input = $('.video-input')
+    let pehla_form= $('.pehla-form')
+    // let video_preview = $('.video-preview')
 
     video_input.on('input',(e)=>{
       let file = e.target.files[0]
-      console.log(file)
       form1.addClass('hidden')
       form2.removeClass('hidden').addClass('flex')
-
+      let link = URL.createObjectURL(file)
+      $('.video-preview').attr('src',link)
     })
+
+    pehla_form.on('click',()=>{
+       form2.addClass('hidden').removeClass('flex')
+       form1.removeClass('hidden')
+    })
+
+
+
+
+
 </script>
 
 
