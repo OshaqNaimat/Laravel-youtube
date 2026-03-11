@@ -220,7 +220,7 @@
         <i class="bi bi-list"></i>
       </button>
 
-      <a href="/" class="flex items-center gap-1">
+      <div  class="flex items-center gap-1">
         <img
           class="w-[36px] h-[36px] rounded object-cover"
           src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg"
@@ -230,7 +230,7 @@
         <span class="hidden sm:inline text-white font-bold text-xl tracking-tight" style="font-family:'YouTube Sans','Roboto',sans-serif;">
           Stu<span class="bg-red-600 px-1 rounded-sm">dio</span>
         </span>
-      </a>
+      </div>
     </div>
 
     {{-- MIDDLE: Search (hidden on xs, visible from sm) --}}

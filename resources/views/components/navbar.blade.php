@@ -51,8 +51,14 @@
       <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
         <i class="bi bi-bell text-lg"></i>
       </button>
-      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
+      <button class="hover:bg-red-500 relative transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
         <i class="bi bi-person text-lg"></i>
+        <div class="container p-2 absolute top-10 -right-3 bg-gray-500 w-max ">
+            <ul class="list-unstyled my-1">
+                <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Your Channel</li>
+                <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Sign Out</li>
+            </ul>
+        </div>
       </button>
     </div>
 
