@@ -5,3 +5,8 @@
 .scroolbarhide::-webkit-scrollbar {
     display: none;
 }
+
+.scndform::-webkit-scrollbar {
+    /* background-color: #282828; */
+    color: #8a8a8a;
+}

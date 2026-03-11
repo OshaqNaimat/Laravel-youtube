@@ -1,10 +1,10 @@
 <x-layout>
 
     {{-- first form --}}
-    <div class="bg-black/50 fixed flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
-{{--
+    <div class="bg-black/50 fixed  flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
 
-  <div class="bg-[#212121] rounded-xl w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden">
+
+  <div class="bg-[#212121] rounded-xl first-form w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden">
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 md:px-6 py-4 border-b border-[#3a3a3a]">
@@ -40,7 +40,7 @@
       <label for="fileInput" class="bg-white text-black font-medium px-5 md:px-6 py-2 md:py-2.5 rounded-full cursor-pointer hover:bg-gray-200 text-sm">
         Select files
       </label>
-      <input id="fileInput" type="file" accept="video/*" class="hidden" />
+      <input id="fileInput" type="file" accept="video/*" class="hidden video-input" />
     </div>
 
     <!-- Footer -->
@@ -56,7 +56,7 @@
 
   </div>
 
-  --}}
+
 
 
 
@@ -66,14 +66,17 @@
 
 {{-- <div class="bg-black flex items-center justify-center min-h-screen px-4"> --}}
 
-  <div class="bg-[#212121] rounded-xl  w-full sm:w-[480px] md:w-[500px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+  <div class="bg-[#212121] rounded-xl hidden second-form  w-full sm:w-[480px] md:w-[500px] shadow-2xl overflow-hidden  flex-col max-h-[95vh]">
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 py-3 border-b border-[#3a3a3a] shrink-0">
+        <div class="h-8 w-8 rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
+            <i class="bi bi-arrow-left"></i>
+        </div>
       <p class="text-gray-300 text-xs truncate w-4/5">Pump House – Gym Management System Google Chrome 2026 02 22 09 ...</p>
       <div class="flex items-center gap-2">
 
-        <button class="text-gray-400 hover:text-white">
+        <button class="h-8 w-8 rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
     </div>
@@ -109,7 +112,7 @@
     </div>
 
     <!-- Scrollable Content -->
-    <div class="scrollbarhide flex-1 px-4 py-4 space-y-5">
+    <div class=" scndform overflow-y-scroll flex-1 px-4 py-4 space-y-5">
 
       <!-- Title Row -->
       <div class="flex items-center justify-between">
@@ -174,57 +177,11 @@
     </div>
 
       <!-- Playlists -->
-      <div>
-          <p class="text-white text-sm font-medium mb-1">Playlists</p>
-        <p class="text-gray-400 text-xs mb-2">Add your video to one or more playlists to organize your content for viewers. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
-        <div class="relative">
-          <select class="w-40 bg-[#2e2e2e] text-gray-300 text-xs border border-[#3a3a3a] rounded px-3 py-2 appearance-none outline-none cursor-pointer">
-            <option>Select</option>
-          </select>
-          <div class="pointer-events-none absolute right-3 top-2.5 text-gray-400">
-            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
-        </div>
-      </div>
 
       <!-- Audience -->
-      <div>
-        <p class="text-white text-sm font-medium mb-1">Audience</p>
-        <p class="text-white text-xs font-medium mb-1">Is this video made for kids? (required)</p>
-        <p class="text-gray-400 text-xs mb-3">Regardless of your location, you're legally required to comply with the Children's Online Privacy Protection Act (COPPA) and/or other laws. You're required to tell us whether your videos are made for kids. <a href="#" class="text-blue-400 hover:underline">What's content made for kids?</a></p>
 
-        <!-- Info box -->
-        <div class="bg-[#2a2a2a] border border-[#3a3a3a] rounded p-3 flex gap-2 mb-3">
-          <span class="text-blue-400 shrink-0 mt-0.5">ⓘ</span>
-          <p class="text-gray-400 text-xs">Features like personalized ads and notifications won't be available on videos made for kids. Videos that are set as made for kids by you are more likely to be recommended alongside other kids' videos. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
-        </div>
-
-        <!-- Radio options -->
-        <div class="space-y-2">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="kids" class="accent-white" />
-            <span class="text-gray-300 text-xs">Yes, it's made for kids</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="kids" class="accent-white" checked />
-            <span class="text-gray-300 text-xs">No, it's not made for kids</span>
-          </label>
-        </div>
-      </div>
 
       <!-- Age restriction -->
-      <div>
-        <button class="flex items-center gap-1 text-gray-300 text-xs hover:text-white">
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          Age restriction (advanced)
-        </button>
-      </div>
-
-      <!-- Show more -->
-      <div>
-        <button class="text-gray-300 text-xs border border-gray-500 rounded px-4 py-1.5 hover:bg-[#3a3a3a]">Show more</button>
-        <p class="text-gray-500 text-xs mt-2">Paid promotion, collaboration, subtitles, and more</p>
-      </div>
 
     </div>
 
@@ -245,7 +202,7 @@
         </div>
         <p class="text-gray-400 text-xs">Uploading 65% ... 14 seconds left</p>
       </div>
-      <button class="bg-white text-black text-sm font-medium px-5 py-1.5 rounded-full hover:bg-gray-200">Next</button>
+      <button class="bg-[#1a1a1a] text-white text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
     </div>
 
   </div>
@@ -256,6 +213,26 @@
 
 {{-- navbar --}}
 <x-studionav/>
+
+
+
+
+
+<script>
+
+    let form1 = $('.first-form')
+    let form2 = $('.second-form')
+    let video_input = $('.video-input')
+
+    video_input.on('input',(e)=>{
+      let file = e.target.files[0]
+      console.log(file)
+      form1.addClass('hidden')
+      form2.removeClass('hidden').addClass('flex')
+
+    })
+</script>
+
 
 
 </x-layout>
