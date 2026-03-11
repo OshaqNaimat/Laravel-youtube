@@ -1,16 +1,16 @@
 <x-layout>
 
-    {{-- first form --}}
-    <div class="bg-black/50 fixed  flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
+    <div class="bg-black/50 fixed all-form flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
 
 
+        {{-- first form --}}
   <div class="bg-[#212121] rounded-xl first-form w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden">
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 md:px-6 py-4 border-b border-[#3a3a3a]">
       <h2 class="text-white text-base md:text-xl font-medium">Upload videos</h2>
       <div class="flex items-center gap-3">
-        <button class="text-gray-400 rounded-full hover:scale-110 hover:text-white h-8 w-8 flex justify-center items-center cursor-pointer">
+        <button class="text-gray-400 rounded-full formclose hover:scale-110 hover:text-white h-8 w-8 flex justify-center items-center cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -71,7 +71,7 @@
 
       <div class="flex items-center gap-2">
 
-        <button class="h-8 w-8 rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
+        <button class="h-8 w-8 formclose rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
     </div>
@@ -207,7 +207,67 @@
 
 
 {{-- navbar --}}
-<x-studionav/>
+<nav class="bg-black text-white sticky top-0 z-50 border-b border-gray-800">
+  <div class="px-4 py-2 flex justify-between items-center gap-2">
+
+    {{-- LEFT: Hamburger + Logo --}}
+    <div class="flex items-center gap-3 flex-shrink-0">
+      {{-- Hamburger toggles sidebar --}}
+      <button
+        onclick="toggleSidebar()"
+        class="text-3xl cursor-pointer hover:scale-95 transition focus:outline-none"
+      >
+        <i class="bi bi-list"></i>
+      </button>
+
+      <a href="/" class="flex items-center gap-1">
+        <img
+          class="w-[36px] h-[36px] rounded object-cover"
+          src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg"
+          alt="logo"
+        >
+        {{-- Hide text on xs, show from sm+ --}}
+        <span class="hidden sm:inline text-white font-bold text-xl tracking-tight" style="font-family:'YouTube Sans','Roboto',sans-serif;">
+          Stu<span class="bg-red-600 px-1 rounded-sm">dio</span>
+        </span>
+      </a>
+    </div>
+
+    {{-- MIDDLE: Search (hidden on xs, visible from sm) --}}
+    <div class="hidden sm:flex flex-1 max-w-xl items-center gap-2 justify-center">
+      <div class="flex rounded-full bg-[#1a1a1a] items-center  ">
+        <x-searchbar />
+      </div>
+      {{-- <button class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
+        <i class="bi bi-mic text-lg"></i>
+      </button> --}}
+    </div>
+
+    {{-- RIGHT: Actions --}}
+    <div class="flex items-center gap-1 flex-shrink-0">
+      {{-- Search icon on mobile only --}}
+      <button class="sm:hidden hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer">
+        <i class="bi bi-search text-lg"></i>
+      </button>
+
+      {{-- Create button: icon-only on md, full on lg+ --}}
+      <button class="hidden form-open sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
+        <i class="bi bi-plus text-xl"></i>
+        <span class="hidden lg:inline text-sm">Create</span>
+
+      </button>
+
+      <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
+        <i class="bi bi-bell text-lg"></i>
+      </button>
+      <button class="hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
+        <i class="bi bi-person text-lg"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
 
 
 
@@ -218,8 +278,10 @@
     let form1 = $('.first-form')
     let form2 = $('.second-form')
     let video_input = $('.video-input')
-    let pehla_form= $('.pehla-form')
-    // let video_preview = $('.video-preview')
+    let pehla_form = $('.pehla-form')
+    let form_close = $('.formclose')
+    let all_form = $('.all-form')
+    let form_open = $('.form-open')
 
     video_input.on('input',(e)=>{
       let file = e.target.files[0]
@@ -234,8 +296,13 @@
        form1.removeClass('hidden')
     })
 
+    form_close.on('click',()=>{
+        all_form.addClass('hidden').removeClass('flex')
+    })
 
-
+    form_open.on('click',()=>{
+        all_form.addClass('flex').removeClass('hidden')
+    })
 
 
 </script>
