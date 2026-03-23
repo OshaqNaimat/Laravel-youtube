@@ -1,23 +1,40 @@
 <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
-    <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-4">
-        <div class="flex flex-col">
-            <img class="w-full rounded-xl" src="https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg" alt="">
-            <div class="flex mt-3 gap-3">
-                <i class="bi bi-person-circle text-2xl"></i>
-                <div class="flex flex-col">
-                    <div class="flex">
-                        <p class="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <div class="h-8 w-8 aspect-square rounded-full flex items-center justify-center hover:bg-red-500 transition cursor-pointer flex-shrink-0">
-    <i class="bi bi-three-dots-vertical leading-none"></i>
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
+
+        @foreach(range(1, 8) as $i)
+        <div class="flex flex-col group cursor-pointer">
+
+            {{-- Thumbnail --}}
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
+                <img
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                    src="https://picsum.photos/seed/{{ $i }}/480/270"
+                    alt="thumbnail"
+                >
+                <span class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1.5 py-0.5 rounded">
+                    {{ rand(3,15) }}:{{ str_pad(rand(0,59), 2, '0', STR_PAD_LEFT) }}
+                </span>
+            </div>
+
+            {{-- Info --}}
+            <div class="flex mt-3 gap-2">
+                <i class="bi bi-person-circle text-2xl flex-shrink-0"></i>
+                <div class="flex flex-col flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <p class="font-semibold text-sm line-clamp-2 leading-snug">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit {{ $i }}
+                        </p>
+                        <div class="h-8 w-8 aspect-square rounded-full flex items-center justify-center hover:bg-gray-200 transition cursor-pointer flex-shrink-0 opacity-0 group-hover:opacity-100">
+                            <i class="bi bi-three-dots-vertical leading-none"></i>
+                        </div>
                     </div>
-                <p class="text-sm text-gray-400">Channel name</p>
-                <div class="flex">
-                   <p class="text-sm text-gray-400">4.5M views . <span>1 year ago</span></p>
-                </div>
+                    <p class="text-sm text-gray-400">Channel name</p>
+                    <p class="text-sm text-gray-400">4.5M views · 1 year ago</p>
                 </div>
             </div>
-        </div>
 
-       </div>
+        </div>
+        @endforeach
+
+    </div>
 </div>
