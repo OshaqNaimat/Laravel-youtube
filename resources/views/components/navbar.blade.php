@@ -51,15 +51,27 @@
       <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
         <i class="bi bi-bell text-lg"></i>
       </button>
-      <button class="hover:bg-red-500 relative transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
+      <div class="relative h-10 w-10">
+
+    {{-- Trigger Button --}}
+    <button class="peer hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
         <i class="bi bi-person text-lg"></i>
-        <div class="container p-2 absolute top-10 -right-3 bg-gray-500 w-max ">
-            <ul class="list-unstyled my-1">
+    </button>
+
+    {{-- Dropdown --}}
+    <div class="absolute top-10 -right-3 bg-[#1A1A1A] rounded-md w-max
+                invisible opacity-0 peer-hover:visible peer-hover:opacity-100
+                hover:visible hover:opacity-100
+                transition-all duration-150 z-50 p-1">
+        <ul class="my-1">
+            <a href="/studio">
                 <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Your Channel</li>
-                <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Sign Out</li>
-            </ul>
-        </div>
-      </button>
+            </a>
+            <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Sign Out</li>
+        </ul>
+    </div>
+
+</div>
     </div>
 
   </div>
