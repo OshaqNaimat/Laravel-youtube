@@ -1,4 +1,4 @@
-<nav class="bg-black text-white sticky top-0 z-50 border-b border-gray-800">
+<nav class="bg-black/95 text-white sticky top-0 z-50 border-b border-gray-800">
   <div class="px-4 py-2 flex justify-between items-center gap-2">
 
     {{-- LEFT: Hamburger + Logo --}}

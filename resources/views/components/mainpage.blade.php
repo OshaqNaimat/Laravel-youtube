@@ -1,7 +1,7 @@
 <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
 
-        @foreach(range(1, 8) as $i)
+        @foreach(range(1, 10) as $i)
         <div class="flex flex-col group cursor-pointer">
 
             {{-- Thumbnail --}}
