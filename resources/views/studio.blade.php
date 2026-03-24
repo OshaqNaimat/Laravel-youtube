@@ -134,9 +134,9 @@
         <div class="w-50 shrink-0 space-y-2">
           <div class="bg-[#2e2e2e] rounded h-20 flex items-center justify-center">
             {{-- <p class="text-gray-400 text-[10px] text-center">Uploading video...</p> --}}
-            <video src="" controls muted class="video-preview"></video>
+            <video src="" controls  class="video-preview"></video>
           </div>
-          <div>
+          {{-- <div>
               <p class="text-gray-400 text-[10px]">Video link</p>
             <div class="flex items-center gap-1">
                 <a href="#" class="text-blue-400 text-[10px] hover:underline truncate">https://youtu.be/-Be1pDX07qg</a>
@@ -144,7 +144,7 @@
                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
               </button>
             </div>
-          </div>
+          </div> --}}
           <div>
             <p class="text-gray-400 text-[10px]">Filename</p>
           </div>
@@ -152,22 +152,23 @@
       </div>
 
       <!-- Thumbnail -->
-      <div>
-        <p class="text-white text-sm font-medium mb-1">Thumbnail</p>
-        <p class="text-gray-400 text-xs mb-3">Set a thumbnail that stands out and draws viewers' attention. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
-        <div class="grid grid-cols-3 gap-2">
-            <div class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
+      <div class="flex items-center justify-center gap-2">
+        <div class="">
+            <p class="text-white text-sm font-medium mb-1">Thumbnail</p>
+            <p class="text-gray-400 text-xs mb-3">Set a thumbnail that stands out and draws viewers' attention. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
+        <div class=" col-span-6  gap-2">
+            <input type="file" class="hidden thumb-input" id="U_thumb" accept="image/*">
+            <label for="U_thumb" class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
             <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4 4 4 4-6 4 6M4 20h16"/></svg>
             <p class="text-gray-400 text-[10px] text-center">Upload file</p>
-          </div>
-          <div class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
-              <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"/></svg>
-            <p class="text-gray-400 text-[10px] text-center">Auto-generated</p>
-          </div>
-          <div class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
-            <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            <p class="text-gray-400 text-[10px] text-center">A/B Testing</p>
-          </div>
+          </label>
+        </div>
+    </div>
+        <div class="col-span-6">
+            <img
+            class="thumb-preview w-30"
+             src=""
+              alt="">
         </div>
     </div>
 
@@ -195,7 +196,7 @@
         <div class="flex items-center gap-1">
           <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <p class="text-gray-400 text-xs">Uploading 65% ... 14 seconds left</p>
+        <p class="text-gray-400 text-xs">Uploading (percentage) ... time left</p>
       </div>
       <button class="bg-[#1a1a1a] text-white text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
     </div>
@@ -282,6 +283,8 @@
     let form_close = $('.formclose')
     let all_form = $('.all-form')
     let form_open = $('.form-open')
+    let thumb_input = $('.thumb-input')
+    let thumb_preview = $('.thumb-preview')
 
     video_input.on('input',(e)=>{
       let file = e.target.files[0]
@@ -289,6 +292,13 @@
       form2.removeClass('hidden').addClass('flex')
       let link = URL.createObjectURL(file)
       $('.video-preview').attr('src',link)
+    })
+
+    thumb_input.on('input',(e)=>{
+        let file = e.target.files[0]
+        let link = URL.createObjectURL(file)
+        $('.thumb-preview').attr('src',link)
+        console.log(thumb_input)
     })
 
     pehla_form.on('click',()=>{
