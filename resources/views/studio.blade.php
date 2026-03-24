@@ -271,6 +271,196 @@
 
 
 
+{{-- third form  --}}
+
+
+
+<div class="flex items-center thirdformbody justify-center min-h-screen p-4">
+
+  <!-- Modal Container -->
+  <div class="bg-[#1f1f1f] text-white rounded-xl w-full max-w-[720px] flex flex-col shadow-2xl overflow-hidden" style="max-height: 92vh;">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-5 py-3 border-b border-[#333] shrink-0">
+      <span class="text-sm font-medium text-gray-200">2759477 uhd 3840 2160 30fps</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs bg-[#333] px-3 py-1 rounded text-gray-300">Saved as private</span>
+        <button class="text-gray-400 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </button>
+        <button class="text-gray-400 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="px-6 py-4 flex items-center gap-0 shrink-0">
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center">
+        <div class="w-5 h-5 rounded-full bg-[#3ea6ff] flex items-center justify-center">
+          <svg class="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <span class="text-[11px] mt-1 text-gray-300">Details</span>
+      </div>
+      <div class="step-line done mb-4 mx-1"></div>
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center">
+        <div class="w-5 h-5 rounded-full border-2 border-[#3ea6ff] flex items-center justify-center bg-transparent"></div>
+        <span class="text-[11px] mt-1 text-gray-300">Video elements</span>
+      </div>
+      <div class="step-line done mb-4 mx-1"></div>
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center">
+        <div class="w-5 h-5 rounded-full border-2 border-[#3ea6ff] flex items-center justify-center bg-transparent"></div>
+        <span class="text-[11px] mt-1 text-gray-300">Checks</span>
+      </div>
+      <div class="step-line done mb-4 mx-1"></div>
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center">
+        <div class="w-5 h-5 rounded-full bg-[#3ea6ff] flex items-center justify-center">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#1f1f1f]"></div>
+        </div>
+        <span class="text-[11px] mt-1 font-semibold text-white">Visibility</span>
+      </div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="overflow-y-scroll flex-1 px-5 pb-4">
+      <div class="flex gap-4">
+
+        <!-- Left Panel -->
+        <div class="flex-1 flex flex-col gap-3">
+          <h2 class="text-xl font-medium">Visibility</h2>
+          <p class="text-sm text-gray-400">Choose when to publish and who can see your video</p>
+
+          <!-- Save or publish -->
+          <div class="border border-[#3ea6ff] rounded-xl p-4 bg-[#1a1a1a]">
+            <p class="text-sm font-semibold mb-1">Save or publish</p>
+            <p class="text-xs text-gray-400 mb-4">
+              Make your video
+              <span class="text-[#3ea6ff] cursor-pointer hover:underline">public</span>,
+              <span class="text-[#3ea6ff] cursor-pointer hover:underline">unlisted</span>, or
+              <span class="text-[#3ea6ff] cursor-pointer hover:underline">private</span>
+            </p>
+
+            <!-- Private -->
+            <label class="flex items-start justify-start mb-4 gap-3 cursor-pointer group">
+              <input type="radio" name="visibility" value="private" class="mt-1 w-4 h-4 cursor-pointer"/>
+              <div>
+                <p class="text-sm font-medium group-hover:text-white transition">Private</p>
+                <p class="text-xs text-gray-400">Only you and people you choose can watch your video</p>
+              </div>
+            </label>
+
+            <!-- Unlisted -->
+            <label class="flex items-start gap-3 mb-4 cursor-pointer group">
+              <input type="radio" name="visibility" value="unlisted" class="mt-1 w-4 h-4 cursor-pointer"/>
+              <div>
+                <p class="text-sm font-medium group-hover:text-white transition">Unlisted</p>
+                <p class="text-xs text-gray-400">Anyone with the video link can watch your video</p>
+              </div>
+            </label>
+
+            <!-- Public -->
+            <label class="flex items-start gap-3 mb-4 cursor-pointer group">
+              <input type="radio" name="visibility" value="public" class="mt-1 w-4 h-4 cursor-pointer"/>
+              <div>
+                <p class="text-sm font-medium group-hover:text-white transition">Public</p>
+                <p class="text-xs text-gray-400">Everyone can watch your video</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Schedule -->
+          <div class="border border-[#333] rounded-xl p-4 bg-[#1a1a1a]">
+            <div class="flex items-center justify-between cursor-pointer" onclick="this.parentElement.querySelector('.schedule-body').classList.toggle('hidden')">
+              <div>
+                <p class="text-sm font-semibold">Schedule</p>
+                <p class="text-xs text-gray-400">Select a date to make your video <span class="text-[#3ea6ff]">public</span>.</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="schedule-body hidden mt-3">
+              <input type="date" class="w-full bg-[#2a2a2a] border border-[#444] text-gray-300 text-sm rounded px-3 py-2 focus:outline-none focus:border-[#3ea6ff]"/>
+            </div>
+          </div>
+
+          <!-- Before you publish -->
+          <div class="border border-[#333] rounded-xl p-4 bg-[#1a1a1a] text-sm space-y-4">
+            <p class="font-semibold">Before you publish, check the following:</p>
+
+            <div>
+              <p class="font-medium mb-1">Do kids appear in this video?</p>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Make sure you follow our policies to protect minors from harm, exploitation, bullying, and violations of labor law.
+                <a href="#" class="text-[#3ea6ff] hover:underline">Learn more</a>
+              </p>
+            </div>
+
+            <div>
+              <p class="font-medium mb-1">Looking for overall content guidance?</p>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Our Community Guidelines can help you avoid trouble and ensure that YouTube remains a safe and vibrant community.
+                <a href="#" class="text-[#3ea6ff] hover:underline">Learn more</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Preview -->
+        <div class="w-52 shrink-0 flex flex-col gap-2 pt-12">
+          <div class="bg-black rounded-lg overflow-hidden aspect-video flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#0f3460] opacity-80"></div>
+            <!-- Fake video controls -->
+            <div class="absolute bottom-0 left-0 right-0 px-2 pb-1">
+              <div class="h-0.5 bg-[#555] rounded mb-1">
+                <div class="h-0.5 bg-red-500 rounded w-0"></div>
+              </div>
+              <div class="flex items-center justify-between text-[9px] text-gray-300">
+                <div class="flex gap-1 items-center">
+                  <svg class="w-3 h-3" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+                  <span>0:00 / 0:21</span>
+                </div>
+                <div class="flex gap-1 items-center">
+                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs font-medium leading-tight">2759477 uhd 3840 2160 30fps</p>
+          <p class="text-[11px] text-gray-400">Video link</p>
+          <div class="flex items-center gap-1">
+            <a href="https://youtu.be/Va0Mgk_UD9c" class="text-[11px] text-[#3ea6ff] hover:underline truncate">https://youtu.be/Va0Mgk_UD9c</a>
+            <button onclick="navigator.clipboard.writeText('https://youtu.be/Va0Mgk_UD9c')" class="text-gray-400 hover:text-white transition shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="px-5 py-3 border-t border-[#333] flex items-center justify-between shrink-0 bg-[#1f1f1f]">
+      <div class="flex items-center gap-3 text-xs text-gray-400">
+        <button class="hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </button>
+        <span class="bg-[#2a2a2a] px-1.5 py-0.5 rounded text-[10px] font-bold text-gray-300">4K</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#aaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>Checking 0% … 10 minutes left</span>
+      </div>
+      <div class="flex gap-2">
+        <button class="px-4 py-1.5 text-sm rounded bg-[#333] text-white hover:bg-[#444] transition">Back</button>
+        <button class="px-4 py-1.5 text-sm rounded bg-[#3ea6ff] text-black font-semibold hover:bg-[#5bb8ff] transition">Save</button>
+      </div>
+    </div>
+
+  </div>
+  </div>
 
 
 

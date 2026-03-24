@@ -10,3 +10,35 @@
     /* background-color: #282828; */
     color: #8a8a8a;
 }
+
+.thirdformbody {
+    font-family: "Roboto", sans-serif;
+    background: #0f0f0f;
+}
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: #606060;
+}
+.step-line.done {
+    background: #3ea6ff;
+}
+input[type="radio"] {
+    accent-color: #3ea6ff;
+}
+input[type="checkbox"] {
+    accent-color: #3ea6ff;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1f1f1f;
+}
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
