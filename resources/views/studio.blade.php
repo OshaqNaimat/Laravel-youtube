@@ -52,16 +52,8 @@
   </div>
 
 
-
-
-
-
-
   {{-- second form --}}
-
-{{-- <div class="bg-black flex items-center justify-center min-h-screen px-4"> --}}
-
-  <div class="bg-[#212121] rounded-xl hidden second-form  w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden  flex-col max-h-[95vh]">
+  <div class="bg-[#212121] rounded-xl hidden second-form w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden flex-col max-h-[95vh]">
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 py-3 border-b border-[#3a3a3a] shrink-0">
@@ -70,22 +62,21 @@
         </div>
 
       <div class="flex items-center gap-2">
-
         <button class="h-8 w-8 formclose rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-    </div>
+      </div>
     </div>
 
     <!-- Steps -->
     <div class="flex items-center justify-between px-6 py-3 border-b border-[#3a3a3a] shrink-0">
       <!-- Step 1 -->
       <div class="flex flex-col items-center gap-1">
-          <div class="w-4 h-4 rounded-full bg-white flex items-center justify-center">
+        <div class="w-4 h-4 rounded-full bg-white flex items-center justify-center">
           <div class="w-2 h-2 rounded-full bg-[#212121]"></div>
         </div>
         <span class="text-white text-[10px] font-medium">Details</span>
-    </div>
+      </div>
       <div class="flex-1 h-px bg-[#3a3a3a] mx-2"></div>
       <!-- Step 2 -->
       <div class="flex flex-col items-center gap-1">
@@ -107,11 +98,11 @@
     </div>
 
     <!-- Scrollable Content -->
-    <div class=" scndform overflow-y-scroll flex-1 px-4 py-4 space-y-5">
+    <div class="scndform overflow-y-scroll flex-1 px-4 py-4 space-y-5">
 
       <!-- Title Row -->
       <div class="flex items-center justify-between">
-          <h2 class="text-white text-base font-medium">Details</h2>
+        <h2 class="text-white text-base font-medium">Details</h2>
       </div>
 
       <!-- Title + Preview Row -->
@@ -133,18 +124,8 @@
         <!-- Preview -->
         <div class="w-50 shrink-0 space-y-2">
           <div class="bg-[#2e2e2e] rounded h-20 flex items-center justify-center">
-            {{-- <p class="text-gray-400 text-[10px] text-center">Uploading video...</p> --}}
-            <video src="" controls  class="video-preview"></video>
+            <video src="" controls class="video-preview"></video>
           </div>
-          {{-- <div>
-              <p class="text-gray-400 text-[10px]">Video link</p>
-            <div class="flex items-center gap-1">
-                <a href="#" class="text-blue-400 text-[10px] hover:underline truncate">https://youtu.be/-Be1pDX07qg</a>
-              <button class="text-gray-400 hover:text-white shrink-0">
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
-            </div>
-          </div> --}}
           <div>
             <p class="text-gray-400 text-[10px]">Filename</p>
           </div>
@@ -154,30 +135,20 @@
       <!-- Thumbnail -->
       <div class="flex items-center justify-center gap-2">
         <div class="">
-            <p class="text-white text-sm font-medium mb-1">Thumbnail</p>
-            <p class="text-gray-400 text-xs mb-3">Set a thumbnail that stands out and draws viewers' attention. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
-        <div class=" col-span-6  gap-2">
+          <p class="text-white text-sm font-medium mb-1">Thumbnail</p>
+          <p class="text-gray-400 text-xs mb-3">Set a thumbnail that stands out and draws viewers' attention. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
+          <div class="col-span-6 gap-2">
             <input type="file" class="hidden thumb-input" id="U_thumb" accept="image/*">
             <label for="U_thumb" class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
-            <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4 4 4 4-6 4 6M4 20h16"/></svg>
-            <p class="text-gray-400 text-[10px] text-center">Upload file</p>
-          </label>
+              <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4 4 4 4-6 4 6M4 20h16"/></svg>
+              <p class="text-gray-400 text-[10px] text-center">Upload file</p>
+            </label>
+          </div>
         </div>
-    </div>
         <div class="col-span-6">
-            <img
-            class="thumb-preview w-30"
-             src=""
-              alt="">
+          <img class="thumb-preview w-30" src="" alt="">
         </div>
-    </div>
-
-      <!-- Playlists -->
-
-      <!-- Audience -->
-
-
-      <!-- Age restriction -->
+      </div>
 
     </div>
 
@@ -198,13 +169,152 @@
         </div>
         <p class="text-gray-400 text-xs">Uploading (percentage) ... time left</p>
       </div>
-      <button class="bg-[#1a1a1a] text-white text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
+      <button class="bg-[#1a1a1a] text-white thirdformopen text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
     </div>
 
   </div>
 
-{{-- </div> --}}
-</div>
+
+  {{-- third form --}}
+  <div class="items-center third-form hidden justify-center w-full sm:w-[480px] md:w-[720px]">
+
+    <!-- Modal Container -->
+    <div class="bg-[#1f1f1f] p-4 text-white rounded-xl w-full flex flex-col shadow-2xl overflow-hidden" style="max-height: 92vh;">
+
+      <!-- Steps -->
+      <div class="flex items-center justify-between px-6 py-3 border-b border-[#3a3a3a] shrink-0">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="w-4 h-4 rounded-full bg-white flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-[#212121]"></div>
+          </div>
+          <span class="text-white text-[10px] font-medium">Details</span>
+        </div>
+        <div class="flex-1 h-px bg-[#3a3a3a] mx-2"></div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="w-4 h-4 rounded-full border border-gray-500"></div>
+          <span class="text-gray-500 text-[10px]">Video elements</span>
+        </div>
+        <div class="flex-1 h-px bg-[#3a3a3a] mx-2"></div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="w-4 h-4 rounded-full border border-gray-500"></div>
+          <span class="text-gray-500 text-[10px]">Checks</span>
+        </div>
+        <div class="flex-1 h-px bg-[#3a3a3a] mx-2"></div>
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="w-4 h-4 rounded-full bg-white flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-[#1f1f1f]"></div>
+          </div>
+          <span class="text-white text-[10px] font-medium">Visibility</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Content -->
+      <div class="overflow-y-scroll flex-1 px-5 pb-4">
+        <div class="flex gap-4">
+
+          <!-- Left Panel -->
+          <div class="flex-1 flex flex-col gap-3 pt-4">
+            <h2 class="text-xl font-medium">Visibility</h2>
+            <p class="text-sm text-gray-400">Choose when to publish and who can see your video</p>
+
+            <!-- Save or publish -->
+            <div class="bg-[#1f1f1f] border border-[#3a3a3a] rounded-xl p-4">
+              <p class="text-sm font-semibold mb-1">Save or publish</p>
+              <p class="text-xs text-gray-400 mb-4">
+                Make your video
+                <span class="text-gray-300 cursor-pointer hover:underline">public</span>,
+                <span class="text-gray-300 cursor-pointer hover:underline">unlisted</span>, or
+                <span class="text-gray-300 cursor-pointer hover:underline">private</span>
+              </p>
+
+              <!-- Private -->
+              <label class="flex items-center gap-2 mb-4 cursor-pointer group">
+                <input type="radio" name="visibility" value="private" class="w-4 h-4 cursor-pointer shrink-0 accent-white" />
+                <div>
+                  <p class="text-sm font-medium group-hover:text-white transition">Private</p>
+                  <p class="text-xs text-gray-400">Only you and people you choose can watch your video</p>
+                </div>
+              </label>
+
+              <!-- Unlisted -->
+              <label class="flex items-center gap-2 mb-4 cursor-pointer group">
+                <input type="radio" name="visibility" value="unlisted" class="w-4 h-4 cursor-pointer shrink-0 accent-white" />
+                <div>
+                  <p class="text-sm font-medium group-hover:text-white transition">Unlisted</p>
+                  <p class="text-xs text-gray-400">Anyone with the video link can watch your video</p>
+                </div>
+              </label>
+
+              <!-- Public -->
+              <label class="flex items-center gap-2 cursor-pointer group">
+                <input type="radio" name="visibility" value="public" class="w-4 h-4 cursor-pointer shrink-0 accent-white" />
+                <div>
+                  <p class="text-sm font-medium group-hover:text-white transition">Public</p>
+                  <p class="text-xs text-gray-400">Everyone can watch your video</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Right Panel: Preview -->
+          <div class="w-52 shrink-0 flex flex-col gap-2 pt-12">
+            <div class="bg-black rounded-lg overflow-hidden aspect-video flex items-center justify-center relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#0f3460] opacity-80"></div>
+              <div class="absolute bottom-0 left-0 right-0 px-2 pb-1">
+                <div class="h-0.5 bg-[#555] rounded mb-1">
+                  <div class="h-0.5 bg-red-500 rounded w-0"></div>
+                </div>
+                <div class="flex items-center justify-between text-[9px] text-gray-300">
+                  <div class="flex gap-1 items-center">
+                    <svg class="w-3 h-3" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+                    <span>0:00 / 0:21</span>
+                  </div>
+                  <div class="flex gap-1 items-center">
+                    <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs font-medium leading-tight">2759477 uhd 3840 2160 30fps</p>
+            <p class="text-[11px] text-gray-400">Video link</p>
+            <div class="flex items-center gap-1">
+              <a href="https://youtu.be/Va0Mgk_UD9c" class="text-[11px] text-gray-300 hover:underline truncate">https://youtu.be/Va0Mgk_UD9c</a>
+              <button onclick="navigator.clipboard.writeText('https://youtu.be/Va0Mgk_UD9c')" class="text-gray-400 hover:text-white transition shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="px-5 py-3 border-t border-[#333] flex items-center justify-between shrink-0 bg-[#1f1f1f]">
+        <div class="flex items-center gap-3 text-xs text-gray-400">
+          <button class="hover:text-white transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+          <span class="bg-[#2a2a2a] px-1.5 py-0.5 rounded text-[10px] font-bold text-gray-300">4K</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#aaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Checking 0% … 10 minutes left</span>
+        </div>
+        <div class="flex gap-2">
+          <button class="secondformback px-4 py-1.5 text-sm rounded bg-[#333] text-white hover:bg-[#444] transition cursor-pointer">Back</button>
+          <button class="px-4 py-1.5 text-sm rounded bg-[#1a1a1a] text-white font-semibold hover:bg-red-500 transition cursor-pointer">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+    </div>{{-- end all-form --}}
 
 
 {{-- navbar --}}
@@ -213,51 +323,33 @@
 
     {{-- LEFT: Hamburger + Logo --}}
     <div class="flex items-center gap-3 flex-shrink-0">
-      {{-- Hamburger toggles sidebar --}}
-      <button
-        onclick="toggleSidebar()"
-        class="text-3xl cursor-pointer hover:scale-95 transition focus:outline-none"
-      >
+      <button onclick="toggleSidebar()" class="text-3xl cursor-pointer hover:scale-95 transition focus:outline-none">
         <i class="bi bi-list"></i>
       </button>
-
-      <div  class="flex items-center gap-1">
-        <img
-          class="w-[36px] h-[36px] rounded object-cover"
-          src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg"
-          alt="logo"
-        >
-        {{-- Hide text on xs, show from sm+ --}}
+      <div class="flex items-center gap-1">
+        <img class="w-[36px] h-[36px] rounded object-cover" src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg" alt="logo">
         <span class="hidden sm:inline text-white font-bold text-xl tracking-tight" style="font-family:'YouTube Sans','Roboto',sans-serif;">
           Stu<span class="bg-red-600 px-1 rounded-sm">dio</span>
         </span>
       </div>
     </div>
 
-    {{-- MIDDLE: Search (hidden on xs, visible from sm) --}}
+    {{-- MIDDLE: Search --}}
     <div class="hidden sm:flex flex-1 max-w-xl items-center gap-2 justify-center">
-      <div class="flex rounded-full bg-[#1a1a1a] items-center  ">
+      <div class="flex rounded-full bg-[#1a1a1a] items-center">
         <x-searchbar />
       </div>
-      {{-- <button class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
-        <i class="bi bi-mic text-lg"></i>
-      </button> --}}
     </div>
 
     {{-- RIGHT: Actions --}}
     <div class="flex items-center gap-1 flex-shrink-0">
-      {{-- Search icon on mobile only --}}
       <button class="sm:hidden hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer">
         <i class="bi bi-search text-lg"></i>
       </button>
-
-      {{-- Create button: icon-only on md, full on lg+ --}}
       <button class="hidden form-open sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
         <i class="bi bi-plus text-xl"></i>
         <span class="hidden lg:inline text-sm">Create</span>
-
       </button>
-
       <button class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
         <i class="bi bi-bell text-lg"></i>
       </button>
@@ -270,208 +362,68 @@
 </nav>
 
 
-
-{{-- third form  --}}
-
-
-
-<div class="flex items-center thirdformbody justify-center min-h-screen p-4">
-
-  <!-- Modal Container -->
-  <div class="bg-[#1f1f1f] text-white rounded-xl w-full max-w-[720px] flex flex-col shadow-2xl overflow-hidden" style="max-height: 92vh;">
-
-
-    <!-- Steps -->
-    <div class="px-6 py-4 flex items-center gap-0 shrink-0">
-      <!-- Step 1 -->
-      <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full  flex items-center justify-center">
-          <svg class="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <span class="text-[11px] mt-1 text-gray-300">Details</span>
-      </div>
-      <div class="step-line done mb-4 mx-1"></div>
-      <!-- Step 2 -->
-      <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full border-2  flex items-center justify-center bg-transparent"></div>
-        <span class="text-[11px] mt-1 text-gray-300">Video elements</span>
-      </div>
-      <div class="step-line done mb-4 mx-1"></div>
-      <!-- Step 3 -->
-      <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full border-2  flex items-center justify-center bg-transparent"></div>
-        <span class="text-[11px] mt-1 text-gray-300">Checks</span>
-      </div>
-      <div class="step-line done mb-4 mx-1"></div>
-      <!-- Step 4 -->
-      <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full  flex items-center justify-center">
-          <div class="w-2.5 h-2.5 rounded-full bg-[#1f1f1f]"></div>
-        </div>
-        <span class="text-[11px] mt-1 font-semibold text-white">Visibility</span>
-      </div>
-    </div>
-
-    <!-- Scrollable Content -->
-    <div class="overflow-y-scroll flex-1 px-5 pb-4">
-      <div class="flex gap-4">
-
-        <!-- Left Panel -->
-        <div class="flex-1 flex flex-col gap-3">
-          <h2 class="text-xl font-medium">Visibility</h2>
-          <p class="text-sm text-gray-400">Choose when to publish and who can see your video</p>
-
-          <!-- Save or publish -->
-<div class="max-w-lg bg-[#1f1f1f] border border-gray-600 rounded-2xl p-6 text-white">
-
-  <!-- Title -->
-  <h2 class="text-lg font-semibold mb-1">Save or publish</h2>
-  <p class="text-sm text-gray-400 mb-6">
-    Make your video
-    <span class="text-[#3ea6ff] cursor-pointer hover:underline">public</span>,
-    <span class="text-[#3ea6ff] cursor-pointer hover:underline">unlisted</span>, or
-    <span class="text-[#3ea6ff] cursor-pointer hover:underline">private</span>
-  </p>
-
-
-
-   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
-    <div class="flex text-lg">
-        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
-    </div>
-        <div class="flex flex-col">
-            <p class="text-sm font-medium text-white">Private</p>
-            <p class="text-sm text-gray-400">Only you and people you choose can watch your video</p>
-        </div>
-</label>
-
-
-   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
-    <div class="flex text-lg">
-        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
-    </div>
-        <div class="flex flex-col">
-            <p class="text-sm font-medium text-white">Unlisted</p>
-            <p class="text-sm text-gray-400">Anyone with the video link can watch your video</p>
-        </div>
-</label>
-
-
-
-
-   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
-    <div class="flex text-lg">
-        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
-    </div>
-        <div class="flex flex-col">
-            <p class="text-sm font-medium text-white">Public</p>
-            <p class="text-sm text-gray-400">Everyone can watch your video</p>
-        </div>
-</label>
-
-</div>
-
-           </div>
-
-        <!-- Right Panel: Preview -->
-        <div class="w-52 shrink-0 flex flex-col gap-2 pt-12">
-          <div class="bg-black rounded-lg overflow-hidden aspect-video flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#0f3460] opacity-80"></div>
-            <!-- Fake video controls -->
-            <div class="absolute bottom-0 left-0 right-0 px-2 pb-1">
-              <div class="h-0.5 bg-[#555] rounded mb-1">
-                <div class="h-0.5 bg-red-500 rounded w-0"></div>
-              </div>
-              <div class="flex items-center justify-between text-[9px] text-gray-300">
-                <div class="flex gap-1 items-center">
-                  <svg class="w-3 h-3" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
-                  <span>0:00 / 0:21</span>
-                </div>
-                <div class="flex gap-1 items-center">
-                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-                  <svg class="w-3 h-3" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="text-xs font-medium leading-tight">2759477 uhd 3840 2160 30fps</p>
-          <p class="text-[11px] text-gray-400">Video link</p>
-          <div class="flex items-center gap-1">
-            <a href="https://youtu.be/Va0Mgk_UD9c" class="text-[11px] text-[#3ea6ff] hover:underline truncate">https://youtu.be/Va0Mgk_UD9c</a>
-            <button onclick="navigator.clipboard.writeText('https://youtu.be/Va0Mgk_UD9c')" class="text-gray-400 hover:text-white transition shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="px-5 py-3 border-t border-[#333] flex items-center justify-between shrink-0 bg-[#1f1f1f]">
-      <div class="flex items-center gap-3 text-xs text-gray-400">
-        <button class="hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4"/></svg>
-        </button>
-        <span class="bg-[#2a2a2a] px-1.5 py-0.5 rounded text-[10px] font-bold text-gray-300">4K</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#aaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span>Checking 0% … 10 minutes left</span>
-      </div>
-      <div class="flex gap-2">
-        <button class="px-4 py-1.5 text-sm rounded bg-[#333] text-white hover:bg-[#444] transition">Back</button>
-        <button class="px-4 py-1.5 text-sm rounded bg-[#1a1a1a] text-black font-semibold hover:bg-red-500 transition">Save</button>
-      </div>
-    </div>
-
-  </div>
- </div>
-
-
-
 <script>
 
     let form1 = $('.first-form')
     let form2 = $('.second-form')
+    let form3 = $('.third-form')
     let video_input = $('.video-input')
     let pehla_form = $('.pehla-form')
     let form_close = $('.formclose')
     let all_form = $('.all-form')
     let form_open = $('.form-open')
     let thumb_input = $('.thumb-input')
-    let thumb_preview = $('.thumb-preview')
+    let third_form_open = $('.thirdformopen')
+    let second_form_back = $('.secondformback')
 
-    video_input.on('input',(e)=>{
-      let file = e.target.files[0]
-      form1.addClass('hidden')
-      form2.removeClass('hidden').addClass('flex')
-      let link = URL.createObjectURL(file)
-      $('.video-preview').attr('src',link)
+    video_input.on('input', (e) => {
+        let file = e.target.files[0]
+        form1.addClass('hidden')
+        form2.removeClass('hidden').addClass('flex')
+        let link = URL.createObjectURL(file)
+        $('.video-preview').attr('src', link)
     })
 
-    thumb_input.on('input',(e)=>{
+    thumb_input.on('input', (e) => {
         let file = e.target.files[0]
         let link = URL.createObjectURL(file)
-        $('.thumb-preview').attr('src',link)
-        console.log(thumb_input)
+        $('.thumb-preview').attr('src', link)
     })
 
-    pehla_form.on('click',()=>{
-       form2.addClass('hidden').removeClass('flex')
-       form1.removeClass('hidden')
+    pehla_form.on('click', () => {
+        form2.addClass('hidden').removeClass('flex')
+        form1.removeClass('hidden')
+        all_form.addClass('bg-black/50')
     })
 
-    form_close.on('click',()=>{
+    form_close.on('click', () => {
         all_form.addClass('hidden').removeClass('flex')
+        // reset all forms for next open
+        setTimeout(() => {
+            form1.removeClass('hidden')
+            form2.addClass('hidden').removeClass('flex')
+            form3.addClass('hidden').removeClass('flex')
+            all_form.addClass('bg-black/50')
+        }, 200)
     })
 
-    form_open.on('click',()=>{
+    form_open.on('click', () => {
         all_form.addClass('flex').removeClass('hidden')
+        all_form.addClass('bg-black/50')
     })
 
+    third_form_open.on('click', () => {
+        form2.removeClass('flex').addClass('hidden')
+        form3.removeClass('hidden').addClass('flex')
+        all_form.removeClass('bg-black/50')
+    })
+
+    second_form_back.on('click', () => {
+        form3.addClass('hidden').removeClass('flex')
+        form2.removeClass('hidden').addClass('flex')
+        all_form.addClass('bg-black/50')
+    })
 
 </script>
-
-
 
 </x-layout>
