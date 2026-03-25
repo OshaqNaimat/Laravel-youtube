@@ -13,4 +13,5 @@ Route::view('/studio','studio');
 Route::post('/upload-video',[VideoController::class,'uploadVideo']);
 
 
-Route::get('/',[VideoController::class,'getVideos']);
+// Route::view('/mainpage','components.mainpage');
+// Route::get('/',[VideoController::class,'getVideos']);
