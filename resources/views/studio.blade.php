@@ -2,8 +2,8 @@
 
     <div class="bg-black/50 fixed all-form flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
 
-   <form action="/upload-video" method="POST">
-
+   <form action="/upload-video" method="POST" enctype="multipart/form-data">
+     @csrf
         {{-- first form --}}
   <div class="bg-[#212121] rounded-xl first-form w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden">
 
@@ -160,7 +160,7 @@
         </div>
         <p class="text-gray-400 text-xs">Uploading (percentage) ... time left</p>
       </div>
-      <button class="bg-[#1a1a1a] text-white thirdformopen text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
+      <button type="button" class="bg-[#1a1a1a] text-white thirdformopen text-sm font-medium px-5 py-1.5 rounded-full hover:bg-red-500 cursor-pointer">Next</button>
     </div>
 
   </div>

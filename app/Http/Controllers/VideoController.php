@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function upload(Request $req){
+    public function uploadVideo(Request $req){
         $formFields = [
-            'title'=>'required',
-            'description'=>'required',
-             'video' =>'required',
-             'thumbnail' => 'nullable',
-             'visibility' => ['required ']
+            'title'       =>$req->input('title'),
+            'description' =>$req->input('description'),
+             'video'      =>$req->input('video'),
+             'thumbnail'  => $req->input('thumbnail'),
+             'visibility' => $req->input('visibility')
         ];
 
        $formFields['video']= $req->file('video')->store('videos','public');
@@ -23,8 +23,16 @@ class VideoController extends Controller
 
      Videos::create($formFields);
 
+      return redirect('/');
 
 
 
+        }
+
+
+
+        public function getVideos(){
+            $allData = Videos::all();
+             return view('components.mainpage',compact('allData'));
         }
 }
