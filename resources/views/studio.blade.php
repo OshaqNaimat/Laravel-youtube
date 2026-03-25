@@ -35,7 +35,7 @@
       <label for="fileInput" class="bg-white text-black font-medium px-5 md:px-6 py-2 md:py-2.5 rounded-full cursor-pointer hover:bg-gray-200 text-sm">
         Select files
       </label>
-      <input id="fileInput" type="file" accept="video/*" class="hidden video-input" />
+      <input id="fileInput" type="file" accept="video/*" name="video" class="hidden video-input" />
     </div>
 
     <!-- Footer -->
@@ -101,13 +101,13 @@
           <!-- Title -->
           <div class="border border-[#3a3a3a] rounded-md p-2">
             <p class="text-gray-400 text-[10px] mb-1">Title (required) ⓘ</p>
-            <textarea class="bg-transparent text-white text-xs w-full resize-none outline-none h-14"></textarea>
+            <textarea name="title" class="bg-transparent text-white text-xs w-full resize-none outline-none h-14"></textarea>
             <p class="text-gray-500 text-[10px] text-right">70/100</p>
           </div>
           <!-- Description -->
           <div class="border border-[#3a3a3a] rounded-md p-2">
             <p class="text-gray-400 text-[10px] mb-1">Description ⓘ</p>
-            <textarea placeholder="Tell viewers about your video (type @ to mention a channel)" class="bg-transparent text-gray-500 text-xs w-full resize-none outline-none h-20 placeholder-gray-600"></textarea>
+            <textarea name="description" placeholder="Tell viewers about your video (type @ to mention a channel)" class="bg-transparent text-gray-500 text-xs w-full resize-none outline-none h-20 placeholder-gray-600"></textarea>
           </div>
         </div>
 
@@ -128,7 +128,7 @@
           <p class="text-white text-sm font-medium mb-1">Thumbnail</p>
           <p class="text-gray-400 text-xs mb-3">Set a thumbnail that stands out and draws viewers' attention. <a href="#" class="text-blue-400 hover:underline">Learn more</a></p>
           <div class="col-span-6 gap-2">
-            <input type="file" class="hidden thumb-input" id="U_thumb" accept="image/*">
+            <input type="file" class="hidden thumb-input" id="U_thumb" accept="image/*" name="thumbnail">
             <label for="U_thumb" class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
               <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4 4 4 4-6 4 6M4 20h16"/></svg>
               <p class="text-gray-400 text-[10px] text-center">Upload file</p>
