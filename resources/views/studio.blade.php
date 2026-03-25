@@ -280,25 +280,12 @@
   <!-- Modal Container -->
   <div class="bg-[#1f1f1f] text-white rounded-xl w-full max-w-[720px] flex flex-col shadow-2xl overflow-hidden" style="max-height: 92vh;">
 
-    <!-- Header -->
-    <div class="flex items-center justify-between px-5 py-3 border-b border-[#333] shrink-0">
-      <span class="text-sm font-medium text-gray-200">2759477 uhd 3840 2160 30fps</span>
-      <div class="flex items-center gap-3">
-        <span class="text-xs bg-[#333] px-3 py-1 rounded text-gray-300">Saved as private</span>
-        <button class="text-gray-400 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4 4m0 0l-4-4m4 4V4"/></svg>
-        </button>
-        <button class="text-gray-400 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-    </div>
 
     <!-- Steps -->
     <div class="px-6 py-4 flex items-center gap-0 shrink-0">
       <!-- Step 1 -->
       <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full bg-[#3ea6ff] flex items-center justify-center">
+        <div class="w-5 h-5 rounded-full  flex items-center justify-center">
           <svg class="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
         <span class="text-[11px] mt-1 text-gray-300">Details</span>
@@ -306,19 +293,19 @@
       <div class="step-line done mb-4 mx-1"></div>
       <!-- Step 2 -->
       <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full border-2 border-[#3ea6ff] flex items-center justify-center bg-transparent"></div>
+        <div class="w-5 h-5 rounded-full border-2  flex items-center justify-center bg-transparent"></div>
         <span class="text-[11px] mt-1 text-gray-300">Video elements</span>
       </div>
       <div class="step-line done mb-4 mx-1"></div>
       <!-- Step 3 -->
       <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full border-2 border-[#3ea6ff] flex items-center justify-center bg-transparent"></div>
+        <div class="w-5 h-5 rounded-full border-2  flex items-center justify-center bg-transparent"></div>
         <span class="text-[11px] mt-1 text-gray-300">Checks</span>
       </div>
       <div class="step-line done mb-4 mx-1"></div>
       <!-- Step 4 -->
       <div class="flex flex-col items-center">
-        <div class="w-5 h-5 rounded-full bg-[#3ea6ff] flex items-center justify-center">
+        <div class="w-5 h-5 rounded-full  flex items-center justify-center">
           <div class="w-2.5 h-2.5 rounded-full bg-[#1f1f1f]"></div>
         </div>
         <span class="text-[11px] mt-1 font-semibold text-white">Visibility</span>
@@ -335,78 +322,56 @@
           <p class="text-sm text-gray-400">Choose when to publish and who can see your video</p>
 
           <!-- Save or publish -->
-          <div class="border border-[#3ea6ff] rounded-xl p-4 bg-[#1a1a1a]">
-            <p class="text-sm font-semibold mb-1">Save or publish</p>
-            <p class="text-xs text-gray-400 mb-4">
-              Make your video
-              <span class="text-[#3ea6ff] cursor-pointer hover:underline">public</span>,
-              <span class="text-[#3ea6ff] cursor-pointer hover:underline">unlisted</span>, or
-              <span class="text-[#3ea6ff] cursor-pointer hover:underline">private</span>
-            </p>
+<div class="max-w-lg bg-[#1f1f1f] border border-gray-600 rounded-2xl p-6 text-white">
 
-            <!-- Private -->
-            <label class="flex items-start justify-start mb-4 gap-3 cursor-pointer group">
-              <input type="radio" name="visibility" value="private" class="mt-1 w-4 h-4 cursor-pointer"/>
-              <div>
-                <p class="text-sm font-medium group-hover:text-white transition">Private</p>
-                <p class="text-xs text-gray-400">Only you and people you choose can watch your video</p>
-              </div>
-            </label>
+  <!-- Title -->
+  <h2 class="text-lg font-semibold mb-1">Save or publish</h2>
+  <p class="text-sm text-gray-400 mb-6">
+    Make your video
+    <span class="text-[#3ea6ff] cursor-pointer hover:underline">public</span>,
+    <span class="text-[#3ea6ff] cursor-pointer hover:underline">unlisted</span>, or
+    <span class="text-[#3ea6ff] cursor-pointer hover:underline">private</span>
+  </p>
 
-            <!-- Unlisted -->
-            <label class="flex items-start gap-3 mb-4 cursor-pointer group">
-              <input type="radio" name="visibility" value="unlisted" class="mt-1 w-4 h-4 cursor-pointer"/>
-              <div>
-                <p class="text-sm font-medium group-hover:text-white transition">Unlisted</p>
-                <p class="text-xs text-gray-400">Anyone with the video link can watch your video</p>
-              </div>
-            </label>
 
-            <!-- Public -->
-            <label class="flex items-start gap-3 mb-4 cursor-pointer group">
-              <input type="radio" name="visibility" value="public" class="mt-1 w-4 h-4 cursor-pointer"/>
-              <div>
-                <p class="text-sm font-medium group-hover:text-white transition">Public</p>
-                <p class="text-xs text-gray-400">Everyone can watch your video</p>
-              </div>
-            </label>
-          </div>
 
-          <!-- Schedule -->
-          <div class="border border-[#333] rounded-xl p-4 bg-[#1a1a1a]">
-            <div class="flex items-center justify-between cursor-pointer" onclick="this.parentElement.querySelector('.schedule-body').classList.toggle('hidden')">
-              <div>
-                <p class="text-sm font-semibold">Schedule</p>
-                <p class="text-xs text-gray-400">Select a date to make your video <span class="text-[#3ea6ff]">public</span>.</p>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </div>
-            <div class="schedule-body hidden mt-3">
-              <input type="date" class="w-full bg-[#2a2a2a] border border-[#444] text-gray-300 text-sm rounded px-3 py-2 focus:outline-none focus:border-[#3ea6ff]"/>
-            </div>
-          </div>
-
-          <!-- Before you publish -->
-          <div class="border border-[#333] rounded-xl p-4 bg-[#1a1a1a] text-sm space-y-4">
-            <p class="font-semibold">Before you publish, check the following:</p>
-
-            <div>
-              <p class="font-medium mb-1">Do kids appear in this video?</p>
-              <p class="text-xs text-gray-400 leading-relaxed">
-                Make sure you follow our policies to protect minors from harm, exploitation, bullying, and violations of labor law.
-                <a href="#" class="text-[#3ea6ff] hover:underline">Learn more</a>
-              </p>
-            </div>
-
-            <div>
-              <p class="font-medium mb-1">Looking for overall content guidance?</p>
-              <p class="text-xs text-gray-400 leading-relaxed">
-                Our Community Guidelines can help you avoid trouble and ensure that YouTube remains a safe and vibrant community.
-                <a href="#" class="text-[#3ea6ff] hover:underline">Learn more</a>
-              </p>
-            </div>
-          </div>
+   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
+    <div class="flex text-lg">
+        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
+    </div>
+        <div class="flex flex-col">
+            <p class="text-sm font-medium text-white">Private</p>
+            <p class="text-sm text-gray-400">Only you and people you choose can watch your video</p>
         </div>
+</label>
+
+
+   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
+    <div class="flex text-lg">
+        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
+    </div>
+        <div class="flex flex-col">
+            <p class="text-sm font-medium text-white">Unlisted</p>
+            <p class="text-sm text-gray-400">Anyone with the video link can watch your video</p>
+        </div>
+</label>
+
+
+
+
+   <label class="flex justify-start items-start gap-3 p-2 cursor-pointer hover:bg-gray-800 rounded-lg transition-colors">
+    <div class="flex text-lg">
+        <input type="radio" name="visibility" class="mt-1 w-7 h-7  accent-white">
+    </div>
+        <div class="flex flex-col">
+            <p class="text-sm font-medium text-white">Public</p>
+            <p class="text-sm text-gray-400">Everyone can watch your video</p>
+        </div>
+</label>
+
+</div>
+
+           </div>
 
         <!-- Right Panel: Preview -->
         <div class="w-52 shrink-0 flex flex-col gap-2 pt-12">
@@ -455,12 +420,12 @@
       </div>
       <div class="flex gap-2">
         <button class="px-4 py-1.5 text-sm rounded bg-[#333] text-white hover:bg-[#444] transition">Back</button>
-        <button class="px-4 py-1.5 text-sm rounded bg-[#3ea6ff] text-black font-semibold hover:bg-[#5bb8ff] transition">Save</button>
+        <button class="px-4 py-1.5 text-sm rounded bg-[#1a1a1a] text-black font-semibold hover:bg-red-500 transition">Save</button>
       </div>
     </div>
 
   </div>
-  </div>
+ </div>
 
 
 
