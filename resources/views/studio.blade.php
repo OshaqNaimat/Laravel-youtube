@@ -2,6 +2,7 @@
 
     <div class="bg-black/50 fixed all-form flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
 
+   <form action="/upload-video" method="POST">
 
         {{-- first form --}}
   <div class="bg-[#212121] rounded-xl first-form w-full sm:w-[480px] md:w-[720px] shadow-2xl overflow-hidden">
@@ -223,7 +224,7 @@
 
               <!-- Private -->
               <label class="flex items-center gap-2 mb-4 cursor-pointer group">
-                <div class="">
+                <div    class="">
                     <input type="radio" name="visibility" value="private" class="w-4 h-4 cursor-pointer shrink-0 accent-white" />
                 </div>
                 <div>
@@ -288,6 +289,8 @@
 
     </div>
   </div>
+
+   </form>
 
 
     </div>{{-- end all-form --}}
