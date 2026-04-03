@@ -8,10 +8,11 @@ Route::get('/', function () {
 });
 
 Route::view('/studio','studio');
-
+Route::view('/register','register');
+Route::view('/login','login');
 
 Route::post('/upload-video',[VideoController::class,'uploadVideo']);
 
 
 // Route::view('/mainpage','components.mainpage');
-// Route::get('/',[VideoController::class,'getVideos']);
+Route::get('/',[VideoController::class,'getVideos']);

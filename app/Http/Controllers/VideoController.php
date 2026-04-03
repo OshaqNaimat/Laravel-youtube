@@ -23,7 +23,9 @@ class VideoController extends Controller
 
      Videos::create($formFields);
 
-      return redirect('/');
+    //  redirection
+
+      return back()->with('message','Video Published Successfully');
 
 
 
@@ -33,6 +35,6 @@ class VideoController extends Controller
 
         public function getVideos(){
             $allData = Videos::all();
-             return view('components.mainpage',compact('allData'));
+             return view('mainpage',compact('allData'));
         }
 }
