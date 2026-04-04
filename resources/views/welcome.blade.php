@@ -1,6 +1,6 @@
 <x-layout>
-    <x-navbar/>
-    <x-sidebar/>
-    <x-mobilenav/>
-    <x-mainpage/>
+    <x-navbar />
+    <x-sidebar />
+    <x-mobilenav />
+
 </x-layout>
