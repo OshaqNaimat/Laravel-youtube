@@ -41,12 +41,15 @@
             </button>
 
             {{-- Create button: icon-only on md, full on lg+ --}}
-            <a href="/studio"
-                class="hidden  sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
-                <i class="bi bi-plus text-xl"></i>
-                <span class="hidden lg:inline text-sm">Create</span>
+            @auth
 
-            </a>
+                <a href="/studio"
+                    class="hidden  sm:flex bg-[#1a1a1a] items-center p-2 rounded-full gap-1 cursor-pointer hover:bg-red-500 transition">
+                    <i class="bi bi-plus text-xl"></i>
+                    <span class="hidden lg:inline text-sm">Create</span>
+
+                </a>
+            @endauth
 
             <button
                 class="hover:bg-red-500 transition p-2 h-10 w-10 flex items-center justify-center rounded-full cursor-pointer">
@@ -55,31 +58,59 @@
             <div class="relative h-10 w-10">
 
                 {{-- Trigger Button --}}
-                <button
-                    class="peer hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
-                    <i class="bi bi-person text-lg"></i>
-                    @auth
-                        {{ auth()->user()->name }}
-                    @endauth
-                </button>
 
-                {{-- Dropdown --}}
-                <div
-                    class="absolute top-10 -right-3 bg-[#1A1A1A] rounded-md w-max
+                @guest
+                    <button
+                        class="peer hover:bg-red-500 transition p-2 rounded-full cursor-pointer h-10 w-10 flex items-center justify-center">
+                        <i class="bi bi-person text-lg"></i>
+                    </button>
+                    <div
+                        class="absolute top-10 -right-3 bg-[#1A1A1A] rounded-md w-max
                 invisible opacity-0 peer-hover:visible peer-hover:opacity-100
                 hover:visible hover:opacity-100
                 transition-all duration-150 z-50 p-1">
-                    <ul class="my-1">
-                        <a href="/studio">
-                            <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Your
-                                Channel</li>
-                        </a>
-                        <a href="/register">
-                            <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Sign In
-                            </li>
-                        </a>
-                    </ul>
-                </div>
+                        <ul class="my-1">
+
+                            <a href="/register">
+                                <li class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md">Sign In
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                @endguest
+
+                @auth
+
+                    <div class="relative group w-10 h-10 flex-shrink-0">
+                        {{-- Avatar --}}
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600
+                text-white text-base font-bold flex items-center justify-center
+                shadow-md select-none cursor-pointer">
+                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                        </div>
+
+                        {{-- Dropdown --}}
+                        <div
+                            class="absolute top-12 right-0 bg-[#1A1A1A] rounded-md w-max
+                invisible opacity-0 group-hover:visible group-hover:opacity-100
+                transition-all duration-150 z-50 p-1">
+                            <ul class="my-1">
+                                <form action="/logout" method="POST">
+                                    <li
+                                        class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md text-white">
+                                        Sign Out
+                                    </li>
+                                </form>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                @endauth
+
+                {{-- Dropdown --}}
+
 
             </div>
         </div>

@@ -790,10 +790,10 @@
                 const btn = e.target.querySelector('.btn-signin');
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '✅ Signed in! Redirect...';
-                setTimeout(() => {
-                    alert(`Welcome back! (Demo: ${email})`);
-                    btn.innerHTML = originalText;
-                }, 800);
+                // setTimeout(() => {
+                //     alert(`Welcome back! (Demo: ${email})`);
+                //     btn.innerHTML = originalText;
+                // }, 800);
             });
 
             // Register submission
@@ -820,11 +820,11 @@
                 const btn = e.target.querySelector('.btn-register');
                 btn.innerHTML = '✅ Account Created!';
                 btn.style.background = 'linear-gradient(135deg,#22863a,#155724)';
-                setTimeout(() => {
-                    btn.innerHTML = 'Create Account';
-                    btn.style.background = '';
-                    alert(`Welcome ${name}!.......`);
-                }, 1500);
+                // setTimeout(() => {
+                //     btn.innerHTML = 'Create Account';
+                //     btn.style.background = '';
+                //     alert(`Welcome ${name}!.......`);
+                // }, 1500);
             });
 
             // Initialize
