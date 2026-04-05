@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Videos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
@@ -18,7 +19,7 @@ class VideoController extends Controller
 
        $formFields['video']= $req->file('video')->store('videos','public');
        $formFields['thumbnail']=$req->file('thumbnail')->store('thumbnail','public');
-
+       $formFields['user_id'] = Auth::id();
     //    store the data in the database
 
      Videos::create($formFields);
@@ -34,7 +35,7 @@ class VideoController extends Controller
 
 
         public function getVideos(){
-            $allData = Videos::all();
-             return view('mainpage',compact('allData'));
+            $allVideos = Videos::all();
+             return view('welcome',compact('allVideos'));
         }
 }

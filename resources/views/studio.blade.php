@@ -1,5 +1,5 @@
         <x-layout>
-            <x-falsh />
+            <x-flash />
             <div
                 class="bg-black/50 fixed all-form flex items-center justify-center top-0 z-300 w-full min-h-screen px-4">
 
