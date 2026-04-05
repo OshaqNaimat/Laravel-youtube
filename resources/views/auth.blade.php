@@ -1,5 +1,5 @@
 <x-layout>
-
+    <x-flash />
     <style>
         * {
             margin: 0;
@@ -542,11 +542,13 @@
                         <div class="divider" style="margin:1rem 0;"></div>
                         <div class="error-msg" id="loginErrorMsg"><span id="loginErrorText">Invalid credentials</span>
                         </div>
-                        <form id="loginFormElem">
+                        <form id="loginFormElem" action="/login-user" method="POST">
+                            @csrf
                             <div class="input-group">
                                 <label>Email</label>
                                 <div class="input-wrap">
-                                    <input type="text" id="loginEmail" placeholder="john@example.com" required />
+                                    <input name="email" type="text" id="loginEmail" placeholder="john@example.com"
+                                        required />
                                     <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor">
                                         <path
@@ -556,7 +558,7 @@
                                 </div>
                             </div>
                             <div class="input-group"><label>Password</label>
-                                <div class="input-wrap"><input type="password" id="loginPassword"
+                                <div class="input-wrap"><input name="password" type="password" id="loginPassword"
                                         placeholder="Enter password" required />
                                     <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor">
@@ -576,7 +578,7 @@
                                 </div>
                                 <a href="#" class="forgot-link">Forgot password?</a>
                             </div>
-                            <button type="submit" class="btn-signin">Sign In</button>
+                            <button class="btn-signin">Sign In</button>
                         </form>
                         <p style="text-align:center; font-size:0.7rem; color:#333; margin-top:1.2rem;">Protected by
                             ViewTube</p>
@@ -777,7 +779,7 @@
 
             // Login submission
             document.getElementById('loginFormElem')?.addEventListener('submit', (e) => {
-                e.preventDefault();
+
                 const errorDiv = document.getElementById('loginErrorMsg');
                 const email = document.getElementById('loginEmail').value;
                 const pwd = document.getElementById('loginPassword').value;
@@ -789,7 +791,7 @@
                 errorDiv.style.display = 'none';
                 const btn = e.target.querySelector('.btn-signin');
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Signed in! Redirect...';
+
                 // setTimeout(() => {
                 //     alert(`Welcome back! (Demo: ${email})`);
                 //     btn.innerHTML = originalText;

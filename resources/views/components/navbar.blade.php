@@ -1,3 +1,6 @@
+<x-flash />
+
+
 <nav class="bg-black/95 text-white sticky top-0 z-50 border-b border-gray-800">
     <div class="px-4 py-2 flex justify-between items-center gap-2">
 
@@ -95,15 +98,16 @@
                             class="absolute top-12 right-0 bg-[#1A1A1A] rounded-md w-max
                 invisible opacity-0 group-hover:visible group-hover:opacity-100
                 transition-all duration-150 z-50 p-1">
-                            <ul class="my-1">
-                                <form action="/logout" method="POST">
-                                    <li
-                                        class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md text-white">
-                                        Sign Out
-                                    </li>
-                                </form>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                {{-- <ul class="my-1"> --}}
+                                <button
+                                    class="hover:bg-red-500 transition cursor-pointer hover:scale-95 p-2 rounded-md text-white">
+                                    Sign Out
+                                </button>
 
-                            </ul>
+                                {{-- </ul> --}}
+                            </form>
                         </div>
                     </div>
 

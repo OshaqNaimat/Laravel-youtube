@@ -15,3 +15,6 @@ Route::post('/register-user',[UserController::class,'registerUser']);
 
 // Route::view('/mainpage','components.mainpage');
 // Route::get('/',[VideoController::class,'getVideos']);
+
+    Route::post('/logout',[UserController::class,'logoutUser']);
+    Route::post('/login-user',[UserController::class,'loginUser']);
