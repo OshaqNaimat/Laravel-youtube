@@ -10,6 +10,9 @@ Route::get('/', function () {
 
 Route::view('/studio','studio')->middleware('auth');
 Route::view('/register','auth')->name('login');
+Route::view('/singleVideo','single-video');
+
+
 Route::post('/upload-video',[VideoController::class,'uploadVideo']);
 Route::post('/register-user',[UserController::class,'registerUser']);
 Route::post('/logout',[UserController::class,'logoutUser']);
