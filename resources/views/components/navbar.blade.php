@@ -31,7 +31,7 @@
             </div>
             <button
                 class="hover:bg-red-500 h-10 w-10 flex items-center justify-center transition p-2 rounded-full cursor-pointer flex-shrink-0">
-                <i class="bi bi-mic text-lg"></i>
+                <i class="bi bi-mic text-lg "></i>
             </button>
         </div>
 

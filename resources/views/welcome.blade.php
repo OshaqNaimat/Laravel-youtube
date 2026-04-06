@@ -8,13 +8,12 @@
 
             {{-- have to apply foreach --}}
             @foreach ($allVideos as $item)
-                <div class="flex flex-col group cursor-pointer">
+                <a href="/singleVideo" class="flex flex-col group cursor-pointer">
 
                     {{-- Thumbnail --}}
                     <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                            src="https://img.freepik.com/free-photo/lavender-field-sunset-near-valensole_268835-3910.jpg?semt=ais_incoming&w=740&q=80"
-                            alt="thumbnail">
+                            src="{{ asset('/storage/' . $item['thumbnail']) }}" alt="thumbnail">
                         <span
                             class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1.5 py-0.5 rounded">
                             Time
@@ -27,21 +26,36 @@
                         <div class="flex flex-col flex-1 min-w-0">
                             <div class="flex justify-between items-start">
                                 <p class="font-semibold text-sm line-clamp-2 leading-snug">
-                                    Title
+                                    {{ $item['title'] }}
                                 </p>
                                 <div
                                     class="h-8 w-8 aspect-square rounded-full flex items-center justify-center hover:bg-red-500 transition cursor-pointer -shrink-0 opacity-0 group-hover:opacity-100">
                                     <i class="bi bi-three-dots-vertical leading-none"></i>
                                 </div>
                             </div>
-                            <p class="text-sm text-gray-400">Channel name</p>
-                            <p class="text-sm text-gray-400">4.5M views · 1 year ago</p>
+                            <p class="text-sm text-capitalize text-gray-400">
+                                {{ $item->user->name }}
+                            </p>
+                            <div class="flex">
+                                <p class="text-sm text-gray-400">4.5M views · </p>
+                                <span class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
 
         </div>
     </div>
+
+
+    <script>
+        document.querySelectorAll('.upload-time').forEach((item, index) => {
+
+            item.innerHTML = moment(item.innerHTML).fromNow()
+        })
+    </script>
+
+
 
 </x-layout>
