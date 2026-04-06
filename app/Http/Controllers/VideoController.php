@@ -45,8 +45,8 @@ class VideoController extends Controller
         }
 
 
-        public function getSingleVideo($id){
-             $video = Videos::find($id);
-             return view('single-video',compact('video'));
-        }
+            public function getSingleVideo($id){
+                $video = Videos::find($id);
+                return view('single-video',compact('video'));
+            }
 }

@@ -20,6 +20,6 @@ Route::post('/login-user',[UserController::class,'loginUser']);
 
 
 
-Route::get('singleVideo/{id}',[VideoController::class,'getSingleVideo']);
-Route::get('singleVideo/{id}',[VideoController::class,'getSinglePageVideos']);
+Route::get('/singleVideo/{id}',[VideoController::class,'getSingleVideo']);
+Route::get('/singleVideo/{id}',[VideoController::class,'getSinglePageVideos']);
 Route::get('/',[VideoController::class,'getVideos']);
