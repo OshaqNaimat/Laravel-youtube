@@ -8,7 +8,7 @@
 
             {{-- have to apply foreach --}}
             @foreach ($allVideos as $item)
-                <a href="/singleVideo" class="flex flex-col group cursor-pointer">
+                <a href="/singleVideo/{{ $item['id'] }}" class="flex flex-col group cursor-pointer">
 
                     {{-- Thumbnail --}}
                     <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">

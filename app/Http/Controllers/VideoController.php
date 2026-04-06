@@ -38,4 +38,15 @@ class VideoController extends Controller
             $allVideos = Videos::all();
              return view('welcome',compact('allVideos'));
         }
+
+        public function getSinglePageVideos(){
+            $allSingleVideos = Videos::all();
+             return view('single-video',compact('allSingleVideos'));
+        }
+
+
+        public function getSingleVideo($id){
+             $video = Videos::find($id);
+             return view('single-video',compact('video'));
+        }
 }

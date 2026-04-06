@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::view('/studio','studio')->middleware('auth');
 Route::view('/register','auth')->name('login');
-Route::view('/singleVideo','single-video');
+Route::view('/singleVideo/{id}','single-video');
 
 
 Route::post('/upload-video',[VideoController::class,'uploadVideo']);
@@ -20,7 +20,6 @@ Route::post('/login-user',[UserController::class,'loginUser']);
 
 
 
-
-
-
+Route::get('singleVideo/{id}',[VideoController::class,'getSingleVideo']);
+Route::get('singleVideo/{id}',[VideoController::class,'getSinglePageVideos']);
 Route::get('/',[VideoController::class,'getVideos']);

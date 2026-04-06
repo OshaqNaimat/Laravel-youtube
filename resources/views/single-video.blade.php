@@ -142,313 +142,348 @@
                         <div class="lg:w-2/3 w-full">
                             <!-- video player container (big) -->
                             <div class="bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-                                <video id="mainVideoPlayer" class="w-full aspect-video object-cover" controls autoplay>
-                                    <source id="videoSource" src="/single-page-video.mp4" type="video/mp4">
+                                {{-- <video id="mainVideoPlayer" class="w-full aspect-video object-cover" controls autoplay>
+                                    <source id="videoSource" src="{{ asset('/storage/' . {{ $video['video'] }}) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
+                                 --}}
+                                {{-- <video src="{{ asset('/storage/' . $video['video']) }}" controls autoplay
+                                    class="aspect-video object-cover w-full"></video>
+                            </div> --}} --}}
 
-                            <!-- video title & meta (redish/black) -->
-                            <div class="mt-4 border-b border-gray-800 pb-3">
-                                <h1 id="videoTitle" class="text-white text-xl md:text-2xl font-semibold leading-tight">
-                                    Epic
-                                    Cinematic Journey</h1>
-                                <div class="flex flex-wrap justify-between items-center mt-2">
-                                    <div class="flex items-center gap-3 text-yt-gray text-sm">
-                                        <span id="videoViews" class="flex items-center gap-1"><i class="fas fa-eye"></i>
-                                            1.2M views</span>
-                                        <span id="videoDate" class="flex items-center gap-1"><i
-                                                class="far fa-calendar-alt"></i> 2 days ago</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 mt-2 sm:mt-0">
-                                        <button
-                                            class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="far fa-thumbs-up"></i> 12K</button>
-                                        <button
-                                            class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="far fa-thumbs-down"></i> Dislike</button>
-                                        <button
-                                            class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="fas fa-share"></i> Share</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- channel info row -->
-                            <div
-                                class="flex items-center justify-between mt-4 bg-yt-card p-3 rounded-xl border border-gray-800">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-yt-red flex items-center justify-center text-white font-bold">
-                                        R</div>
-                                    <div>
-                                        <p class="text-white font-semibold">Redux Media <span
-                                                class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span></p>
-                                        <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
-                                    </div>
-                                </div>
-                                <button
-                                    class="bg-yt-red hover:bg-red-700 text-white px-5 py-1.5 rounded-full text-sm font-medium transition">Subscribe</button>
-                            </div>
-
-                            <!-- ========== DESCRIPTION SECTION (new) ========== -->
-                            <div class="mt-5 bg-yt-card rounded-xl border border-gray-800 overflow-hidden">
-                                <div class="p-4">
-                                    <div
-                                        class="flex items-center gap-2 text-white font-semibold border-b border-gray-700 pb-2 mb-3">
-                                        <i class="fas fa-align-left text-yt-red"></i>
-                                        <span>Description</span>
-                                    </div>
-                                    <div id="descriptionContainer" class="text-yt-gray text-sm leading-relaxed">
-                                        <!-- dynamic description will be injected here -->
-                                        <div id="descShort" class="desc-content"></div>
-                                        <div id="descFull" class="desc-content hidden mt-2"></div>
-                                        <button id="toggleDescBtn"
-                                            class="show-more-btn text-yt-red text-xs mt-2 hover:underline focus:outline-none">Show
-                                            more</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- COMMENTS SECTION (integrated into the same scroll flow) -->
-                            <div class="mt-6 bg-yt-card rounded-xl p-4 border border-gray-800">
-                                <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
-                                    <i class="far fa-comment-dots text-yt-red text-xl"></i>
-                                    <h3 class="text-white font-semibold text-lg">Comments <span id="commentCount"
-                                            class="text-yt-gray ml-1">(24)</span></h3>
-                                </div>
-                                <!-- add comment input -->
-                                <div class="flex gap-3 mb-6">
-                                    <div
-                                        class="w-9 h-9 rounded-full bg-yt-red flex-shrink-0 flex items-center justify-center text-white text-sm">
-                                        U</div>
-                                    <div class="flex-1">
-                                        <input type="text" id="commentInput" placeholder="Add a public comment..."
-                                            class="comment-input w-full bg-yt-sidebar border border-gray-700 rounded-full px-4 py-2 text-white placeholder-gray-400 focus:border-yt-red transition">
-                                        <div class="flex justify-end gap-2 mt-2">
-                                            <button id="cancelCommentBtn"
-                                                class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800">Cancel</button>
-                                            <button id="postCommentBtn"
-                                                class="bg-yt-red hover:bg-red-700 text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
+                                <!-- video title & meta (redish/black) -->
+                                <div class="mt-4 border-b border-gray-800 pb-3">
+                                    <h1 id="videoTitle"
+                                        class="text-white text-xl md:text-2xl font-semibold leading-tight">
+                                        Epic
+                                        Cinematic Journey</h1>
+                                    <div class="flex flex-wrap justify-between items-center mt-2">
+                                        <div class="flex items-center gap-3 text-yt-gray text-sm">
+                                            <span id="videoViews" class="flex items-center gap-1"><i
+                                                    class="fas fa-eye"></i>
+                                                1.2M views</span>
+                                            <span id="videoDate" class="flex items-center gap-1"><i
+                                                    class="far fa-calendar-alt"></i> 2 days ago</span>
+                                        </div>
+                                        <div class="flex items-center gap-3 mt-2 sm:mt-0">
+                                            <button
+                                                class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
+                                                    class="far fa-thumbs-up"></i> 12K</button>
+                                            <button
+                                                class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
+                                                    class="far fa-thumbs-down"></i> Dislike</button>
+                                            <button
+                                                class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
+                                                    class="fas fa-share"></i> Share</button>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- comments list -->
-                                <div id="commentsContainer"
-                                    class="space-y-4 max-h-[350px] overflow-y-auto custom-scroll pr-1">
-                                    <!-- sample comments injected -->
+
+                                <!-- channel info row -->
+                                <div
+                                    class="flex items-center justify-between mt-4 bg-yt-card p-3 rounded-xl border border-gray-800">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-yt-red flex items-center justify-center text-white font-bold">
+                                            R</div>
+                                        <div>
+                                            <p class="text-white font-semibold">Redux Media <span
+                                                    class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span></p>
+                                            <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="bg-yt-red hover:bg-red-700 text-white px-5 py-1.5 rounded-full text-sm font-medium transition">Subscribe</button>
+                                </div>
+
+                                <!-- ========== DESCRIPTION SECTION (new) ========== -->
+                                <div class="mt-5 bg-yt-card rounded-xl border border-gray-800 overflow-hidden">
+                                    <div class="p-4">
+                                        <div
+                                            class="flex items-center gap-2 text-white font-semibold border-b border-gray-700 pb-2 mb-3">
+                                            <i class="fas fa-align-left text-yt-red"></i>
+                                            <span>Description</span>
+                                        </div>
+                                        <div id="descriptionContainer" class="text-yt-gray text-sm leading-relaxed">
+                                            <!-- dynamic description will be injected here -->
+                                            <div id="descShort" class="desc-content"></div>
+                                            <div id="descFull" class="desc-content hidden mt-2"></div>
+                                            <button id="toggleDescBtn"
+                                                class="show-more-btn text-yt-red text-xs mt-2 hover:underline focus:outline-none">Show
+                                                more</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- COMMENTS SECTION (integrated into the same scroll flow) -->
+                                <div class="mt-6 bg-yt-card rounded-xl p-4 border border-gray-800">
+                                    <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
+                                        <i class="far fa-comment-dots text-yt-red text-xl"></i>
+                                        <h3 class="text-white font-semibold text-lg">Comments <span id="commentCount"
+                                                class="text-yt-gray ml-1">(24)</span></h3>
+                                    </div>
+                                    <!-- add comment input -->
+                                    <div class="flex gap-3 mb-6">
+                                        <div
+                                            class="w-9 h-9 rounded-full bg-yt-red flex-shrink-0 flex items-center justify-center text-white text-sm">
+                                            U</div>
+                                        <div class="flex-1">
+                                            <input type="text" id="commentInput"
+                                                placeholder="Add a public comment..."
+                                                class="comment-input w-full bg-yt-sidebar border border-gray-700 rounded-full px-4 py-2 text-white placeholder-gray-400 focus:border-yt-red transition">
+                                            <div class="flex justify-end gap-2 mt-2">
+                                                <button id="cancelCommentBtn"
+                                                    class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800">Cancel</button>
+                                                <button id="postCommentBtn"
+                                                    class="bg-yt-red hover:bg-red-700 text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- comments list -->
+                                    <div id="commentsContainer"
+                                        class="space-y-4 max-h-[350px] overflow-y-auto custom-scroll pr-1">
+                                        <!-- sample comments injected -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- RIGHT COLUMN: video playlist (scrolls within main scroll area, but it's part of main scroll flow - no separate overflow) -->
-                        <div class="lg:w-1/3 w-full">
-                            <div
-                                class="sticky top-0 bg-yt-dark/90 backdrop-blur-sm rounded-t-xl py-2 z-10 mb-2 flex items-center justify-between px-2">
-                                <span class="text-white font-semibold text-sm"><i
-                                        class="fas fa-list-ul text-yt-red mr-2"></i> • Up next</span>
-                            </div>
-                            <div class="space-y-2" id="playlistContainer">
-                                <!-- dynamic video playlist cards -->
+                            <!-- RIGHT COLUMN: video playlist (scrolls within main scroll area, but it's part of main scroll flow - no separate overflow) -->
+                            <div class="lg:w-1/3 w-full">
+                                {{-- resources/views/components/video-sidebar.blade.php --}}
+
+                                <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
+                                    @foreach ($allSingleVideos as $item)
+                                        <a href="/singleVideo/{{ $item['id'] }}"
+                                            class="flex gap-3 p-2.5 rounded-xl hover:bg-white/[0.07] transition-colors duration-200 group">
+
+                                            <div
+                                                class="relative flex-shrink-0 w-[168px] h-[94px] bg-[#1a1a1a] rounded-lg overflow-hidden">
+                                                <img src="{{ asset('/storage/' . $item->thumbnail) }}"
+                                                    alt="{{ $item['title'] }}" class="w-full h-full object-cover">
+                                                <span
+                                                    class="absolute bottom-1.5 right-1.5 bg-black/80 text-white text-[11px] font-medium px-1.5 py-px rounded">
+                                                    {{-- {{ $allSingleVideo->duration }} --}}
+                                                </span>
+                                                <div
+                                                    class="absolute bottom-0 left-0 h-[3px] bg-red-600 w-0 group-hover:w-3/5 transition-all duration-500 rounded-r-sm">
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-col justify-start pt-0.5 min-w-0">
+                                                <p
+                                                    class="text-[13.5px] font-medium text-[#e8e8e8] group-hover:text-white leading-snug line-clamp-2 mb-1.5 transition-colors duration-150">
+                                                    {{ $item['title'] }}
+                                                </p>
+                                                <div class="text-[12px] text-[#aaa] leading-relaxed">
+                                                    <span class="block">{{ $item->user->name }}</span>
+                                                    <span class="block">247K
+                                                        views
+                                                        ·
+                                                        Time of upload</span>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script>
-            // ---------- VIDEO DATA (sample library with titles, sources, views, dates, descriptions) ----------
-            const videoLibrary = [{
-                    id: 1,
-                    title: "Epic Cinematic Journey | 4K HDR",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                    views: "1.2M views",
-                    date: "2 days ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
-                    duration: "0:45",
-                    descriptionShort: "Experience breathtaking landscapes and cinematic orchestral music in 4K HDR. A visual masterpiece that pushes the boundaries of storytelling.",
-                    descriptionFull: "Experience breathtaking landscapes and cinematic orchestral music in 4K HDR. A visual masterpiece that pushes the boundaries of storytelling. 🎬 Directed by Redux Media, this journey takes you through mountains, oceans, and futuristic cityscapes. Shot entirely on RED Komodo. Special thanks to the creative team. \n\n#Cinematic #4K #HDR #Visuals \n\n© 2025 Redux Media. All rights reserved. Like and subscribe for more epic content!"
-                },
-                {
-                    id: 2,
-                    title: "Cyberpunk 2077: Neon Nights",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-                    views: "892K views",
-                    date: "5 days ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
-                    duration: "1:02",
-                    descriptionShort: "Neon-drenched streets, cyber-augmented dreams. Dive into the futuristic vibe of Night City.",
-                    descriptionFull: "Neon-drenched streets, cyber-augmented dreams. Dive into the futuristic vibe of Night City with this synthwave edit. Experience the best of cyberpunk aesthetics, fast-paced edits and original music by Neon Pulse. \n\n🔔 Subscribe for more sci-fi content. \n\nCredits: Game footage from Cyberpunk 2077, edited by Redux Team. #Cyberpunk #Edgerunners"
-                },
-                {
-                    id: 3,
-                    title: "Nature's Fury: Storm Chasers",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunflies.mp4",
-                    views: "2.1M views",
-                    date: "1 week ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFunflies.jpg",
-                    duration: "0:58",
-                    descriptionShort: "Witness the raw power of supercell storms and tornadoes. Extreme weather documentary.",
-                    descriptionFull: "Witness the raw power of supercell storms and tornadoes. Extreme weather documentary filmed across Tornado Alley. Follow storm chasers into the eye of the tempest. High-speed lightning captures and breathtaking drone shots. \n\nEducational content about meteorology. #StormChasing #Nature"
-                },
-                {
-                    id: 4,
-                    title: "Future of AI | Documentary",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-                    views: "534K views",
-                    date: "2 weeks ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
-                    duration: "1:15",
-                    descriptionShort: "Exploring artificial intelligence breakthroughs and ethical dilemmas. The next frontier.",
-                    descriptionFull: "Exploring artificial intelligence breakthroughs and ethical dilemmas. The next frontier of human civilization. Interviews with leading AI researchers and demonstrations of GPT-5, robotics and generative art. This documentary covers how AI reshapes creativity and work. #AI #FutureTech"
-                },
-                {
-                    id: 5,
-                    title: "Extreme Sports Compilation",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCar.mp4",
-                    views: "3.4M views",
-                    date: "3 weeks ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/WhatCar.jpg",
-                    duration: "1:30",
-                    descriptionShort: "Base jumping, big wave surfing, and free solo climbing. Adrenaline overload!",
-                    descriptionFull: "Base jumping, big wave surfing, and free solo climbing. Adrenaline overload! The most insane extreme sports moments captured in 4K. Featuring world champions and daredevils. WARNING: Do not attempt. Made for entertainment only. #ExtremeSports #Adrenaline"
-                },
-                {
-                    id: 6,
-                    title: "Deep Space Odyssey",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-                    views: "2.7M views",
-                    date: "1 month ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg",
-                    duration: "1:22",
-                    descriptionShort: "Interstellar voyage through nebulae and black holes. A space fan's dream.",
-                    descriptionFull: "Interstellar voyage through nebulae and black holes. A space fan's dream. CGI recreation of exoplanets and supernova remnants. Music by Stellar Drone. Educational and immersive. #Space #NASA #Astronomy"
-                },
-                {
-                    id: 7,
-                    title: "Underwater Wonders 4K",
-                    src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.jpg",
-                    views: "987K views",
-                    date: "2 months ago",
-                    thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg",
-                    duration: "0:52",
-                    descriptionShort: "Coral reefs, manta rays, and deep sea creatures. Relaxing ocean footage.",
-                    descriptionFull: "Coral reefs, manta rays, and deep sea creatures. Relaxing ocean footage with ambient sounds. Filmed in 4K at the Great Barrier Reef and Galapagos. Perfect for meditation or background ambience. #Underwater #Ocean"
-                }
-            ];
+            <script>
+                // ---------- VIDEO DATA (sample library with titles, sources, views, dates, descriptions) ----------
+                const videoLibrary = [{
+                        id: 1,
+                        title: "Epic Cinematic Journey | 4K HDR",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                        views: "1.2M views",
+                        date: "2 days ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+                        duration: "0:45",
+                        descriptionShort: "Experience breathtaking landscapes and cinematic orchestral music in 4K HDR. A visual masterpiece that pushes the boundaries of storytelling.",
+                        descriptionFull: "Experience breathtaking landscapes and cinematic orchestral music in 4K HDR. A visual masterpiece that pushes the boundaries of storytelling. 🎬 Directed by Redux Media, this journey takes you through mountains, oceans, and futuristic cityscapes. Shot entirely on RED Komodo. Special thanks to the creative team. \n\n#Cinematic #4K #HDR #Visuals \n\n© 2025 Redux Media. All rights reserved. Like and subscribe for more epic content!"
+                    },
+                    {
+                        id: 2,
+                        title: "Cyberpunk 2077: Neon Nights",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+                        views: "892K views",
+                        date: "5 days ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+                        duration: "1:02",
+                        descriptionShort: "Neon-drenched streets, cyber-augmented dreams. Dive into the futuristic vibe of Night City.",
+                        descriptionFull: "Neon-drenched streets, cyber-augmented dreams. Dive into the futuristic vibe of Night City with this synthwave edit. Experience the best of cyberpunk aesthetics, fast-paced edits and original music by Neon Pulse. \n\n🔔 Subscribe for more sci-fi content. \n\nCredits: Game footage from Cyberpunk 2077, edited by Redux Team. #Cyberpunk #Edgerunners"
+                    },
+                    {
+                        id: 3,
+                        title: "Nature's Fury: Storm Chasers",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunflies.mp4",
+                        views: "2.1M views",
+                        date: "1 week ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFunflies.jpg",
+                        duration: "0:58",
+                        descriptionShort: "Witness the raw power of supercell storms and tornadoes. Extreme weather documentary.",
+                        descriptionFull: "Witness the raw power of supercell storms and tornadoes. Extreme weather documentary filmed across Tornado Alley. Follow storm chasers into the eye of the tempest. High-speed lightning captures and breathtaking drone shots. \n\nEducational content about meteorology. #StormChasing #Nature"
+                    },
+                    {
+                        id: 4,
+                        title: "Future of AI | Documentary",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+                        views: "534K views",
+                        date: "2 weeks ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
+                        duration: "1:15",
+                        descriptionShort: "Exploring artificial intelligence breakthroughs and ethical dilemmas. The next frontier.",
+                        descriptionFull: "Exploring artificial intelligence breakthroughs and ethical dilemmas. The next frontier of human civilization. Interviews with leading AI researchers and demonstrations of GPT-5, robotics and generative art. This documentary covers how AI reshapes creativity and work. #AI #FutureTech"
+                    },
+                    {
+                        id: 5,
+                        title: "Extreme Sports Compilation",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCar.mp4",
+                        views: "3.4M views",
+                        date: "3 weeks ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/WhatCar.jpg",
+                        duration: "1:30",
+                        descriptionShort: "Base jumping, big wave surfing, and free solo climbing. Adrenaline overload!",
+                        descriptionFull: "Base jumping, big wave surfing, and free solo climbing. Adrenaline overload! The most insane extreme sports moments captured in 4K. Featuring world champions and daredevils. WARNING: Do not attempt. Made for entertainment only. #ExtremeSports #Adrenaline"
+                    },
+                    {
+                        id: 6,
+                        title: "Deep Space Odyssey",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+                        views: "2.7M views",
+                        date: "1 month ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg",
+                        duration: "1:22",
+                        descriptionShort: "Interstellar voyage through nebulae and black holes. A space fan's dream.",
+                        descriptionFull: "Interstellar voyage through nebulae and black holes. A space fan's dream. CGI recreation of exoplanets and supernova remnants. Music by Stellar Drone. Educational and immersive. #Space #NASA #Astronomy"
+                    },
+                    {
+                        id: 7,
+                        title: "Underwater Wonders 4K",
+                        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.jpg",
+                        views: "987K views",
+                        date: "2 months ago",
+                        thumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg",
+                        duration: "0:52",
+                        descriptionShort: "Coral reefs, manta rays, and deep sea creatures. Relaxing ocean footage.",
+                        descriptionFull: "Coral reefs, manta rays, and deep sea creatures. Relaxing ocean footage with ambient sounds. Filmed in 4K at the Great Barrier Reef and Galapagos. Perfect for meditation or background ambience. #Underwater #Ocean"
+                    }
+                ];
 
-            // initial selected video (first one)
-            let currentVideo = videoLibrary[0];
+                // initial selected video (first one)
+                let currentVideo = videoLibrary[0];
 
-            // Comments array (initial mock data)
-            let commentsArray = [{
-                    id: 1,
-                    username: "PixelWarrior",
-                    text: "Absolutely stunning visuals! The red theme makes it pop 🔥",
-                    timestamp: "2 hours ago",
-                    likes: 34
-                },
-                {
-                    id: 2,
-                    username: "CinephilePro",
-                    text: "This channel never disappoints. Great quality content!",
-                    timestamp: "5 hours ago",
-                    likes: 12
-                },
-                {
-                    id: 3,
-                    username: "TechSavvy",
-                    text: "Love the UI design, very clean and modern. Keep it up!",
-                    timestamp: "1 day ago",
-                    likes: 56
-                },
-                {
-                    id: 4,
-                    username: "RetroGamer",
-                    text: "That playlist on the side is super helpful. Nice work!",
-                    timestamp: "2 days ago",
-                    likes: 8
-                },
-            ];
+                // Comments array (initial mock data)
+                let commentsArray = [{
+                        id: 1,
+                        username: "PixelWarrior",
+                        text: "Absolutely stunning visuals! The red theme makes it pop 🔥",
+                        timestamp: "2 hours ago",
+                        likes: 34
+                    },
+                    {
+                        id: 2,
+                        username: "CinephilePro",
+                        text: "This channel never disappoints. Great quality content!",
+                        timestamp: "5 hours ago",
+                        likes: 12
+                    },
+                    {
+                        id: 3,
+                        username: "TechSavvy",
+                        text: "Love the UI design, very clean and modern. Keep it up!",
+                        timestamp: "1 day ago",
+                        likes: 56
+                    },
+                    {
+                        id: 4,
+                        username: "RetroGamer",
+                        text: "That playlist on the side is super helpful. Nice work!",
+                        timestamp: "2 days ago",
+                        likes: 8
+                    },
+                ];
 
-            // DOM Elements
-            const mainVideo = document.getElementById('mainVideoPlayer');
-            const videoSource = document.getElementById('videoSource');
-            const videoTitleEl = document.getElementById('videoTitle');
-            const videoViewsEl = document.getElementById('videoViews');
-            const videoDateEl = document.getElementById('videoDate');
-            const playlistContainer = document.getElementById('playlistContainer');
-            const commentsContainer = document.getElementById('commentsContainer');
-            const commentCountSpan = document.getElementById('commentCount');
-            const commentInput = document.getElementById('commentInput');
-            const postCommentBtn = document.getElementById('postCommentBtn');
-            const cancelCommentBtn = document.getElementById('cancelCommentBtn');
+                // DOM Elements
+                const mainVideo = document.getElementById('mainVideoPlayer');
+                const videoSource = document.getElementById('videoSource');
+                const videoTitleEl = document.getElementById('videoTitle');
+                const videoViewsEl = document.getElementById('videoViews');
+                const videoDateEl = document.getElementById('videoDate');
+                const playlistContainer = document.getElementById('playlistContainer');
+                const commentsContainer = document.getElementById('commentsContainer');
+                const commentCountSpan = document.getElementById('commentCount');
+                const commentInput = document.getElementById('commentInput');
+                const postCommentBtn = document.getElementById('postCommentBtn');
+                const cancelCommentBtn = document.getElementById('cancelCommentBtn');
 
-            // Description elements
-            const descShortEl = document.getElementById('descShort');
-            const descFullEl = document.getElementById('descFull');
-            const toggleDescBtn = document.getElementById('toggleDescBtn');
-            let descriptionExpanded = false;
+                // Description elements
+                const descShortEl = document.getElementById('descShort');
+                const descFullEl = document.getElementById('descFull');
+                const toggleDescBtn = document.getElementById('toggleDescBtn');
+                let descriptionExpanded = false;
 
-            // Helper: update description based on current video
-            function updateDescription(video) {
-                if (video.descriptionShort && video.descriptionFull) {
-                    descShortEl.innerText = video.descriptionShort;
-                    descFullEl.innerText = video.descriptionFull;
-                } else {
-                    // fallback
-                    descShortEl.innerText = video.descriptionShort || "No description available.";
-                    descFullEl.innerText = video.descriptionFull || "Additional details not provided.";
-                }
-                // reset to collapsed state when video changes
-                descriptionExpanded = false;
-                descFullEl.classList.add('hidden');
-                toggleDescBtn.innerText = "Show more";
-            }
-
-            // toggle description expand/collapse
-            function toggleDescription() {
-                if (descriptionExpanded) {
+                // Helper: update description based on current video
+                function updateDescription(video) {
+                    if (video.descriptionShort && video.descriptionFull) {
+                        descShortEl.innerText = video.descriptionShort;
+                        descFullEl.innerText = video.descriptionFull;
+                    } else {
+                        // fallback
+                        descShortEl.innerText = video.descriptionShort || "No description available.";
+                        descFullEl.innerText = video.descriptionFull || "Additional details not provided.";
+                    }
+                    // reset to collapsed state when video changes
+                    descriptionExpanded = false;
                     descFullEl.classList.add('hidden');
                     toggleDescBtn.innerText = "Show more";
-                    descriptionExpanded = false;
-                } else {
-                    descFullEl.classList.remove('hidden');
-                    toggleDescBtn.innerText = "Show less";
-                    descriptionExpanded = true;
                 }
-            }
 
-            // Helper: update main video player (big left side)
-            function updateMainVideo(video) {
-                currentVideo = video;
-                // change video source and reload
-                videoSource.src = video.src;
-                mainVideo.load();
-                mainVideo.play().catch(e => console.log("Autoplay blocked, but user can play"));
-                videoTitleEl.innerText = video.title;
-                videoViewsEl.innerHTML = `<i class="fas fa-eye"></i> ${video.views}`;
-                videoDateEl.innerHTML = `<i class="far fa-calendar-alt"></i> ${video.date}`;
-                // update description
-                updateDescription(video);
-                // re-render playlist to highlight active video
-                renderPlaylist();
-            }
+                // toggle description expand/collapse
+                function toggleDescription() {
+                    if (descriptionExpanded) {
+                        descFullEl.classList.add('hidden');
+                        toggleDescBtn.innerText = "Show more";
+                        descriptionExpanded = false;
+                    } else {
+                        descFullEl.classList.remove('hidden');
+                        toggleDescBtn.innerText = "Show less";
+                        descriptionExpanded = true;
+                    }
+                }
 
-            // Render playlist (right sidebar)
-            function renderPlaylist() {
-                playlistContainer.innerHTML = '';
-                videoLibrary.forEach(video => {
-                    const isActive = currentVideo.id === video.id;
-                    const activeClass = isActive ? 'active-video bg-opacity-40 border-l-yt-red' :
-                        'border-l-transparent';
-                    const card = document.createElement('div');
-                    card.className =
-                        `video-card flex gap-3 p-2 rounded-lg transition-all ${isActive ? 'active-video bg-[#2C0F12]' : 'bg-yt-card hover:bg-[#1F1F1F]'} border-l-3`;
-                    card.style.borderLeftColor = isActive ? '#E01E2E' : 'transparent';
-                    card.style.borderLeftWidth = '3px';
-                    card.innerHTML = `
+                // Helper: update main video player (big left side)
+                function updateMainVideo(video) {
+                    currentVideo = video;
+                    // change video source and reload
+                    videoSource.src = video.src;
+                    mainVideo.load();
+                    mainVideo.play().catch(e => console.log("Autoplay blocked, but user can play"));
+                    videoTitleEl.innerText = video.title;
+                    videoViewsEl.innerHTML = `<i class="fas fa-eye"></i> ${video.views}`;
+                    videoDateEl.innerHTML = `<i class="far fa-calendar-alt"></i> ${video.date}`;
+                    // update description
+                    updateDescription(video);
+                    // re-render playlist to highlight active video
+                    renderPlaylist();
+                }
+
+                // Render playlist (right sidebar)
+                function renderPlaylist() {
+                    playlistContainer.innerHTML = '';
+                    videoLibrary.forEach(video => {
+                        const isActive = currentVideo.id === video.id;
+                        const activeClass = isActive ? 'active-video bg-opacity-40 border-l-yt-red' :
+                            'border-l-transparent';
+                        const card = document.createElement('div');
+                        card.className =
+                            `video-card flex gap-3 p-2 rounded-lg transition-all ${isActive ? 'active-video bg-[#2C0F12]' : 'bg-yt-card hover:bg-[#1F1F1F]'} border-l-3`;
+                        card.style.borderLeftColor = isActive ? '#E01E2E' : 'transparent';
+                        card.style.borderLeftWidth = '3px';
+                        card.innerHTML = `
         <div class="relative w-40 flex-shrink-0 rounded-md overflow-hidden bg-black">
           <img src="${video.thumbnail || 'https://via.placeholder.com/120x68?text=Thumb'}" class="w-full h-full object-cover aspect-video" alt="thumbnail">
           <span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] px-1 rounded">${video.duration}</span>
@@ -459,37 +494,37 @@
           <p class="text-yt-gray text-xs">${video.date}</p>
         </div>
       `;
-                    card.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        updateMainVideo(video);
-                        // scroll to top of left column on mobile for better UX
-                        const mainScrollArea = document.querySelector('.main-scroll-area');
-                        if (mainScrollArea && window.innerWidth < 1024) {
-                            const videoContainer = document.querySelector('.bg-black.rounded-xl');
-                            if (videoContainer) videoContainer.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
+                        card.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            updateMainVideo(video);
+                            // scroll to top of left column on mobile for better UX
+                            const mainScrollArea = document.querySelector('.main-scroll-area');
+                            if (mainScrollArea && window.innerWidth < 1024) {
+                                const videoContainer = document.querySelector('.bg-black.rounded-xl');
+                                if (videoContainer) videoContainer.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }
+                        });
+                        playlistContainer.appendChild(card);
                     });
-                    playlistContainer.appendChild(card);
-                });
-            }
-
-            // Render comments list (with like button simulation)
-            function renderComments() {
-                commentsContainer.innerHTML = '';
-                if (commentsArray.length === 0) {
-                    commentsContainer.innerHTML =
-                        `<div class="text-center text-yt-gray py-6">No comments yet. Be the first to comment!</div>`;
-                    commentCountSpan.innerText = `(0)`;
-                    return;
                 }
-                commentCountSpan.innerText = `(${commentsArray.length})`;
-                commentsArray.forEach(comment => {
-                    const commentDiv = document.createElement('div');
-                    commentDiv.className = "flex gap-3 pb-3 border-b border-gray-800";
-                    commentDiv.innerHTML = `
+
+                // Render comments list (with like button simulation)
+                function renderComments() {
+                    commentsContainer.innerHTML = '';
+                    if (commentsArray.length === 0) {
+                        commentsContainer.innerHTML =
+                            `<div class="text-center text-yt-gray py-6">No comments yet. Be the first to comment!</div>`;
+                        commentCountSpan.innerText = `(0)`;
+                        return;
+                    }
+                    commentCountSpan.innerText = `(${commentsArray.length})`;
+                    commentsArray.forEach(comment => {
+                        const commentDiv = document.createElement('div');
+                        commentDiv.className = "flex gap-3 pb-3 border-b border-gray-800";
+                        commentDiv.innerHTML = `
         <div class="w-8 h-8 rounded-full bg-yt-red flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">${comment.username.charAt(0).toUpperCase()}</div>
         <div class="flex-1">
           <div class="flex items-center gap-2 flex-wrap">
@@ -503,122 +538,122 @@
           </div>
         </div>
       `;
-                    const likeBtn = commentDiv.querySelector('.comment-like-btn');
-                    likeBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        comment.likes += 1;
-                        renderComments();
+                        const likeBtn = commentDiv.querySelector('.comment-like-btn');
+                        likeBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            comment.likes += 1;
+                            renderComments();
+                        });
+                        commentsContainer.appendChild(commentDiv);
                     });
-                    commentsContainer.appendChild(commentDiv);
-                });
-            }
-
-            // simple escape to avoid XSS
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-                    return c;
-                });
-            }
-
-            // add new comment
-            function addComment(text) {
-                if (!text.trim()) return;
-                const newComment = {
-                    id: Date.now(),
-                    username: "CurrentUser",
-                    text: text.trim(),
-                    timestamp: "Just now",
-                    likes: 0
-                };
-                commentsArray.unshift(newComment);
-                renderComments();
-                commentInput.value = '';
-            }
-
-            // event listeners for comments
-            postCommentBtn.addEventListener('click', () => {
-                addComment(commentInput.value);
-            });
-            cancelCommentBtn.addEventListener('click', () => {
-                commentInput.value = '';
-            });
-            commentInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addComment(commentInput.value);
                 }
-            });
 
-            // Like/Dislike handlers for main video (cosmetic)
-            const likeBtnMain = document.querySelector('.like-btn');
-            const dislikeBtnMain = document.querySelector('.dislike-btn');
-            let liked = false;
-            let disliked = false;
-            if (likeBtnMain) {
-                likeBtnMain.addEventListener('click', () => {
-                    if (!liked) {
-                        likeBtnMain.innerHTML = '<i class="fas fa-thumbs-up"></i> 12.1K';
-                        likeBtnMain.classList.add('text-yt-red');
-                        if (disliked) {
-                            disliked = false;
-                            dislikeBtnMain.innerHTML = '<i class="far fa-thumbs-down"></i> Dislike';
-                            dislikeBtnMain.classList.remove('text-yt-red');
-                        }
-                        liked = true;
-                    } else {
-                        likeBtnMain.innerHTML = '<i class="far fa-thumbs-up"></i> 12K';
-                        likeBtnMain.classList.remove('text-yt-red');
-                        liked = false;
+                // simple escape to avoid XSS
+                function escapeHtml(str) {
+                    if (!str) return '';
+                    return str.replace(/[&<>]/g, function(m) {
+                        if (m === '&') return '&amp;';
+                        if (m === '<') return '&lt;';
+                        if (m === '>') return '&gt;';
+                        return m;
+                    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+                        return c;
+                    });
+                }
+
+                // add new comment
+                function addComment(text) {
+                    if (!text.trim()) return;
+                    const newComment = {
+                        id: Date.now(),
+                        username: "CurrentUser",
+                        text: text.trim(),
+                        timestamp: "Just now",
+                        likes: 0
+                    };
+                    commentsArray.unshift(newComment);
+                    renderComments();
+                    commentInput.value = '';
+                }
+
+                // event listeners for comments
+                postCommentBtn.addEventListener('click', () => {
+                    addComment(commentInput.value);
+                });
+                cancelCommentBtn.addEventListener('click', () => {
+                    commentInput.value = '';
+                });
+                commentInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addComment(commentInput.value);
                     }
                 });
-            }
-            if (dislikeBtnMain) {
-                dislikeBtnMain.addEventListener('click', () => {
-                    if (!disliked) {
-                        dislikeBtnMain.innerHTML = '<i class="fas fa-thumbs-down"></i> Dislike';
-                        dislikeBtnMain.classList.add('text-yt-red');
-                        if (liked) {
-                            liked = false;
+
+                // Like/Dislike handlers for main video (cosmetic)
+                const likeBtnMain = document.querySelector('.like-btn');
+                const dislikeBtnMain = document.querySelector('.dislike-btn');
+                let liked = false;
+                let disliked = false;
+                if (likeBtnMain) {
+                    likeBtnMain.addEventListener('click', () => {
+                        if (!liked) {
+                            likeBtnMain.innerHTML = '<i class="fas fa-thumbs-up"></i> 12.1K';
+                            likeBtnMain.classList.add('text-yt-red');
+                            if (disliked) {
+                                disliked = false;
+                                dislikeBtnMain.innerHTML = '<i class="far fa-thumbs-down"></i> Dislike';
+                                dislikeBtnMain.classList.remove('text-yt-red');
+                            }
+                            liked = true;
+                        } else {
                             likeBtnMain.innerHTML = '<i class="far fa-thumbs-up"></i> 12K';
                             likeBtnMain.classList.remove('text-yt-red');
+                            liked = false;
                         }
-                        disliked = true;
-                    } else {
-                        dislikeBtnMain.innerHTML = '<i class="far fa-thumbs-down"></i> Dislike';
-                        dislikeBtnMain.classList.remove('text-yt-red');
-                        disliked = false;
+                    });
+                }
+                if (dislikeBtnMain) {
+                    dislikeBtnMain.addEventListener('click', () => {
+                        if (!disliked) {
+                            dislikeBtnMain.innerHTML = '<i class="fas fa-thumbs-down"></i> Dislike';
+                            dislikeBtnMain.classList.add('text-yt-red');
+                            if (liked) {
+                                liked = false;
+                                likeBtnMain.innerHTML = '<i class="far fa-thumbs-up"></i> 12K';
+                                likeBtnMain.classList.remove('text-yt-red');
+                            }
+                            disliked = true;
+                        } else {
+                            dislikeBtnMain.innerHTML = '<i class="far fa-thumbs-down"></i> Dislike';
+                            dislikeBtnMain.classList.remove('text-yt-red');
+                            disliked = false;
+                        }
+                    });
+                }
+
+                // thumbnail fallback for any missing
+                videoLibrary.forEach(v => {
+                    if (!v.thumbnail || v.thumbnail === '') {
+                        v.thumbnail = `https://picsum.photos/seed/${v.id}/320/180`;
                     }
                 });
-            }
 
-            // thumbnail fallback for any missing
-            videoLibrary.forEach(v => {
-                if (!v.thumbnail || v.thumbnail === '') {
-                    v.thumbnail = `https://picsum.photos/seed/${v.id}/320/180`;
+                // initialize description toggle listener
+                toggleDescBtn.addEventListener('click', toggleDescription);
+
+                // initial load: set default video + render playlist + comments + description
+                function init() {
+                    renderPlaylist();
+                    renderComments();
+                    updateMainVideo(videoLibrary[0]);
+                    // set autoplay attempt
+                    mainVideo.load();
+                    mainVideo.play().catch(e => console.log("Autoplay blocked"));
                 }
-            });
 
-            // initialize description toggle listener
-            toggleDescBtn.addEventListener('click', toggleDescription);
-
-            // initial load: set default video + render playlist + comments + description
-            function init() {
-                renderPlaylist();
-                renderComments();
-                updateMainVideo(videoLibrary[0]);
-                // set autoplay attempt
-                mainVideo.load();
-                mainVideo.play().catch(e => console.log("Autoplay blocked"));
-            }
-
-            init();
-        </script>
+                init();
+            </script>
     </body>
 
 </x-layout>
