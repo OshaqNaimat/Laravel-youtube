@@ -124,6 +124,12 @@
             cursor: pointer;
             font-weight: 500;
         }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 9999px;
+        }
     </style>
     </head>
 
@@ -150,8 +156,8 @@
                             <!-- video title & meta (redish/black) -->
                             <div class="mt-4 border-b border-gray-800 pb-3">
                                 <h1 id="videoTitle" class="text-white text-xl md:text-2xl font-semibold leading-tight">
-                                    Epic
-                                    Cinematic Journey</h1>
+                                    {{ $video['title'] }}
+                                </h1>
                                 <div class="flex flex-wrap justify-between items-center mt-2">
                                     <div class="flex items-center gap-3 text-yt-gray text-sm">
                                         <span id="videoViews" class="flex items-center gap-1"><i class="fas fa-eye"></i>
@@ -161,14 +167,17 @@
                                     </div>
                                     <div class="flex items-center gap-3 mt-2 sm:mt-0">
                                         <button
-                                            class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="far fa-thumbs-up"></i> 12K</button>
+                                            class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer hover:bg-red-500 transition"><i
+                                                class="far fa-thumbs-up"></i>
+                                            12K</button>
                                         <button
-                                            class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="far fa-thumbs-down"></i> Dislike</button>
+                                            class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer hover:bg-red-500 transition"><i
+                                                class="far fa-thumbs-down"></i>
+                                            Dislike</button>
                                         <button
-                                            class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:text-white transition"><i
-                                                class="fas fa-share"></i> Share</button>
+                                            class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:bg-red-500 cursor-pointer transition">
+                                            <i class="fas fa-share"></i>
+                                            Share</button>
                                     </div>
                                 </div>
                             </div>
@@ -181,13 +190,14 @@
                                         class="w-10 h-10 rounded-full bg-yt-red flex items-center justify-center text-white font-bold">
                                         R</div>
                                     <div>
-                                        <p class="text-white font-semibold">Redux Media <span
+                                        <p class="text-white font-semibold">{{ $video->user->name }} <span
                                                 class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span></p>
                                         <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
                                     </div>
                                 </div>
                                 <button
-                                    class="bg-yt-red hover:bg-red-700 text-white px-5 py-1.5 rounded-full text-sm font-medium transition">Subscribe</button>
+                                    class="bg-yt-red hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
+                                    Subscribe</button>
                             </div>
 
                             <!-- ========== DESCRIPTION SECTION (new) ========== -->
@@ -200,7 +210,10 @@
                                     </div>
                                     <div id="descriptionContainer" class="text-yt-gray text-sm leading-relaxed">
                                         <!-- dynamic description will be injected here -->
-                                        <div id="descShort" class="desc-content"></div>
+                                        {{ $video['description'] }}
+                                        <div id="descShort" class="desc-content">
+
+                                        </div>
                                         <div id="descFull" class="desc-content hidden mt-2"></div>
                                         <button id="toggleDescBtn"
                                             class="show-more-btn text-yt-red text-xs mt-2 hover:underline focus:outline-none">Show
@@ -222,13 +235,16 @@
                                         class="w-9 h-9 rounded-full bg-yt-red flex-shrink-0 flex items-center justify-center text-white text-sm">
                                         U</div>
                                     <div class="flex-1">
-                                        <input type="text" id="commentInput" placeholder="Add a public comment..."
-                                            class="comment-input w-full bg-yt-sidebar border border-gray-700 rounded-full px-4 py-2 text-white placeholder-gray-400 focus:border-yt-red transition">
+                                        <div class="input-wrapper">
+                                            <div class="inner-bg"></div>
+                                            <input type="text" class="comment-input"
+                                                placeholder="Add a public comment..." />
+                                        </div>
                                         <div class="flex justify-end gap-2 mt-2">
                                             <button id="cancelCommentBtn"
-                                                class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800">Cancel</button>
+                                                class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
                                             <button id="postCommentBtn"
-                                                class="bg-yt-red hover:bg-red-700 text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
+                                                class="bg-yt-red hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +260,43 @@
                         <div class="lg:w-1/3  w-full">
                             {{-- resources/views/components/video-sidebar.blade.php --}}
 
-                            {{-- <x-allvideos /> --}}
+
+                            <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
+                                @foreach ($allSingleVideos as $item)
+                                    <a href="{{ route('singlepage', $item->id) }}">
+                                        class="flex gap-3 p-2.5 rounded-xl hover:bg-white/[0.07] transition-colors duration-200 group">
+
+                                        <div
+                                            class="relative flex-shrink-0 w-[168px] h-[94px] bg-[#1a1a1a] rounded-lg overflow-hidden">
+                                            <img src="{{ asset('/storage/' . $item->thumbnail) }}"
+                                                alt="{{ $item['title'] }}" class="w-full h-full object-cover">
+                                            <span
+                                                class="absolute bottom-1.5 right-1.5 bg-black/80 text-white text-[11px] font-medium px-1.5 py-px rounded">
+                                                {{-- {{ $allSingleVideo->duration }} --}}
+                                            </span>
+                                            <div
+                                                class="absolute bottom-0 left-0 h-[3px] bg-red-600 w-0 group-hover:w-3/5 transition-all duration-500 rounded-r-sm">
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-col justify-start pt-0.5 min-w-0">
+                                            <p
+                                                class="text-[13.5px] font-medium text-[#e8e8e8] group-hover:text-white leading-snug line-clamp-2 mb-1.5 transition-colors duration-150">
+                                                {{ $item['title'] }}
+                                            </p>
+                                            <div class="text-[12px] text-[#aaa] leading-relaxed">
+                                                <span class="block">{{ $item->user->name }}</span>
+                                                <span class="block">247K
+                                                    views
+                                                    ·
+                                                    Time of upload</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                @endforeach
+
+                            </div>
                         </div>
                     </div>
                 </div>

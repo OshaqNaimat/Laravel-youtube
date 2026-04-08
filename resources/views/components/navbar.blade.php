@@ -87,7 +87,7 @@
                     <div class="relative group w-10 h-10 flex-shrink-0">
                         {{-- Avatar --}}
                         <div
-                            class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-red-700 via-red-900 to-black
                 text-white text-base font-bold flex items-center justify-center
                 shadow-md select-none cursor-pointer">
                             {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}

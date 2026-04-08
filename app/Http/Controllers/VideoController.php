@@ -39,14 +39,17 @@ class VideoController extends Controller
              return view('welcome',compact('allVideos'));
         }
 
-        public function getSinglePageVideos(){
-            $allSingleVideos = Videos::all();
-             return view('single-video',compact('allSingleVideos'));
-        }
+        // public function getSinglePageVideos(){
+        //     $allSingleVideos = Videos::all();
+        //      return view('single-video',compact('allSingleVideos'));
+        // }
 
 
-            public function getSingleVideo($id){
-                $video = Videos::find($id);
-                return view('single-video',compact('video'));
-            }
+          public function getSingleVideo($id) {
+    $allSingleVideos = Videos::all();
+    $video = Videos::find($id);
+
+    // Dono variables ko alag comma se separate karein
+    return view('single-video', compact('video', 'allSingleVideos'));
+}
 }
