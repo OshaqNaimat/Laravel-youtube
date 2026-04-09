@@ -218,8 +218,8 @@
                                             {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                         @endauth
                                     </div>
-                                    <form action="/add-comment" method="POST" class="flex-1 w-full">
-                                        @csrf
+                                    <form class="flex-1 w-full">
+
                                         <div class="input-wrapper">
                                             <div class="inner-bg "></div>
                                             <input type="hidden" value="{{ $video['id'] }}" name="video_id">
@@ -231,10 +231,13 @@
                                                 placeholder="Add a public comment..." />
                                         </div>
                                         <div class="flex justify-end gap-2 mt-2">
-                                            <button id="cancelCommentBtn"
-                                                class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
-                                            <button
-                                                class="bg-yt-red hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
+                                            <button id="cancelCommentBtn" type="button"
+                                                class="text-white text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
+                                            <button type="button"
+                                                class="bg-yt-red comment-btn hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">
+                                                <img src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
+                                                    width="20px" alt="">
+                                                Comment</button>
                                         </div>
                                     </form>
                                 </div>
@@ -285,8 +288,37 @@
                 </div>
             </div>
         </div>
-
         <script>
+            // ajax
+
+            $('.comment-btn').on('click', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/add-comment',
+                    type: 'POST',
+                    data: {
+                        comment: $('input[name="comment"]').val(),
+                        user_id: $('input[name="user_id"]').val(),
+                        video_id: $('input[name="video_id"]').val(),
+                    },
+                    beforeSend: function() {
+                        $('.comment-btn').attr('disabled', true)
+                        $('.comment-btn').addClass('bg-gray-500')
+                    }
+                    success: function(response) {
+                        console.log(response)
+                        $('.comment-btn').attr('disabled', false)
+                        $('.comment-btn').removeClass('bg-gray-500')
+
+                    }
+                })
+
+            })
+
+
+
+
             document.querySelectorAll('.upload-time').forEach((item, index) => {
                 item.innerHTML = moment(item.innerHTML).fromNow()
             })
@@ -421,8 +453,9 @@
                 renderComments();
                 commentInput.value = '';
             }
-            cancelCommentBtn.addEventListener('click', () => {
+            cancelCommentBtn.addEventListener('click', (e) => {
                 commentInput.value = '';
+                e.preventDefault();
             });
 
             const likeBtnMain = document.querySelector('.like-btn');

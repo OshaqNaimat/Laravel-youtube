@@ -28,7 +28,9 @@ return redirect('/register');
 
 
             Comments::create($formFields);
-         return back()->with('message','Comment Added Successfully !');
+         return response()->json([
+            'message'=>'Comment Added Successfully!!'
+         ]);
 
      }
 }
