@@ -225,7 +225,7 @@
                                             <input type="hidden" value="{{ $video['id'] }}" name="video_id">
 
                                             @auth
-                                                <input type="hidden" value="{{ auth()->user()->id }}" name="video_id">
+                                                <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
                                             @endauth
                                             <input type="text" class="comment-input w-full" name="comment"
                                                 placeholder="Add a public comment..." />
@@ -233,7 +233,7 @@
                                         <div class="flex justify-end gap-2 mt-2">
                                             <button id="cancelCommentBtn"
                                                 class="text-yt-gray text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
-                                            <button id="postCommentBtn"
+                                            <button
                                                 class="bg-yt-red hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
                                         </div>
                                     </form>
@@ -290,35 +290,7 @@
             document.querySelectorAll('.upload-time').forEach((item, index) => {
                 item.innerHTML = moment(item.innerHTML).fromNow()
             })
-            let commentsArray = [{
-                    id: 1,
-                    username: "PixelWarrior",
-                    text: "Absolutely stunning visuals! The red theme makes it pop 🔥",
-                    timestamp: "2 hours ago",
-                    likes: 34
-                },
-                {
-                    id: 2,
-                    username: "CinephilePro",
-                    text: "This channel never disappoints. Great quality content!",
-                    timestamp: "5 hours ago",
-                    likes: 12
-                },
-                {
-                    id: 3,
-                    username: "TechSavvy",
-                    text: "Love the UI design, very clean and modern. Keep it up!",
-                    timestamp: "1 day ago",
-                    likes: 56
-                },
-                {
-                    id: 4,
-                    username: "RetroGamer",
-                    text: "That playlist on the side is super helpful. Nice work!",
-                    timestamp: "2 days ago",
-                    likes: 8
-                },
-            ];
+
             const mainVideo = document.getElementById('mainVideoPlayer');
             const videoSource = document.getElementById('videoSource');
             const videoTitleEl = document.getElementById('videoTitle');
@@ -328,7 +300,6 @@
             const commentsContainer = document.getElementById('commentsContainer');
             const commentCountSpan = document.getElementById('commentCount');
             const commentInput = document.getElementById('commentInput');
-            const postCommentBtn = document.getElementById('postCommentBtn');
             const cancelCommentBtn = document.getElementById('cancelCommentBtn');
             const descShortEl = document.getElementById('descShort');
             const descFullEl = document.getElementById('descFull');
@@ -450,18 +421,10 @@
                 renderComments();
                 commentInput.value = '';
             }
-            postCommentBtn.addEventListener('click', () => {
-                addComment(commentInput.value);
-            });
             cancelCommentBtn.addEventListener('click', () => {
                 commentInput.value = '';
             });
-            commentInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addComment(commentInput.value);
-                }
-            });
+
             const likeBtnMain = document.querySelector('.like-btn');
             const dislikeBtnMain = document.querySelector('.dislike-btn');
             let liked = false;
