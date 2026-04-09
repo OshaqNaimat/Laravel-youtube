@@ -128,7 +128,7 @@
         .input-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 9999px;
+
         }
     </style>
     </head>
@@ -187,11 +187,15 @@
                                 class="flex items-center justify-between mt-4 bg-yt-card p-3 rounded-xl border border-gray-800">
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="w-10 h-10 rounded-full bg-yt-red flex items-center justify-center text-white font-bold">
-                                        R</div>
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-red-700 via-red-900 to-black
+                text-white text-base font-bold flex items-center justify-center
+                shadow-md select-none cursor-pointer">
+                                        {{ substr($video->user->name, 0, 1) }}
+                                    </div>
                                     <div>
-                                        <p class="text-white font-semibold">{{ $video->user->name }} <span
-                                                class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span></p>
+                                        <p class="text-white font-semibold">{{ $video->user->name }}
+                                            <span class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span>
+                                        </p>
                                         <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
                                     </div>
                                 </div>
@@ -232,12 +236,20 @@
                                 <!-- add comment input -->
                                 <div class="flex gap-3 mb-6">
                                     <div
-                                        class="w-9 h-9 rounded-full bg-yt-red flex-shrink-0 flex items-center justify-center text-white text-sm">
-                                        U</div>
-                                    <div class="flex-1">
+                                        class="w-10 h-10 rounded-full bg-gradient-to-br from-red-700 via-red-900 to-black
+                text-white text-base font-bold flex items-center justify-center
+                shadow-md select-none cursor-pointer">
+                                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                    </div>
+                                    <form action="/add-comment" method="POST" class="flex-1 w-full">
                                         <div class="input-wrapper">
-                                            <div class="inner-bg"></div>
-                                            <input type="text" class="comment-input"
+                                            <div class="inner-bg "></div>
+                                            <input type="hidden" value="{{ $video['id'] }}" name="video_id">
+
+                                            @auth
+                                                <input type="hidden" value="{{ auth()->user()->id }}" name="video_id">
+                                            @endauth
+                                            <input type="text" class="comment-input w-full" name="comment"
                                                 placeholder="Add a public comment..." />
                                         </div>
                                         <div class="flex justify-end gap-2 mt-2">
@@ -246,7 +258,7 @@
                                             <button id="postCommentBtn"
                                                 class="bg-yt-red hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">Comment</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <!-- comments list -->
                                 <div id="commentsContainer"
@@ -263,8 +275,10 @@
 
                             <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
                                 @foreach ($allSingleVideos as $item)
-                                    <a href="{{ route('singlepage', $item->id) }}">
+                                    <a href="{{ route('singlepage', $item->id) }}"
                                         class="flex gap-3 p-2.5 rounded-xl hover:bg-white/[0.07] transition-colors duration-200 group">
+
+
 
                                         <div
                                             class="relative flex-shrink-0 w-[168px] h-[94px] bg-[#1a1a1a] rounded-lg overflow-hidden">
@@ -289,7 +303,8 @@
                                                 <span class="block">247K
                                                     views
                                                     ·
-                                                    Time of upload</span>
+                                                </span>
+                                                <span class="block upload-time"> {{ $item['created_at'] }}</span>
                                             </div>
                                         </div>
 
@@ -304,12 +319,9 @@
         </div>
 
         <script>
-            // ---------- VIDEO DATA (sample library with titles, sources, views, dates, descriptions) ----------
-
-            // initial selected video (first one)
-
-
-            // Comments array (initial mock data)
+            document.querySelectorAll('.upload-time').forEach((item, index) => {
+                item.innerHTML = moment(item.innerHTML).fromNow()
+            })
             let commentsArray = [{
                     id: 1,
                     username: "PixelWarrior",
@@ -359,6 +371,7 @@
             const toggleDescBtn = document.getElementById('toggleDescBtn');
             let descriptionExpanded = false;
 
+
             // Helper: update description based on current video
             function updateDescription(video) {
                 if (video.descriptionShort && video.descriptionFull) {
@@ -404,29 +417,7 @@
                 renderPlaylist();
             }
 
-            // Render playlist (right sidebar)
-            //             function renderPlaylist() {
-            //                 playlistContainer.innerHTML = '';
-            //                 videoLibrary.forEach(video => {
-            //                     const isActive = currentVideo.id === video.id;
-            //                     const activeClass = isActive ? 'active-video bg-opacity-40 border-l-yt-red' :
-            //                         'border-l-transparent';
-            //                     const card = document.createElement('div');
-            //                     card.className =
-            //                         `video-card flex gap-3 p-2 rounded-lg transition-all ${isActive ? 'active-video bg-[#2C0F12]' : 'bg-yt-card hover:bg-[#1F1F1F]'} border-l-3`;
-            //                     card.style.borderLeftColor = isActive ? '#E01E2E' : 'transparent';
-            //                     card.style.borderLeftWidth = '3px';
-            //                     card.innerHTML = `
-    //     <div class="relative w-40 flex-shrink-0 rounded-md overflow-hidden bg-black">
-    //       <img src="${video.thumbnail || 'https://via.placeholder.com/120x68?text=Thumb'}" class="w-full h-full object-cover aspect-video" alt="thumbnail">
-    //       <span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] px-1 rounded">${video.duration}</span>
-    //     </div>
-    //     <div class="flex-1">
-    //       <p class="text-white text-sm font-medium line-clamp-2">${video.title}</p>
-    //       <p class="text-yt-gray text-xs mt-1 flex items-center gap-1"><i class="fas fa-eye"></i> ${video.views}</p>
-    //       <p class="text-yt-gray text-xs">${video.date}</p>
-    //     </div>
-    //   `;
+
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 updateMainVideo(video);
@@ -508,6 +499,7 @@
                 renderComments();
                 commentInput.value = '';
             }
+
 
             // event listeners for comments
             postCommentBtn.addEventListener('click', () => {
