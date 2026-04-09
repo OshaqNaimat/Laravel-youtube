@@ -1,5 +1,4 @@
 <x-layout>
-    <!-- Custom config to override default theme and add red/black vibe -->
     <script>
         tailwind.config = {
             theme: {
@@ -20,13 +19,12 @@
         }
     </script>
     <style>
-        /* custom scrollbar - match red/black theme, only ONE vertical overflow */
         body {
             background-color: #0A0A0A;
             font-family: 'Inter', sans-serif;
         }
 
-        /* global custom scrollbar (only on y-scroll container) */
+
         .custom-scroll::-webkit-scrollbar {
             width: 8px;
         }
@@ -45,7 +43,6 @@
             background: #ff2f42;
         }
 
-        /* hide default body scroll to enforce only ONE scroll inside main container */
         html,
         body {
             height: 100%;
@@ -54,7 +51,6 @@
             overflow: hidden;
         }
 
-        /* main layout uses flex column, but inner main area has overflow-y auto */
         #app {
             height: 100vh;
             display: flex;
@@ -62,12 +58,10 @@
             background-color: #0A0A0A;
         }
 
-        /* header fixed no scroll */
         .top-header {
             flex-shrink: 0;
         }
 
-        /* main content area: takes full height minus header, provides single scroll */
         .main-scroll-area {
             flex: 1;
             overflow-y: auto;
@@ -75,7 +69,6 @@
             scroll-behavior: smooth;
         }
 
-        /* video thumbnail hover effect */
         .video-card {
             transition: all 0.2s ease;
             cursor: pointer;
@@ -86,20 +79,17 @@
             transform: translateX(2px);
         }
 
-        /* active video highlight */
         .active-video {
             background: #2C0F12;
             border-left: 3px solid #E01E2E;
         }
 
-        /* responsive adjustments */
         @media (max-width: 768px) {
             .sidebar-playlist {
                 margin-top: 1rem;
             }
         }
 
-        /* comment & description input focus */
         .comment-input:focus,
         .description-fade {
             outline: none;
@@ -115,7 +105,6 @@
             background: #2C2C2C;
         }
 
-        /* description expand/collapse smooth */
         .desc-content {
             transition: all 0.2s ease;
         }
@@ -128,32 +117,24 @@
         .input-wrapper {
             position: relative;
             width: 100%;
-
         }
     </style>
     </head>
 
     <body>
         <div id="app">
-            <!-- navbar -->
+
+            <x-flash />
             <x-navbar />
-
-
-            <!-- MAIN SCROLLABLE AREA: only one overflow-y scroll (entire content except header) -->
             <div class="main-scroll-area custom-scroll">
                 <div class="max-w-[1600px] mx-auto px-4 md:px-6 py-5">
-                    <!-- Two column layout: left (big video + description + comments) and right (playlist) -->
                     <div class="flex flex-col lg:flex-row gap-6">
-                        <!-- LEFT COLUMN: main video area + description + comments -->
                         <div class="lg:w-2/3 w-full">
-                            <!-- video player container (big) -->
                             <div class="bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800">
                                 <video src="{{ asset('storage/' . $video->video) }}" controls autoplay
                                     class="w-full max-h-[80vh] object-contain">
                                 </video>
                             </div>
-
-                            <!-- video title & meta (redish/black) -->
                             <div class="mt-4 border-b border-gray-800 pb-3">
                                 <h1 id="videoTitle" class="text-white text-xl md:text-2xl font-semibold leading-tight">
                                     {{ $video['title'] }}
@@ -181,8 +162,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- channel info row -->
                             <div
                                 class="flex items-center justify-between mt-4 bg-yt-card p-3 rounded-xl border border-gray-800">
                                 <div class="flex items-center gap-3">
@@ -203,8 +182,6 @@
                                     class="bg-yt-red hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
                                     Subscribe</button>
                             </div>
-
-                            <!-- ========== DESCRIPTION SECTION (new) ========== -->
                             <div class="mt-5 bg-yt-card rounded-xl border border-gray-800 overflow-hidden">
                                 <div class="p-4">
                                     <div
@@ -225,8 +202,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- COMMENTS SECTION (integrated into the same scroll flow) -->
                             <div class="mt-6 bg-yt-card rounded-xl p-4 border border-gray-800">
                                 <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
                                     <i class="far fa-comment-dots text-yt-red text-xl"></i>
@@ -239,9 +214,12 @@
                                         class="w-10 h-10 rounded-full bg-gradient-to-br from-red-700 via-red-900 to-black
                 text-white text-base font-bold flex items-center justify-center
                 shadow-md select-none cursor-pointer">
-                                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                        @auth
+                                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                        @endauth
                                     </div>
                                     <form action="/add-comment" method="POST" class="flex-1 w-full">
+                                        @csrf
                                         <div class="input-wrapper">
                                             <div class="inner-bg "></div>
                                             <input type="hidden" value="{{ $video['id'] }}" name="video_id">
@@ -260,26 +238,16 @@
                                         </div>
                                     </form>
                                 </div>
-                                <!-- comments list -->
                                 <div id="commentsContainer"
                                     class="space-y-4 max-h-[350px] overflow-y-auto custom-scroll pr-1">
-                                    <!-- sample comments injected -->
                                 </div>
                             </div>
                         </div>
-
-                        <!-- RIGHT COLUMN: video playlist (scrolls within main scroll area, but it's part of main scroll flow - no separate overflow) -->
                         <div class="lg:w-1/3  w-full">
-                            {{-- resources/views/components/video-sidebar.blade.php --}}
-
-
                             <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
                                 @foreach ($allSingleVideos as $item)
                                     <a href="{{ route('singlepage', $item->id) }}"
                                         class="flex gap-3 p-2.5 rounded-xl hover:bg-white/[0.07] transition-colors duration-200 group">
-
-
-
                                         <div
                                             class="relative flex-shrink-0 w-[168px] h-[94px] bg-[#1a1a1a] rounded-lg overflow-hidden">
                                             <img src="{{ asset('/storage/' . $item->thumbnail) }}"
@@ -351,8 +319,6 @@
                     likes: 8
                 },
             ];
-
-            // DOM Elements
             const mainVideo = document.getElementById('mainVideoPlayer');
             const videoSource = document.getElementById('videoSource');
             const videoTitleEl = document.getElementById('videoTitle');
@@ -364,31 +330,24 @@
             const commentInput = document.getElementById('commentInput');
             const postCommentBtn = document.getElementById('postCommentBtn');
             const cancelCommentBtn = document.getElementById('cancelCommentBtn');
-
-            // Description elements
             const descShortEl = document.getElementById('descShort');
             const descFullEl = document.getElementById('descFull');
             const toggleDescBtn = document.getElementById('toggleDescBtn');
             let descriptionExpanded = false;
 
-
-            // Helper: update description based on current video
             function updateDescription(video) {
                 if (video.descriptionShort && video.descriptionFull) {
                     descShortEl.innerText = video.descriptionShort;
                     descFullEl.innerText = video.descriptionFull;
                 } else {
-                    // fallback
                     descShortEl.innerText = video.descriptionShort || "No description available.";
                     descFullEl.innerText = video.descriptionFull || "Additional details not provided.";
                 }
-                // reset to collapsed state when video changes
                 descriptionExpanded = false;
                 descFullEl.classList.add('hidden');
                 toggleDescBtn.innerText = "Show more";
             }
 
-            // toggle description expand/collapse
             function toggleDescription() {
                 if (descriptionExpanded) {
                     descFullEl.classList.add('hidden');
@@ -401,19 +360,15 @@
                 }
             }
 
-            // Helper: update main video player (big left side)
             function updateMainVideo(video) {
                 currentVideo = video;
-                // change video source and reload
                 videoSource.src = video.src;
                 mainVideo.load();
                 mainVideo.play().catch(e => console.log("Autoplay blocked, but user can play"));
                 videoTitleEl.innerText = video.title;
                 videoViewsEl.innerHTML = `<i class="fas fa-eye"></i> ${video.views}`;
                 videoDateEl.innerHTML = `<i class="far fa-calendar-alt"></i> ${video.date}`;
-                // update description
                 updateDescription(video);
-                // re-render playlist to highlight active video
                 renderPlaylist();
             }
 
@@ -421,7 +376,6 @@
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 updateMainVideo(video);
-                // scroll to top of left column on mobile for better UX
                 const mainScrollArea = document.querySelector('.main-scroll-area');
                 if (mainScrollArea && window.innerWidth < 1024) {
                     const videoContainer = document.querySelector('.bg-black.rounded-xl');
@@ -435,7 +389,6 @@
             });
             }
 
-            // Render comments list (with like button simulation)
             function renderComments() {
                 commentsContainer.innerHTML = '';
                 if (commentsArray.length === 0) {
@@ -472,7 +425,6 @@
                 });
             }
 
-            // simple escape to avoid XSS
             function escapeHtml(str) {
                 if (!str) return '';
                 return str.replace(/[&<>]/g, function(m) {
@@ -485,7 +437,6 @@
                 });
             }
 
-            // add new comment
             function addComment(text) {
                 if (!text.trim()) return;
                 const newComment = {
@@ -499,9 +450,6 @@
                 renderComments();
                 commentInput.value = '';
             }
-
-
-            // event listeners for comments
             postCommentBtn.addEventListener('click', () => {
                 addComment(commentInput.value);
             });
@@ -514,8 +462,6 @@
                     addComment(commentInput.value);
                 }
             });
-
-            // Like/Dislike handlers for main video (cosmetic)
             const likeBtnMain = document.querySelector('.like-btn');
             const dislikeBtnMain = document.querySelector('.dislike-btn');
             let liked = false;
@@ -556,27 +502,20 @@
                     }
                 });
             }
-
-            // thumbnail fallback for any missing
             videoLibrary.forEach(v => {
                 if (!v.thumbnail || v.thumbnail === '') {
                     v.thumbnail = `https://picsum.photos/seed/${v.id}/320/180`;
                 }
             });
-
-            // initialize description toggle listener
             toggleDescBtn.addEventListener('click', toggleDescription);
 
-            // initial load: set default video + render playlist + comments + description
             function init() {
                 renderPlaylist();
                 renderComments();
                 updateMainVideo(videoLibrary[0]);
-                // set autoplay attempt
                 mainVideo.load();
                 mainVideo.play().catch(e => console.log("Autoplay blocked"));
             }
-
             init();
         </script>
     </body>
