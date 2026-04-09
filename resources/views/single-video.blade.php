@@ -205,8 +205,9 @@
                             <div class="mt-6 bg-yt-card rounded-xl p-4 border border-gray-800">
                                 <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
                                     <i class="far fa-comment-dots text-yt-red text-xl"></i>
-                                    <h3 class="text-white font-semibold text-lg">Comments <span id="commentCount"
-                                            class="text-yt-gray ml-1">(24)</span></h3>
+                                    <h3 class="text-white font-semibold text-lg">Comments
+                                        <span id="commentCount" class="text-yt-gray comment-count ml-1">(24)</span>
+                                    </h3>
                                 </div>
                                 <!-- add comment input -->
                                 <div class="flex gap-3 mb-6">
@@ -233,7 +234,7 @@
                                         <div class="flex justify-end gap-2 mt-2">
                                             <button id="cancelCommentBtn" type="button"
                                                 class="text-white text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
-                                            <button type="button"
+                                            <button
                                                 class="bg-yt-red comment-btn hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">
                                                 <img class="loader hidden"
                                                     src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
@@ -310,12 +311,16 @@
                         $('.comment-text').addClass('hidden')
                     }
                     success: function(response) {
-                        console.log(response)
-                        $('.comment-btn').attr('disabled', false)
-                        $('.comment-btn').removeClass('bg-gray-500')
-                        $('.loader').addClass('hidden')
-                        $('.comment-text').removeClass('hidden')
-                        $('input[name="comment"]').val('');
+                        if (!response) {
+                            window.location.assign('http://localhost:8000/register')
+                        } else {
+                            $('.comment-btn').attr('disabled', false)
+                            $('.comment-btn').removeClass('bg-gray-500')
+                            $('.loader').addClass('hidden')
+                            $('.comment-text').removeClass('hidden')
+                            $('input[name="comment"]').val('');
+                            $('.comment-count').html(response.comment.length)
+                        }
                     }
                 })
 

@@ -13,8 +13,9 @@ class CommentsController extends Controller
         //   if the user is not logged in
            $user =Auth::user();
            if(!$user){
-return redirect('/register');
-           }
+            return false;
+           }else{
+
 
 
 
@@ -27,10 +28,14 @@ return redirect('/register');
              ];
 
 
-            Comments::create($formFields);
-         return response()->json([
-            'message'=>'Comment Added Successfully!!'
-         ]);
+             Comments::create($formFields);
+             $allComments = Comments::where('video_id',$formFields['video_id'])->get();
 
+         return response()->json([
+            'message'=>'Comment Added Successfully!!',
+            'comments'=>$allComments,
+            ]);
+
+         }
      }
 }
