@@ -235,9 +235,10 @@
                                                 class="text-white text-sm px-3 py-1 rounded-full hover:bg-gray-800 cursor-pointer">Cancel</button>
                                             <button type="button"
                                                 class="bg-yt-red comment-btn hover:bg-red-500 cursor-pointer text-white text-sm px-4 py-1 rounded-full font-medium transition">
-                                                <img src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
+                                                <img class="loader hidden"
+                                                    src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
                                                     width="20px" alt="">
-                                                Comment</button>
+                                                <span class="comment-text">Comment</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -305,12 +306,16 @@
                     beforeSend: function() {
                         $('.comment-btn').attr('disabled', true)
                         $('.comment-btn').addClass('bg-gray-500')
+                        $('.loader').removeClass('hidden')
+                        $('.comment-text').addClass('hidden')
                     }
                     success: function(response) {
                         console.log(response)
                         $('.comment-btn').attr('disabled', false)
                         $('.comment-btn').removeClass('bg-gray-500')
-
+                        $('.loader').addClass('hidden')
+                        $('.comment-text').removeClass('hidden')
+                        $('input[name="comment"]').val('');
                     }
                 })
 
