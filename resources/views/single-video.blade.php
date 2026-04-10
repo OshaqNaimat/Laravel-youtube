@@ -1,24 +1,15 @@
 <x-layout>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'yt-red': '#E01E2E',
-                        'yt-dark': '#0A0A0A',
-                        'yt-card': '#121212',
-                        'yt-sidebar': '#1A1A1A',
-                        'yt-text': '#E5E5E5',
-                        'yt-gray': '#AAAAAA',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+
     <style>
+        :root {
+            --yt-red: #E01E2E;
+            --yt-dark: #0A0A0A;
+            --yt-card: #121212;
+            --yt-sidebar: #1A1A1A;
+            --yt-text: #E5E5E5;
+            --yt-gray: #AAAAAA;
+        }
+
         body {
             background-color: #0A0A0A;
             font-family: 'Inter', sans-serif;
@@ -295,6 +286,7 @@
 
             $('.comment-btn').on('click', function(e) {
                 e.preventDefault();
+                console.log('clicked');
 
                 $.ajax({
                     url: '/add-comment',
@@ -309,7 +301,7 @@
                         $('.comment-btn').addClass('bg-gray-500')
                         $('.loader').removeClass('hidden')
                         $('.comment-text').addClass('hidden')
-                    }
+                    },
                     success: function(response) {
                         if (!response) {
                             window.location.assign('http://localhost:8000/register')
@@ -398,9 +390,8 @@
                     });
                 }
             });
-            playlistContainer.appendChild(card);
-            });
-            }
+            // playlistContainer.appendChild(card);
+            // });
 
             function renderComments() {
                 commentsContainer.innerHTML = '';
