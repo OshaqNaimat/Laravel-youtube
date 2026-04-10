@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Videos;
+use App\Models\Views;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,4 +53,17 @@ class VideoController extends Controller
     // Dono variables ko alag comma se separate karein
     return view('single-video', compact('video', 'allSingleVideos'));
 }
+
+
+          public function updateVies($id){
+             $video = Views::where('video_id',$id)->first();
+             if(!$video){
+                 Videos::create([
+                   "views"=> 1,
+                   "video_id"=>$id
+                 ]);
+             }else{
+                  $video->increment('views');
+             }
+          }
 }

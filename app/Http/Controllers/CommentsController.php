@@ -24,7 +24,7 @@ class CommentsController extends Controller
              ];
 
              Comments::create($formFields);
-             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->get();
+             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->orderBy('id','desc')->get();
 
          return response()->json([
             'message'=>'Comment Added Successfully!!',
@@ -50,7 +50,7 @@ class CommentsController extends Controller
              ];
 
 
-             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->get();
+             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->orderBy('id','desc')->get();
 
          return response()->json([
             'message'=>'Comment fetched Successfully!!',
