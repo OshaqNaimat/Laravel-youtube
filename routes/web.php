@@ -21,5 +21,6 @@ Route::post('/login-user',[UserController::class,'loginUser']);
 Route::post('/add-comment',[CommentsController::class,'createComment']);
 
 
+Route::get('/get-comments',[CommentsController::class,'getComments']);
 Route::get('/singleVideo/{id}',[VideoController::class,'getSingleVideo'])->name('singlepage');
 Route::get('/',[VideoController::class,'getVideos']);

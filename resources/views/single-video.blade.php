@@ -196,8 +196,8 @@
                             <div class="mt-6 bg-yt-card rounded-xl p-4 border border-gray-800">
                                 <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
                                     <i class="far fa-comment-dots text-yt-red text-xl"></i>
+                                    <span id="commentCount" class="text-yt-gray comment-count ml-1"></span>
                                     <h3 class="text-white font-semibold text-lg">Comments
-                                        <span id="commentCount" class="text-yt-gray comment-count ml-1">(24)</span>
                                     </h3>
                                 </div>
                                 <!-- add comment input -->
@@ -236,6 +236,9 @@
                                 </div>
                                 <div id="commentsContainer"
                                     class="space-y-4 max-h-[350px] overflow-y-auto custom-scroll pr-1">
+
+                                    <x-comments-skeleton />
+
                                 </div>
                             </div>
                         </div>
@@ -282,8 +285,88 @@
             </div>
         </div>
         <script>
-            // ajax
+            function commentsData(response) {
+                let layout = ''
+                //loop over comment
+                $('.comment-count').html(response.comments.length)
 
+                response.comments.forEach((item, index) => {
+                    layout += ` <div class="bg-[#0A0A0A] border border-gray-800 rounded-md text-white p-4 w-full">
+
+                                        <!-- COMMENT CARD -->
+                                        <div class="flex gap-3">
+
+                                            <!-- AVATAR -->
+                                            <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80"
+                                                class="w-10 h-10 rounded-full">
+
+                                            <!-- CONTENT -->
+                                            <div class="flex-1">
+
+                                                <!-- HEADER -->
+                                                <div class="flex items-center gap-2 text-sm">
+                                                    <span class="font-semibold">@${item.user.name}</span>
+                                                    <span class="text-gray-400 text-xs">
+                                                        ${moment(item.created_at).fromNow()}
+                                                        </span>
+                                                </div>
+
+                                                <!-- COMMENT TEXT -->
+                                                <p class="mt-1 text-gray-200">
+                                                     ${item.comment}
+                                                </p>
+
+                                                <!-- ACTIONS -->
+                                                <div class="flex items-center gap-5 mt-2 text-gray-400 text-sm">
+
+                                                    <!-- LIKE -->
+                                                    <div
+                                                        class="flex items-center gap-1 cursor-pointer hover:text-white">
+                                                        👍 <span>47</span>
+                                                    </div>
+
+                                                    <!-- DISLIKE -->
+                                                    <div class="cursor-pointer hover:text-white">
+                                                        👎
+                                                    </div>
+
+                                                    <!-- REPLY -->
+                                                    <button class="hover:text-white">
+                                                        Reply
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- HEART (RIGHT SIDE) -->
+                                            <div class="text-red-500 text-xl cursor-pointer hover:scale-110 transition">
+                                                ❤️
+                                            </div>
+
+                                        </div>
+
+                                    </div>`
+                })
+                $('#commentsContainer').html(layout)
+            }
+
+            //  load all the comments initially
+
+            $.ajax({
+                url: '/get-comments',
+                type: 'GET',
+                data: {
+                    user_id: $('input[name="user_id"]').val(),
+                    video_id: $('input[name="video_id"]').val(),
+                },
+                success: function(response) {
+                    commentsData(response)
+                }
+            })
+
+
+
+            // ajax
             $('.comment-btn').on('click', function(e) {
                 e.preventDefault();
                 console.log('clicked');
@@ -303,6 +386,7 @@
                         $('.comment-text').addClass('hidden')
                     },
                     success: function(response) {
+                        console.log(response)
                         if (!response) {
                             window.location.assign('http://localhost:8000/register')
                         } else {
@@ -311,7 +395,8 @@
                             $('.loader').addClass('hidden')
                             $('.comment-text').removeClass('hidden')
                             $('input[name="comment"]').val('');
-                            $('.comment-count').html(response.comment.length)
+                            $('.comment-count').html(response.comments.length)
+                            commentsData(response)
                         }
                     }
                 })
@@ -390,8 +475,7 @@
                     });
                 }
             });
-            // playlistContainer.appendChild(card);
-            // });
+
 
             function renderComments() {
                 commentsContainer.innerHTML = '';

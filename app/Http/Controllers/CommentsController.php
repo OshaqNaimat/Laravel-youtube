@@ -16,10 +16,6 @@ class CommentsController extends Controller
             return false;
            }else{
 
-
-
-
-
         // if the user is logged in
              $formFields = [
                  "comment" =>$req->input('comment'),
@@ -27,12 +23,37 @@ class CommentsController extends Controller
                  "user_id" =>$req->input('user_id'),
              ];
 
-
              Comments::create($formFields);
-             $allComments = Comments::where('video_id',$formFields['video_id'])->get();
+             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->get();
 
          return response()->json([
             'message'=>'Comment Added Successfully!!',
+            'comments'=>$allComments,
+            ]);
+
+         }
+     }
+
+
+     public function getComments(Request $req){
+
+        //   if the user is not logged in
+           $user =Auth::user();
+           if(!$user){
+            return false;
+           }else{
+
+        // if the user is logged in
+             $formFields = [
+                 "video_id"=>$req->input('video_id'),
+                 "user_id" =>$req->input('user_id'),
+             ];
+
+
+             $allComments = Comments::where('video_id',$formFields['video_id'])->with('user')->get();
+
+         return response()->json([
+            'message'=>'Comment fetched Successfully!!',
             'comments'=>$allComments,
             ]);
 
