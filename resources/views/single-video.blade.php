@@ -133,7 +133,7 @@
                                 <div class="flex flex-wrap justify-between items-center mt-2">
                                     <div class="flex items-center gap-3 text-yt-gray text-sm">
                                         <span id="videoViews" class="flex items-center gap-1"><i class="fas fa-eye"></i>
-                                            1.2M views</span>
+                                            {{ $videoViews['views'] }} views</span>
                                         <span id="videoDate" class="flex items-center gap-1"><i
                                                 class="far fa-calendar-alt"></i> 2 days ago</span>
                                     </div>

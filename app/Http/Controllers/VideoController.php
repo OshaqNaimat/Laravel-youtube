@@ -50,20 +50,19 @@ class VideoController extends Controller
     $allSingleVideos = Videos::all();
     $video = Videos::find($id);
 
-    // Dono variables ko alag comma se separate karein
-    return view('single-video', compact('video', 'allSingleVideos'));
-}
 
-
-          public function updateVies($id){
-             $video = Views::where('video_id',$id)->first();
-             if(!$video){
-                 Videos::create([
+    $videoViews = Views::where('video_id',$id)->first();
+             if(!$videoViews){
+                 Views::create([
                    "views"=> 1,
                    "video_id"=>$id
                  ]);
              }else{
-                  $video->increment('views');
+                  $videoViews->increment('views');
              }
-          }
+
+    // Dono variables ko alag comma se separate karein
+    return view('single-video', compact('video', 'allSingleVideos', 'videoViews'));
+}
+
 }
