@@ -133,9 +133,10 @@
                                 <div class="flex flex-wrap justify-between items-center mt-2">
                                     <div class="flex items-center gap-3 text-yt-gray text-sm">
                                         <span id="videoViews" class="flex items-center gap-1"><i class="fas fa-eye"></i>
-                                            {{ $videoViews['views'] }} views</span>
-                                        <span id="videoDate" class="flex items-center gap-1"><i
-                                                class="far fa-calendar-alt"></i> 2 days ago</span>
+                                            {{ $videoViews['views'] ?? 0 }} views</span>
+                                        <span id="videoDate" class="flex upload-time items-center gap-1"><i
+                                                class="far fa-calendar-alt"></i>
+                                            {{ $video['created_at'] }}</span>
                                     </div>
                                     <div class="flex items-center gap-3 mt-2 sm:mt-0">
                                         <button
@@ -148,8 +149,7 @@
                                             Dislike</button>
                                         <button
                                             class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:bg-red-500 cursor-pointer transition">
-                                            <i class="fas fa-share"></i>
-                                            Share</button>
+                                            <i class="fa-regular fa-bookmark"></i> Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -267,9 +267,9 @@
                                             </p>
                                             <div class="text-[12px] text-[#aaa] leading-relaxed">
                                                 <span class="block">{{ $item->user->name }}</span>
-                                                <span class="block">247K
+                                                <span class="block">{{ $videoViews['views'] }}
                                                     views
-                                                    ·
+
                                                 </span>
                                                 <span class="block upload-time"> {{ $item['created_at'] }}</span>
                                             </div>

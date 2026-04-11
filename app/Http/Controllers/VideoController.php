@@ -61,7 +61,7 @@ class VideoController extends Controller
                   $videoViews->increment('views');
              }
 
-    // Dono variables ko alag comma se separate karein
+    // variables ko alag comma se separate karein
     return view('single-video', compact('video', 'allSingleVideos', 'videoViews'));
 }
 
