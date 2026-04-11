@@ -87,8 +87,7 @@ public function getSingleVideo($id) {
 
 
    public function relaventItems(Request $req){
-        $search = $req->input('searchTerm');
-        $videos = Videos::where('title', $req->input('title'))->get();
+        $videos = Videos::where('title', $req->input('title'))->with(['user','views'])->get();
         return response()->json([
               "videos" => $videos
         ]);

@@ -160,7 +160,8 @@
                     <!-- Dropdown -->
                     <div class="absolute hidden bg-zinc-900 search-list p-2 rounded-md w-full top-11 z-9999">
                         <ul>
-                            <li class="p-2 rounded-md hover:bg-red-950 transition cursor-pointer hover:scale-98">Search
+                            <li class="p-2 rounded-md hover:bg-red-950 transition cursor-pointer hover:scale-98">
+                                Searching ...
                             </li>
 
                         </ul>

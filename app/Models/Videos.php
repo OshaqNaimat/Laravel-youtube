@@ -9,4 +9,12 @@ class Videos extends Model
     public function user(){
        return $this->belongsTo(User::class);
     }
+
+    public function views(){
+        return $this->hasMany(Views::class,'video_id');
+    }
+
+
 }
+
+
