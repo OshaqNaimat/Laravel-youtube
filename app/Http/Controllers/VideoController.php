@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavedVideos;
+use App\Models\Subscriber;
 use App\Models\Videos;
 use App\Models\Views;
 use Illuminate\Http\Request;
@@ -46,7 +48,7 @@ class VideoController extends Controller
         // }
 
 
-          public function getSingleVideo($id) {
+public function getSingleVideo($id) {
     $allSingleVideos = Videos::all();
     $video = Videos::find($id);
 
@@ -61,8 +63,16 @@ class VideoController extends Controller
                   $videoViews->increment('views');
              }
 
+      $videoSubscribers = Subscriber::where('video_id',$id);
+            if(!$videoSubscribers){
+                 Subscriber::create([
+                    ""
+                 ]);
+            }
+
     // variables ko alag comma se separate karein
     return view('single-video', compact('video', 'allSingleVideos', 'videoViews'));
 }
+
 
 }

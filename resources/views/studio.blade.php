@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="flex items-center gap-2">
-                                <button
+                                <button type="button"
                                     class="h-8 w-8 formclose rounded-full hover:bg-red-500 transition cursor-pointer flex items-center justify-center hover:scale-90">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -151,8 +151,8 @@
                                         viewers' attention. <a href="#"
                                             class="text-blue-400 hover:underline">Learn more</a></p>
                                     <div class="col-span-6 gap-2">
-                                        <input type="file" class="hidden thumb-input" id="U_thumb" accept="image/*"
-                                            name="thumbnail">
+                                        <input type="file" class="hidden thumb-input" id="U_thumb"
+                                            accept="image/*" name="thumbnail">
                                         <label for="U_thumb"
                                             class="border border-dashed border-gray-500 rounded p-3 flex flex-col items-center gap-1 hover:bg-[#2e2e2e] cursor-pointer">
                                             <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24"
@@ -174,7 +174,7 @@
                         <!-- Footer -->
                         <div class="flex items-center justify-between px-4 py-3 border-t border-[#3a3a3a] shrink-0">
                             <div class="flex items-center gap-3">
-                                <button class="text-gray-400 hover:text-white">
+                                <button type="button" class="text-gray-400 hover:text-white">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
