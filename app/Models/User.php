@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $this->hasMany(Comments::class);
     }
 
-    public function subscribes(){
-        return $this->hasMany(Subscriber::class);
-    }
+    // public function subscribes(){
+    //     return $this->hasMany(Subscriber::class);
+    // }
 }

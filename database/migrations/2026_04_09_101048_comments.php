@@ -16,9 +16,17 @@ return new class extends Migration
              $table->string('comment');
              $table->unsignedBigInteger('user_id');
              $table->unsignedBigInteger('video_id');
-             $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
-             $table->foreign('video_id')->references('id')->on('Videos')->onDelete('cascade')->onUpdate('cascade');
-             $table->timestamps();
+            $table->foreign('user_id')
+    ->references('id')
+    ->on('users')
+    ->onDelete('cascade')
+    ->onUpdate('cascade');
+
+$table->foreign('video_id')
+    ->references('id')
+    ->on('videos')
+    ->onDelete('cascade')
+    ->onUpdate('cascade');$table->timestamps();
        });
     }
 

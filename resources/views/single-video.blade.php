@@ -267,7 +267,7 @@
                                             </p>
                                             <div class="text-[12px] text-[#aaa] leading-relaxed">
                                                 <span class="block">{{ $item->user->name }}</span>
-                                                <span class="block">{{ $videoViews['views'] }}
+                                                <span class="block">{{ $videoViews['views'] ?? 0 }}
                                                     views
 
                                                 </span>

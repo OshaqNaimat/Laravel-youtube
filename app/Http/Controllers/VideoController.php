@@ -63,12 +63,12 @@ public function getSingleVideo($id) {
                   $videoViews->increment('views');
              }
 
-      $videoSubscribers = Subscriber::where('video_id',$id);
-            if(!$videoSubscribers){
-                 Subscriber::create([
-                    ""
-                 ]);
-            }
+    //   $videoSubscribers = Subscriber::where('video_id',$id);
+    //         if(!$videoSubscribers){
+    //              Subscriber::create([
+    //                 ""
+    //              ]);
+    //         }
 
     // variables ko alag comma se separate karein
     return view('single-video', compact('video', 'allSingleVideos', 'videoViews'));
