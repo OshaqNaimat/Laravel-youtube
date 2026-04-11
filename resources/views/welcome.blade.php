@@ -37,7 +37,7 @@
                                 {{ $item->user->name }}
                             </p>
                             <div class="flex">
-                                <p class="text-sm text-gray-400">4.5M views · </p>
+                                <p class="text-sm text-gray-400">{{ $videoViews['views'] ?? 0 }} views · </p>
                                 <span class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
                             </div>
                         </div>

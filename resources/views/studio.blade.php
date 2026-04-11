@@ -13,7 +13,7 @@
                         <div class="flex items-center justify-between px-4 md:px-6 py-4 border-b border-[#3a3a3a]">
                             <h2 class="text-white text-base md:text-xl font-medium">Upload videos</h2>
                             <div class="flex items-center gap-3">
-                                <button
+                                <button type="button"
                                     class="text-gray-400 rounded-full formclose hover:scale-110 hover:text-white h-8 w-8 flex justify-center items-center cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">

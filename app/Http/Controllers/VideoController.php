@@ -9,6 +9,8 @@ use App\Models\Views;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\select;
+
 class VideoController extends Controller
 {
     public function uploadVideo(Request $req){
@@ -74,5 +76,22 @@ public function getSingleVideo($id) {
     return view('single-video', compact('video', 'allSingleVideos', 'videoViews'));
 }
 
+
+   public function searchedItems(Request $req){
+        $search = $req->input('searchTerm');
+        $videos = Videos::select('title')->where('title' , 'LIKE' , '%' . $search . '%')->distinct()->get();
+        return response()->json([
+              "videos" => $videos
+        ]);
+   }
+
+
+   public function relaventItems(Request $req){
+        $search = $req->input('searchTerm');
+        $videos = Videos::where('title', $req->input('title'))->get();
+        return response()->json([
+              "videos" => $videos
+        ]);
+   }
 
 }
