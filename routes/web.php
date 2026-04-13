@@ -21,7 +21,7 @@ Route::post('/logout',[UserController::class,'logoutUser']);
 Route::post('/login-user',[UserController::class,'loginUser']);
 Route::post('/add-comment',[CommentsController::class,'createComment']);
 Route::post('/search',[VideoController::class,'searchedItems']);
-
+Route::post('/singleVideo/{id}',[VideoController::class,'getSingleVideo']);
 
 
 Route::get('/',[VideoController::class,'getVideos']);

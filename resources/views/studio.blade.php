@@ -381,12 +381,16 @@
                         </div>
                     </div>
 
-                    {{-- MIDDLE: Search --}}
-                    <div class="hidden sm:flex flex-1 max-w-xl items-center gap-2 justify-center">
-                        <div class="flex rounded-full bg-[#1a1a1a] items-center">
-                            <x-searchbar />
-                        </div>
-                    </div>
+                    <a href="/" class="flex items-center gap-1">
+                        <img class="w-[36px] h-[36px] rounded object-cover"
+                            src="https://thumbs.dreamstime.com/b/neon-youtube-icon-beautiful-glowing-led-light-157850307.jpg"
+                            alt="logo">
+                        {{-- Hide text on xs, show from sm+ --}}
+                        <span class="hidden sm:inline text-white font-bold text-xl tracking-tight"
+                            style="font-family:'YouTube Sans','Roboto',sans-serif;">
+                            View<span class="bg-red-600 px-1 rounded-sm">Tube</span>
+                        </span>
+                    </a>
 
                     {{-- RIGHT: Actions --}}
                     <div class="flex items-center gap-1 flex-shrink-0">

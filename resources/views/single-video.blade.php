@@ -164,14 +164,20 @@
                                     </div>
                                     <div>
                                         <p class="text-white font-semibold">{{ $video->user->name }}
-                                            <span class="text-yt-gray text-xs ml-1">● 2.3M subscribers</span>
+                                            <span class="text-yt-gray text-xs ml-1 subscriber-count">● 2.3M
+                                                subscribers</span>
                                         </p>
                                         <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
                                     </div>
                                 </div>
-                                <button
-                                    class="bg-yt-red hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
-                                    Subscribe</button>
+                                <form>
+                                    <button id="subBtn" onclick="toggleSubscribe()"
+                                        class="bg-yt-red sub-btn hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
+                                        <img class="loadersub hidden"
+                                            src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
+                                            width="20px" alt="">
+                                        <span class="subscribe-text">Subscribe</span></button>
+                                </form>
                             </div>
                             <div class="mt-5 bg-yt-card rounded-xl border border-gray-800 overflow-hidden">
                                 <div class="p-4">
@@ -285,6 +291,20 @@
             </div>
         </div>
         <script>
+            function toggleSubscribe() {
+                const btn = document.getElementById("subBtn");
+
+                if (btn.innerText === "Subscribe") {
+                    btn.innerText = "Subscribed";
+                    btn.classList.remove("hover:bg-red-500");
+                    btn.classList.add("bg-red-600"); // stays solid red
+                } else {
+                    btn.innerText = "Subscribe";
+                    btn.classList.add("hover:bg-red-500");
+                    btn.classList.remove("bg-red-600");
+                }
+            }
+
             function commentsData(response) {
                 let layout = ''
                 //loop over comment
@@ -360,16 +380,13 @@
                     video_id: $('input[name="video_id"]').val(),
                 },
                 success: function(response) {
-                    commentsData(response)
+
                 }
             })
 
-
-
-            // ajax
+            // ajax for comment
             $('.comment-btn').on('click', function(e) {
                 e.preventDefault();
-                console.log('clicked');
 
                 $.ajax({
                     url: '/add-comment',
@@ -396,6 +413,35 @@
                             $('.comment-text').removeClass('hidden')
                             $('input[name="comment"]').val('');
                             $('.comment-count').html(response.comments.length)
+                            commentsData(response)
+                        }
+                    }
+                })
+
+            })
+
+
+            // ajax for subscriber
+            $('.sub-btn').on('click', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/add-subscriber',
+                    type: 'POST',
+                    beforeSend: function() {
+                        $('.sub-btn').attr('disabled', true)
+                        $('.sub-btn').addClass('bg-gray-500')
+                        $('.subscribe-text').addClass('hidden')
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (!response) {
+                            window.location.assign('http://localhost:8000/register')
+                        } else {
+                            $('.sub-btn').attr('disabled', false)
+                            $('.sub-btn').removeClass('bg-gray-500')
+                            $('.subscribe-text').removeClass('hidden')
+                            $('.subscriber-count').html(response.comments.length)
                             commentsData(response)
                         }
                     }
