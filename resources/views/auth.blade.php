@@ -461,8 +461,11 @@
                 flex-direction: column;
             }
 
-            .left-panel,
-            .right-panel {
+            .left-panel {
+                display: none;
+            }
+
+            .twin-panel .right-panel {
                 width: 100%;
                 transform: none !important;
             }
