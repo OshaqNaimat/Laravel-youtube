@@ -25,7 +25,7 @@
 
                         <!-- 🔁 START FOREACH -->
                         @foreach ($videos as $item)
-                            <a href="/singleVideo/{{ $item['id'] }}" class="flex flex-col group cursor-pointer">
+                            <a href="/singleVideo/{{ $item->video->id }}" class="flex flex-col group cursor-pointer">
 
                                 {{-- Thumbnail --}}
                                 <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
@@ -42,7 +42,7 @@
                                     <div class="flex flex-col flex-1 min-w-0">
                                         <div class="flex justify-between items-start">
                                             <p class="font-semibold text-sm line-clamp-2 leading-snug">
-                                                {{ $item['title'] }}
+                                                {{ $item->video->title }}
                                             </p>
                                             <div
                                                 class="h-8 w-8 aspect-square rounded-full flex items-center justify-center hover:bg-red-500 transition cursor-pointer -shrink-0 opacity-0 group-hover:opacity-100">
@@ -50,13 +50,13 @@
                                             </div>
                                         </div>
                                         <p class="text-sm text-capitalize text-gray-400">
-                                            {{-- {{ $item->user->name }} --}}
-                                            Username
+                                            {{ $item->video->user->name }}
+
                                         </p>
                                         <div class="flex">
                                             <p class="text-sm text-gray-400">
                                                 {{-- {{ $videoViews['views'] ? $videoViews['views'] : 0 }} views · --}}
-                                                Views .
+                                                Views
                                             </p>
                                             <span
                                                 class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
@@ -65,12 +65,10 @@
                                 </div>
                             </a>
                         @endforeach
-                        <!-- 🔁 END FOREACH -->
 
                     </div>
                 </div>
 
-                <!-- Empty State -->
                 @if ($videos->isEmpty())
                     <div class="text-center mt-20 text-gray-400">
                         <p class="text-lg">No saved videos found</p>
