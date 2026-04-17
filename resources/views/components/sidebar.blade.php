@@ -88,10 +88,20 @@
     @endphp
 
     @foreach ($youItems as $item)
-        <a href="#"
+        {{-- <a href="#"
             class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
             <i class="bi {{ $item['icon'] }} text-xl flex-shrink-0"></i>
             <span class="sidebar-label hidden lg:inline whitespace-nowrap">{{ $item['label'] }}</span>
+        </a> --}}
+
+
+        {{-- saved video functionality --}}
+        <a href="/get-saved-videos"
+            class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+            <i class="bi {{ $item['icon'] }} text-xl flex-shrink-0"></i>
+            <span class="sidebar-label hidden lg:inline whitespace-nowrap">
+                {{ $item['label'] }}
+            </span>
         </a>
     @endforeach
 

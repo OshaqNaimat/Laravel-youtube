@@ -109,6 +109,11 @@
             position: relative;
             width: 100%;
         }
+
+        .saved-active {
+            border: 2px solid green;
+            color: white;
+        }
     </style>
     </head>
 
@@ -147,9 +152,9 @@
                                             class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer hover:bg-red-500 transition"><i
                                                 class="far fa-thumbs-down"></i>
                                             Dislike</button>
-                                        <button
-                                            class="flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:bg-red-500 cursor-pointer transition">
-                                            <i class="fa-regular fa-bookmark"></i> Save</button>
+                                        <button data-video-id="{{ $video->id }}"
+                                            class="flex items-center gap-2 save-btn bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:bg-red-500 cursor-pointer transition">
+                                            <i class="fa-regular fa-bookmark"></i>Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -384,6 +389,8 @@
                 }
             })
 
+
+
             // ajax for comment
             $('.comment-btn').on('click', function(e) {
                 e.preventDefault();
@@ -421,33 +428,76 @@
 
 
             // ajax for subscriber
-            $('.sub-btn').on('click', function(e) {
+            // $('.sub-btn').on('click', function(e) {
+            //     e.preventDefault();
+
+            //     $.ajax({
+            //         url: '/add-subscriber',
+            //         type: 'POST',
+            //         beforeSend: function() {
+            //             $('.sub-btn').attr('disabled', true)
+            //             $('.sub-btn').addClass('bg-gray-500')
+            //             $('.subscribe-text').addClass('hidden')
+            //         },
+            //         success: function(response) {
+            //             if (!response) {
+            //                 window.location.assign('http://localhost:8000/register')
+            //             } else {
+            //                 $('.sub-btn').attr('disabled', false)
+            //                 $('.sub-btn').removeClass('bg-gray-500')
+            //                 $('.subscribe-text').removeClass('hidden')
+            //                 $('.subscriber-count').html(response.comments.length)
+            //             }
+            //         }
+            //     })
+
+            // })
+
+
+            // ajax to save video
+            $('.save-btn').on('click', function(e) {
                 e.preventDefault();
 
+                let btn = $(this);
+                let videoId = btn.data('video-id');
+
                 $.ajax({
-                    url: '/add-subscriber',
+                    url: '/save-video',
                     type: 'POST',
-                    beforeSend: function() {
-                        $('.sub-btn').attr('disabled', true)
-                        $('.sub-btn').addClass('bg-gray-500')
-                        $('.subscribe-text').addClass('hidden')
+                    data: {
+                        video_id: videoId,
+                        _token: $('meta[name="csrf-token"]').attr('content')
                     },
+
+                    beforeSend: function() {
+                        btn.prop('disabled', true);
+                    },
+
                     success: function(response) {
-                        if (!response) {
-                            window.location.assign('http://localhost:8000/register')
-                        } else {
-                            $('.sub-btn').attr('disabled', false)
-                            $('.sub-btn').removeClass('bg-gray-500')
-                            $('.subscribe-text').removeClass('hidden')
-                            $('.subscriber-count').html(response.comments.length)
-                            commentsData(response)
+
+                        if (response.status === 'guest') {
+                            window.location.href = '/register';
+                            return;
                         }
+
+
+                        if (response.saved) {
+                            btn.text('Saved ✔');
+                            btn.addClass('bg-gray-500 saved-active');
+
+                        } else {
+                            btn.text('Save');
+                            btn.removeClass('bg-gray-500 saved-active');
+                            loadSavedVideos();
+                        }
+                        console.log(response.message);
+                    },
+
+                    complete: function() {
+                        btn.prop('disabled', false);
                     }
-                })
-
-            })
-
-
+                });
+            });
 
 
             document.querySelectorAll('.upload-time').forEach((item, index) => {
