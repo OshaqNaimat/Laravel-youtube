@@ -39,17 +39,15 @@
 
 <aside id="sidebar" class="sidebarscroll bg-black fixed left-0 top-[57px] h-[calc(100vh-57px)] overflow-y-scroll z-40">
     {{-- Each nav item --}}
-    @php
-        $items = [['icon' => 'bi-house', 'label' => 'Home'], ['icon' => 'bi-collection-play', 'label' => 'Shorts']];
-    @endphp
 
-    @foreach ($items as $item)
-        <a href="#"
-            class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-            <i class="bi {{ $item['icon'] }} text-xl flex-shrink-0"></i>
-            <span class="sidebar-label hidden lg:inline whitespace-nowrap">{{ $item['label'] }}</span>
-        </a>
-    @endforeach
+
+
+    <a href="/"
+        class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+        <i class="bi bi-house text-xl flex-shrink-0"></i>
+        <span class="sidebar-label hidden lg:inline whitespace-nowrap">Home</span>
+    </a>
+
 
     <hr class="border-gray-700 my-2">
 
@@ -60,7 +58,7 @@
         <i class="bi bi-arrow-right text-xl flex-shrink-0"></i>
     </a>
 
-    @foreach (['Channel Name', 'Channel Name', 'Channel Name', 'Channel Name', 'Channel Name'] as $ch)
+    @foreach (['Channel Name', 'Channel Name', 'Channel Name'] as $ch)
         <a href="#"
             class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
             <i class="bi bi-person-circle text-xl flex-shrink-0"></i>
@@ -76,34 +74,41 @@
         <i class="bi bi-arrow-right text-xl flex-shrink-0"></i>
     </a>
 
-    @php
-        $youItems = [
-            ['icon' => 'bi-clock', 'label' => 'History'],
-            ['icon' => 'bi-bookmark', 'label' => 'Save'],
-            ['icon' => 'bi-clock-history', 'label' => 'Watch Later'],
-            ['icon' => 'bi-hand-thumbs-up', 'label' => 'Liked Videos'],
-            ['icon' => 'bi-play', 'label' => 'Your Videos'],
-            ['icon' => 'bi-download', 'label' => 'Download'],
-        ];
-    @endphp
+    {{-- history  --}}
+    <a href="#"
+        class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+        <i class="bi bi-clock text-xl flex-shrink-0"></i>
+        <span class="sidebar-label hidden lg:inline whitespace-nowrap">
+            History
+        </span>
+    </a>
 
-    @foreach ($youItems as $item)
-        {{-- <a href="#"
-            class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-            <i class="bi {{ $item['icon'] }} text-xl flex-shrink-0"></i>
-            <span class="sidebar-label hidden lg:inline whitespace-nowrap">{{ $item['label'] }}</span>
-        </a> --}}
+    {{-- saved video functionality --}}
+    <a href="/saved-video"
+        class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+        <i class="bi bi-bookmark text-xl flex-shrink-0"></i>
+        <span class="sidebar-label hidden lg:inline whitespace-nowrap">
+            Saved Videos
+        </span>
+    </a>
 
+    {{-- liked videos --}}
+    <a href="#"
+        class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+        <i class="bi bi-hand-thumbs-up text-xl flex-shrink-0"></i>
+        <span class="sidebar-label hidden lg:inline whitespace-nowrap">
+            Liked Videos
+        </span>
+    </a>
 
-        {{-- saved video functionality --}}
-        <a href="/get-saved-videos"
-            class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-            <i class="bi {{ $item['icon'] }} text-xl flex-shrink-0"></i>
-            <span class="sidebar-label hidden lg:inline whitespace-nowrap">
-                {{ $item['label'] }}
-            </span>
-        </a>
-    @endforeach
+    {{-- Your videos --}}
+    <a href="#"
+        class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
+        <i class="bi bi-bookmark text-xl flex-shrink-0"></i>
+        <span class="sidebar-label hidden lg:inline whitespace-nowrap">
+            Your Videos
+        </span>
+    </a>
 
     <hr class="border-gray-700 my-2">
 

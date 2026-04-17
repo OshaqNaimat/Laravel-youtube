@@ -24,7 +24,7 @@ Route::post('/search', [VideoController::class, 'searchedItems']);
 Route::post('/singleVideo/{id}', [VideoController::class, 'getSingleVideo']);
 Route::post('/save-video', [SaveVideoController::class, 'saveVideo']);
 
-Route::get('/get-saved-videos', [SaveVideoController::class, 'getSavedVideos']);
+Route::get('/saved-video', [SaveVideoController::class, 'savedVideosPage']);
 Route::get('/', [VideoController::class, 'getVideos']);
 Route::get('/get-comments', [CommentsController::class, 'getComments']);
 Route::get('/singleVideo/{id}', [VideoController::class, 'getSingleVideo'])->name('singlepage');

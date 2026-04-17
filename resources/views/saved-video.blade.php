@@ -1,86 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-layout>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Saved Videos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
 
-<body class="bg-[#0f0f0f] text-white">
+    <div class="bg-[#0f0f0f] text-white">
 
-    <div class="flex">
+        {{-- navbar --}}
+        <x-navbar />
+        <div class="flex">
 
-        <!-- Sidebar -->
-        <aside class="w-60 h-screen bg-[#0f0f0f] border-r border-gray-800 p-4">
-            <h2 class="text-xl font-bold mb-6">Menu</h2>
+            <!-- Sidebar -->
+            <x-sidebar />
 
-            <ul class="space-y-4">
-                <li><a href="/" class="block hover:text-red-500">Home</a></li>
-                <li><a href="/saved-videos" class="block text-red-500 font-semibold">Saved</a></li>
-            </ul>
-        </aside>
+            {{-- mobile navbar --}}
+            <x-mobilenav />
+            <!-- Main Content -->
+            <main class="flex-1 p-6">
 
-        <!-- Main Content -->
-        <main class="flex-1 p-6">
+                <!-- Page Title -->
 
-            <!-- Page Title -->
-            <h1 class="text-2xl font-bold mb-6">Saved Videos</h1>
+                <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
+                    <h1 class="text-2xl font-bold mb-6 ">Saved Videos</h1>
 
-            <!-- Videos Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Videos Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
 
-                <!-- 🔁 START FOREACH -->
-                @foreach ($videos as $item)
-                    <div class="cursor-pointer">
+                        <!-- 🔁 START FOREACH -->
+                        @foreach ($videos as $item)
+                            <a href="/singleVideo/{{ $item['id'] }}" class="flex flex-col group cursor-pointer">
 
-                        <!-- Thumbnail -->
-                        <div class="relative">
-                            <img src="/{{ $item->video->thumbnail }}" class="w-full h-44 object-cover rounded-lg">
+                                {{-- Thumbnail --}}
+                                <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
+                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                                        src="{{ asset('storage/' . $item->video->thumbnail) }}" alt="thumbnail"> <span
+                                        class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1.5 py-0.5 rounded">
+                                        Time
+                                    </span>
+                                </div>
 
-                            <!-- Duration badge (optional) -->
-                            <span class="absolute bottom-2 right-2 bg-black text-xs px-2 py-1 rounded">
-                                10:20
-                            </span>
-                        </div>
+                                {{-- Info --}}
+                                <div class="flex mt-3 gap-2">
+                                    <i class="bi bi-person-circle text-2xl shrink-0"></i>
+                                    <div class="flex flex-col flex-1 min-w-0">
+                                        <div class="flex justify-between items-start">
+                                            <p class="font-semibold text-sm line-clamp-2 leading-snug">
+                                                {{ $item['title'] }}
+                                            </p>
+                                            <div
+                                                class="h-8 w-8 aspect-square rounded-full flex items-center justify-center hover:bg-red-500 transition cursor-pointer -shrink-0 opacity-0 group-hover:opacity-100">
+                                                <i class="bi bi-three-dots-vertical leading-none"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-sm text-capitalize text-gray-400">
+                                            {{-- {{ $item->user->name }} --}}
+                                            Username
+                                        </p>
+                                        <div class="flex">
+                                            <p class="text-sm text-gray-400">
+                                                {{-- {{ $videoViews['views'] ? $videoViews['views'] : 0 }} views · --}}
+                                                Views .
+                                            </p>
+                                            <span
+                                                class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                        <!-- 🔁 END FOREACH -->
 
-                        <!-- Video Info -->
-                        <div class="flex mt-3 gap-3">
-
-                            <!-- Channel Icon -->
-                            <img src="/default-avatar.png" class="w-9 h-9 rounded-full">
-
-                            <div>
-                                <h3 class="font-semibold text-sm leading-tight line-clamp-2">
-                                    {{ $item->video->title }}
-                                </h3>
-
-                                <p class="text-gray-400 text-xs mt-1">
-                                    Channel Name
-                                </p>
-
-                                <p class="text-gray-500 text-xs">
-                                    1M views • 2 days ago
-                                </p>
-                            </div>
-
-                        </div>
                     </div>
-                @endforeach
-                <!-- 🔁 END FOREACH -->
-
-            </div>
-
-            <!-- Empty State -->
-            @if ($videos->isEmpty())
-                <div class="text-center mt-20 text-gray-400">
-                    <p class="text-lg">No saved videos found</p>
                 </div>
-            @endif
 
-        </main>
+                <!-- Empty State -->
+                @if ($videos->isEmpty())
+                    <div class="text-center mt-20 text-gray-400">
+                        <p class="text-lg">No saved videos found</p>
+                    </div>
+                @endif
+
+            </main>
+        </div>
+
     </div>
+    <script>
+        document.querySelectorAll('.upload-time').forEach((item, index) => {
 
-</body>
+            item.innerHTML = moment(item.innerHTML).fromNow()
+        })
+    </script>
 
-</html>
+</x-layout>
