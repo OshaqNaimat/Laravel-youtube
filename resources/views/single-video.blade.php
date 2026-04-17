@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                                 <form>
-                                    <button id="subBtn" onclick="toggleSubscribe()"
+                                    <button id="subBtn"
                                         class="bg-yt-red sub-btn hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
                                         <img class="loadersub hidden"
                                             src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
@@ -294,15 +294,15 @@
             function toggleSubscribe() {
                 const btn = document.getElementById("subBtn");
 
-                if (btn.innerText === "Subscribe") {
-                    btn.innerText = "Subscribed";
-                    btn.classList.remove("hover:bg-red-500");
-                    btn.classList.add("bg-red-600"); // stays solid red
-                } else {
-                    btn.innerText = "Subscribe";
-                    btn.classList.add("hover:bg-red-500");
-                    btn.classList.remove("bg-red-600");
-                }
+                // if (btn.innerText === "Subscribe") {
+                //     btn.innerText = "Subscribed";
+                //     btn.classList.remove("hover:bg-red-500");
+                //     btn.classList.add("bg-red-600"); // stays solid red
+                // } else {
+                //     btn.innerText = "Subscribe";
+                //     btn.classList.add("hover:bg-red-500");
+                //     btn.classList.remove("bg-red-600");
+                // }
             }
 
             function commentsData(response) {
@@ -403,7 +403,6 @@
                         $('.comment-text').addClass('hidden')
                     },
                     success: function(response) {
-                        console.log(response)
                         if (!response) {
                             window.location.assign('http://localhost:8000/register')
                         } else {
@@ -434,7 +433,6 @@
                         $('.subscribe-text').addClass('hidden')
                     },
                     success: function(response) {
-                        console.log(response)
                         if (!response) {
                             window.location.assign('http://localhost:8000/register')
                         } else {
