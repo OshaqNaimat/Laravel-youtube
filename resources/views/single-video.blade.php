@@ -175,13 +175,21 @@
                                         <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
                                     </div>
                                 </div>
-                                <form>
-                                    <button id="subBtn"
+                                <form id="subscribeForm">
+                                    <input type="hidden" name="channel_id" value="{{ $video->user->id }}">
+                                    <button type="submit" id="subBtn"
                                         class="bg-yt-red sub-btn hover:bg-red-500 cursor-pointer text-white px-5 py-1.5 rounded-full text-sm font-medium transition">
-                                        <img class="loadersub hidden"
-                                            src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
-                                            width="20px" alt="">
-                                        <span class="subscribe-text">Subscribe</span></button>
+                                        <img src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
+                                            width="20px" alt="" class="loader hidden">
+                                        <span class="subscribe-text">
+                                            @if (auth()->check() && auth()->user()->subscriptions())
+                                                Subscribed
+                                            @else
+                                                Subscribe
+                                            @endif
+                                        </span>
+                                        {{-- (<span id="subCount">{{ $channel->subscribers()->count() }}</span>) --}}
+                                    </button>
                                 </form>
                             </div>
                             <div class="mt-5 bg-yt-card rounded-xl border border-gray-800 overflow-hidden">
@@ -297,20 +305,41 @@
             </div>
         </div>
         <script>
-            function toggleSubscribe() {
-                const btn = document.getElementById("subBtn");
+            //    subscribe ajax and js
 
-                // if (btn.innerText === "Subscribe") {
-                //     btn.innerText = "Subscribed";
-                //     btn.classList.remove("hover:bg-red-500");
-                //     btn.classList.add("bg-red-600"); // stays solid red
-                // } else {
-                //     btn.innerText = "Subscribe";
-                //     btn.classList.add("hover:bg-red-500");
-                //     btn.classList.remove("bg-red-600");
-                // }
-            }
+            $('#subscribeForm').on('submit', function(e) {
+                e.preventDefault();
 
+                let btn = $('#subBtn');
+                let loader = btn.find('.loader');
+                let text = btn.find('.subscribe-text');
+                let channelId = $(this).find('input[name="channel_id"]').val();
+
+                loader.removeClass('hidden');
+                text.hide();
+
+                $.ajax({
+                    url: "{{ route('subscribe.toggle') }}",
+                    type: "POST",
+                    data: {
+                        channel_id: channelId,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(res) {
+                        loader.addClass('hidden');
+                        text.show();
+                        if (res.status == 'subscribed') {
+                            text.text('Subscribed');
+                            btn.addClass('bg-gray-400'); // optional
+                        } else {
+                            text.text('Subscribe');
+                            btn.removeClass('bg-gray-400');
+                        }
+                        $('#subCount').text(res.count);
+                    }
+                });
+            });
+            // comments ajax and js
             function commentsData(response) {
                 let layout = ''
                 //loop over comment

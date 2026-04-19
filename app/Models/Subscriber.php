@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model
 {
-     public function vidoes(){
-        return $this->belongsTo(Videos::class,'video_id');
+    protected $fillable = ['subscriber_id', 'channel_id'];
+
+    public function subscriber()
+    {
+        return $this->belongsTo(User::class, 'subscriber_id');
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo(User::class, 'channel_id');
     }
 }

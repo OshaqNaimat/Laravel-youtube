@@ -46,17 +46,25 @@ class User extends Authenticatable
         ];
     }
 
-
-    public function videos(){
+    public function videos()
+    {
         return $this->hasMany(Videos::class);
     }
 
-
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comments::class);
     }
 
-    // public function subscribes(){
-    //     return $this->hasMany(Subscriber::class);
-    // }
+    // subscriptions the user has made
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscriber::class, 'subscriber_id');
+    }
+
+    // subscribers of this user
+    public function subscribers()
+    {
+        return $this->hasMany(Subscriber::class, 'channel_id');
+    }
 }

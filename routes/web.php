@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SaveVideoController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::post('/add-comment', [CommentsController::class, 'createComment']);
 Route::post('/search', [VideoController::class, 'searchedItems']);
 Route::post('/singleVideo/{id}', [VideoController::class, 'getSingleVideo']);
 Route::post('/save-video', [SaveVideoController::class, 'saveVideo']);
+Route::middleware('auth')->post('/subscribe', [SubscriptionController::class, 'toggle'])->name('subscribe.toggle');
 
 Route::get('/saved-video', [SaveVideoController::class, 'savedVideosPage']);
 Route::get('/', [VideoController::class, 'getVideos']);
