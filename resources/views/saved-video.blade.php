@@ -12,9 +12,13 @@
 
             {{-- mobile navbar --}}
             <x-mobilenav />
+
+            {{-- skeleton --}}
+
             <!-- Main Content -->
             <main class="flex-1 p-6">
 
+                <x-savedVideo-skeleton />
                 <!-- Page Title -->
 
                 <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
@@ -30,7 +34,8 @@
                                 {{-- Thumbnail --}}
                                 <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
                                     <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                                        src="{{ asset('storage/' . $item->video->thumbnail) }}" alt="thumbnail"> <span
+                                        src="{{ asset('storage/' . $item->video->thumbnail) }}" alt="thumbnail">
+                                    <span
                                         class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1.5 py-0.5 rounded">
                                         Time
                                     </span>
@@ -56,7 +61,7 @@
                                         <div class="flex">
                                             <p class="text-sm text-gray-400">
                                                 {{-- {{ $videoViews['views'] ? $videoViews['views'] : 0 }} views · --}}
-                                                Views
+                                                Views .
                                             </p>
                                             <span
                                                 class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
@@ -74,6 +79,7 @@
                         <p class="text-lg">No saved videos found</p>
                     </div>
                 @endif
+
 
             </main>
         </div>

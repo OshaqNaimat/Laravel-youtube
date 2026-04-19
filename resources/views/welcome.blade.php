@@ -3,6 +3,9 @@
     <x-sidebar />
     <x-mobilenav />
 
+
+
+
     <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
 
@@ -37,7 +40,7 @@
                                 {{ $item->user->name }}
                             </p>
                             <div class="flex">
-                                <p class="text-sm text-gray-400">{{ $videoViews['views'] ?? 0 }} views · </p>
+                                <p class="text-sm text-gray-400">{{ $item->views->first()->views ?? 0 }} views · </p>
                                 <span class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
                             </div>
                         </div>

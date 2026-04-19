@@ -253,6 +253,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- left panel --}}
                         <div class="lg:w-1/3  w-full">
                             <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
                                 @foreach ($allSingleVideos as $item)
@@ -278,7 +279,7 @@
                                             </p>
                                             <div class="text-[12px] text-[#aaa] leading-relaxed">
                                                 <span class="block">{{ $item->user->name }}</span>
-                                                <span class="block">{{ $videoViews['views'] ?? 0 }}
+                                                <span class="block">{{ $item->views->first()->views ?? 0 }}
                                                     views
 
                                                 </span>
