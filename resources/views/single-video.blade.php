@@ -332,7 +332,7 @@
                         text.show();
                         if (res.status == 'subscribed') {
                             text.text('Subscribed');
-                            btn.addClass('bg-gray-400'); // optional
+                            btn.addClass('bg-gray-700'); // optional
                         } else {
                             text.text('Subscribe');
                             btn.removeClass('bg-gray-400');
@@ -459,31 +459,7 @@
             })
 
 
-            // ajax for subscriber
-            // $('.sub-btn').on('click', function(e) {
-            //     e.preventDefault();
 
-            //     $.ajax({
-            //         url: '/add-subscriber',
-            //         type: 'POST',
-            //         beforeSend: function() {
-            //             $('.sub-btn').attr('disabled', true)
-            //             $('.sub-btn').addClass('bg-gray-500')
-            //             $('.subscribe-text').addClass('hidden')
-            //         },
-            //         success: function(response) {
-            //             if (!response) {
-            //                 window.location.assign('http://localhost:8000/register')
-            //             } else {
-            //                 $('.sub-btn').attr('disabled', false)
-            //                 $('.sub-btn').removeClass('bg-gray-500')
-            //                 $('.subscribe-text').removeClass('hidden')
-            //                 $('.subscriber-count').html(response.comments.length)
-            //             }
-            //         }
-            //     })
-
-            // })
 
 
             // ajax to save video
