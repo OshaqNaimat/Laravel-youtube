@@ -180,7 +180,7 @@
 
                                         </p>
                                         <span class="text-gray-500 text-sm ml-1 subscriber-count"
-                                            id="subCount">{{ $uploader->subscribers()->count() }}subscribers
+                                            id="subCount">{{ $uploader->subscribers()->count() }} subscribers
                                         </span>
 
                                     </div>

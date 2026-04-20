@@ -5,8 +5,10 @@
 
 
 
-
-    <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
+    <div id="skeleton-container">
+        <x-savedVideo-skeleton />
+    </div>
+    <div id="main-content" class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-4">
 
             {{-- have to apply foreach --}}
@@ -57,6 +59,17 @@
 
             item.innerHTML = moment(item.innerHTML).fromNow()
         })
+
+
+        $(document).ready(function() {
+            // 1. Wait for everything (images, etc.) to finish loading
+            $(window).on('load', function() {
+                // Fade out the skeleton then show the content
+                $('#skeleton-container').fadeOut(300, function() {
+                    $('#main-content').removeClass('hidden').fadeIn(400);
+                });
+            });
+        });
     </script>
 
 
