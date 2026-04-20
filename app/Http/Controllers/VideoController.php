@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
+use App\Models\User;
 use App\Models\Videos;
 use App\Models\Views;
 use Illuminate\Http\Request;
@@ -61,16 +62,13 @@ class VideoController extends Controller
             $videoViews->increment('views');
         }
 
-        $videoSubscribers = Subscriber::where('video_id', $id);
-        if (! $videoSubscribers) {
-            Subscriber::create([
-                'Subscriber' => 1,
-                'video_id' => $id,
-            ]);
-        }
+        $uploader = User::find($video->user_id);
+
+        // Get subscribers for the uploader
+        $videoSubscribers = Subscriber::where('channel_id', $uploader->id)->get();
 
         // variables ko alag comma se separate karein
-        return view('single-video', compact('video', 'allSingleVideos', 'videoViews', 'videoSubscribers'));
+        return view('single-video', compact('video', 'allSingleVideos', 'videoViews', 'videoSubscribers', 'uploader'));
     }
 
     public function searchedItems(Request $req)

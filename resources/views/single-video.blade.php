@@ -169,10 +169,13 @@
                                     </div>
                                     <div>
                                         <p class="text-white font-semibold">{{ $video->user->name }}
-                                            <span class="text-yt-gray text-xs ml-1 subscriber-count">● 2.3M
-                                                subscribers</span>
+
+
                                         </p>
-                                        <p class="text-yt-gray text-xs">Creator of cinematic experiences</p>
+                                        <span class="text-gray-500 text-sm ml-1 subscriber-count"
+                                            id="subCount">{{ $uploader->subscribers()->count() }}subscribers
+                                        </span>
+
                                     </div>
                                 </div>
                                 <form id="subscribeForm">
@@ -182,13 +185,12 @@
                                         <img src="https://www2.columbus.k12.nc.us/wp-content/uploads/AAPL/loaders/loading.gif"
                                             width="20px" alt="" class="loader hidden">
                                         <span class="subscribe-text">
-                                            @if (auth()->check() && auth()->user()->subscriptions())
+                                            @if (auth()->check() && auth()->user()->subscriptions()->where('channel_id', $uploader->id)->exists())
                                                 Subscribed
                                             @else
                                                 Subscribe
                                             @endif
                                         </span>
-                                        {{-- (<span id="subCount">{{ $channel->subscribers()->count() }}</span>) --}}
                                     </button>
                                 </form>
                             </div>
@@ -319,7 +321,7 @@
                 text.hide();
 
                 $.ajax({
-                    url: "{{ route('subscribe.toggle') }}",
+                    url: "/subscribe",
                     type: "POST",
                     data: {
                         channel_id: channelId,
