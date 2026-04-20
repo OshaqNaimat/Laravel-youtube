@@ -15,4 +15,9 @@ class SavedVideo extends Model
     {
         return $this->belongsTo(Videos::class);
     }
+
+    public function views()
+    {
+        return $this->hasMany(Views::class, 'video_id');
+    }
 }

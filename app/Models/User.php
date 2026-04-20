@@ -67,4 +67,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Subscriber::class, 'channel_id');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(VideoLike::class)->where('is_like', true);
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany(VideoLike::class)->where('is_like', false);
+    }
 }

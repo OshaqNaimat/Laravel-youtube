@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\VideoLike;
 use App\Models\Videos;
 use App\Models\Views;
 use Illuminate\Http\Request;
@@ -88,5 +89,67 @@ class VideoController extends Controller
         return response()->json([
             'videos' => $videos,
         ]);
+    }
+
+    // likes cotroller
+
+    public function likeVideo(Request $request)
+    {
+        $user = Auth::user();
+        $videoId = $request->video_id;
+        $action = $request->action; // 'like' or 'dislike'
+
+        if (! $user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $like = VideoLike::where('user_id', $user->id)
+            ->where('video_id', $videoId)
+            ->first();
+
+        if ($like) {
+            if (($action === 'like' && $like->is_like) || ($action === 'dislike' && ! $like->is_like)) {
+                // Undo the same action
+                $like->delete();
+                $liked = $disliked = false;
+            } else {
+                // Switch action
+                $like->is_like = $action === 'like';
+                $like->save();
+                $liked = $action === 'like';
+                $disliked = $action === 'dislike';
+            }
+        } else {
+            // Create new like/dislike
+            VideoLike::create([
+                'user_id' => $user->id,
+                'video_id' => $videoId,
+                'is_like' => $action === 'like',
+            ]);
+            $liked = $action === 'like';
+            $disliked = $action === 'dislike';
+        }
+
+        // Counts
+        $likeCount = VideoLike::where('video_id', $videoId)->where('is_like', true)->count();
+        $dislikeCount = VideoLike::where('video_id', $videoId)->where('is_like', false)->count();
+
+        return response()->json([
+            'liked' => $liked,
+            'disliked' => $disliked,
+            'likeCount' => $likeCount,
+            'dislikeCount' => $dislikeCount,
+        ]);
+    }
+
+    public function showLikedVideos()
+    {
+        // Get only the likes belonging to the logged-in user where is_like is true (1)
+        $videos = VideoLike::where('user_id', Auth::id())->where('is_like', true)
+            ->with(['video.user']) // Eager load the video and the uploader
+            ->latest()
+            ->get();
+
+        return view('liked-videos', compact('videos'));
     }
 }

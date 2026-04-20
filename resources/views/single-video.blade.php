@@ -145,13 +145,20 @@
                                     </div>
                                     <div class="flex items-center gap-3 mt-2 sm:mt-0">
                                         <button
-                                            class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer hover:bg-red-500 transition"><i
-                                                class="far fa-thumbs-up"></i>
-                                            12K</button>
+                                            class="like-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer transition"
+                                            data-video-id="{{ $video->id }}">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span class="like-count">
+                                                {{ $video->likes->count() }}
+                                            </span>
+                                        </button>
+
                                         <button
-                                            class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer hover:bg-red-500 transition"><i
-                                                class="far fa-thumbs-down"></i>
-                                            Dislike</button>
+                                            class="dislike-btn flex items-center gap-2 bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray cursor-pointer transition"
+                                            data-video-id="{{ $video->id }}">
+                                            <i class="far fa-thumbs-down"></i>
+                                            {{-- <span class="dislike-count">{{ $video->dislikes()->count() }}</span> --}}
+                                        </button>
                                         <button data-video-id="{{ $video->id }}"
                                             class="flex items-center gap-2 save-btn bg-yt-sidebar px-4 py-1.5 rounded-full text-yt-gray hover:bg-red-500 cursor-pointer transition">
                                             <i class="fa-regular fa-bookmark"></i>Save</button>
@@ -307,6 +314,46 @@
             </div>
         </div>
         <script>
+            $(document).ready(function() {
+                $('.like-btn, .dislike-btn').click(function() {
+                    let videoId = $(this).data('video-id');
+                    let action = $(this).hasClass('like-btn') ? 'like' : 'dislike';
+                    let $parent = $(this).closest('div'); // Adjust to correct parent container
+
+                    $.ajax({
+                        url: '/video/like', // Your controller route
+                        type: 'POST',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            video_id: videoId,
+                            action: action
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.error) {
+                                alert(data.error);
+                                return;
+                            }
+
+                            // Update counts
+                            $parent.find('.like-count').text(data.likeCount);
+                            $parent.find('.dislike-count').text(data.dislikeCount);
+
+                            // Update icons
+                            let likeIcon = $parent.find('.like-btn i');
+                            let dislikeIcon = $parent.find('.dislike-btn i');
+
+                            likeIcon.removeClass('fas far').addClass(data.liked ?
+                                'fas fa-thumbs-up' : 'far fa-thumbs-up');
+                            dislikeIcon.removeClass('fas far').addClass(data.disliked ?
+                                'fas fa-thumbs-down' : 'far fa-thumbs-down');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX Error:', error);
+                        }
+                    });
+                });
+            });
             //    subscribe ajax and js
 
             $('#subscribeForm').on('submit', function(e) {

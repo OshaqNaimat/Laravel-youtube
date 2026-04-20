@@ -17,8 +17,9 @@
 
             <!-- Main Content -->
             <main class="flex-1 p-6">
-
-                <x-savedVideo-skeleton />
+                <div id="skeleton-container">
+                    <x-savedVideo-skeleton />
+                </div>
                 <!-- Page Title -->
 
                 <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
@@ -60,11 +61,11 @@
                                         </p>
                                         <div class="flex">
                                             <p class="text-sm text-gray-400">
-                                                {{-- {{ $videoViews['views'] ? $videoViews['views'] : 0 }} views · --}}
-                                                Views .
+                                                {{ $item->views->first()->views ?? 0 }} views ·
+
                                             </p>
                                             <span
-                                                class="text-sm text-gray-400 upload-time">{{ $item['created_at'] }}</span>
+                                                class="text-sm text-gray-400 upload-time">{{ $item->created_at }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -90,6 +91,21 @@
 
             item.innerHTML = moment(item.innerHTML).fromNow()
         })
+        $(document).ready(function() {
+            // 1. Wait for everything (images, etc.) to finish loading
+            $(window).on('load', function() {
+                // Fade out the skeleton then show the content
+                $('#skeleton-container').fadeOut(300, function() {
+                    $('#main-content').removeClass('hidden').fadeIn(400);
+                });
+            });
+
+            // 2. Your moment.js logic using jQuery's each
+            // $('.upload-time').each(function() {
+            //     const rawDate = $(this).text();
+            //     $(this).text(moment(rawDate).fromNow());
+            // });
+        });
     </script>
 
 </x-layout>

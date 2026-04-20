@@ -93,7 +93,7 @@
     </a>
 
     {{-- liked videos --}}
-    <a href="#"
+    <a href="/liked-videos"
         class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
         <i class="bi bi-hand-thumbs-up text-xl flex-shrink-0"></i>
         <span class="sidebar-label hidden lg:inline whitespace-nowrap">
