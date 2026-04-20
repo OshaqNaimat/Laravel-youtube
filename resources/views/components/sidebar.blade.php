@@ -51,37 +51,15 @@
 
     <hr class="border-gray-700 my-2">
 
-    {{-- Section with arrow --}}
-    <a href="#"
-        class="sidebar-item flex items-center justify-between font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-        <span class="sidebar-label hidden lg:inline">Subscriptions</span>
-        <i class="bi bi-arrow-right text-xl flex-shrink-0"></i>
-    </a>
 
-    @foreach (['Channel Name', 'Channel Name', 'Channel Name'] as $ch)
-        <a href="#"
-            class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-            <i class="bi bi-person-circle text-xl flex-shrink-0"></i>
-            <span class="sidebar-label hidden lg:inline whitespace-nowrap">{{ $ch }}</span>
-        </a>
-    @endforeach
 
-    <hr class="border-gray-700 my-2">
-
-    <a href="#"
+    <a href="/your-stats"
         class="sidebar-item flex items-center justify-between font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
         <span class="sidebar-label hidden lg:inline">You</span>
         <i class="bi bi-arrow-right text-xl flex-shrink-0"></i>
     </a>
 
-    {{-- history  --}}
-    <a href="#"
-        class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
-        <i class="bi bi-clock text-xl flex-shrink-0"></i>
-        <span class="sidebar-label hidden lg:inline whitespace-nowrap">
-            History
-        </span>
-    </a>
+
 
     {{-- saved video functionality --}}
     <a href="/saved-video"
@@ -102,7 +80,7 @@
     </a>
 
     {{-- Your videos --}}
-    <a href="#"
+    <a href="/my-videos"
         class="sidebar-item saved-link flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 hover:bg-red-500 cursor-pointer rounded-md transition">
         <i class="bi bi-bookmark text-xl flex-shrink-0"></i>
         <span class="sidebar-label hidden lg:inline whitespace-nowrap">
@@ -115,7 +93,7 @@
     <form action="/logout" method="POST">
         @csrf
         <button
-            class="sidebar-item flex items-center gap-3 font-semibold text-white text-lg my-1 p-3 mb-4 hover:bg-red-500 cursor-pointer rounded-md transition">
+            class="sidebar-item flex items-center gap-3 font-semibold w-full text-white text-lg my-1 p-3 mb-4 hover:bg-red-500 cursor-pointer rounded-md transition">
             <i class="bi bi-box-arrow-left text-xl flex-shrink-0"></i>
             <span class="sidebar-label hidden lg:inline whitespace-nowrap">Logout</span>
         </button>

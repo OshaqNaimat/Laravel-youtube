@@ -16,6 +16,7 @@ Route::view('/register', 'auth')->name('login');
 Route::view('/searched-videos/{title}', 'searchedVideos');
 Route::view('/saved-video', 'saved-video');
 Route::view('/liked-videos', 'liked-videos');
+Route::view('/your-stats', 'your-stats');
 
 Route::post('/upload-video', [VideoController::class, 'uploadVideo']);
 Route::post('/register-user', [UserController::class, 'registerUser']);
@@ -36,3 +37,4 @@ Route::get('/get-relavent-video', [VideoController::class, 'relaventItems']);
 Route::get('/liked-videos', [VideoController::class, 'showLikedVideos'])
     ->middleware('auth')
     ->name('liked.videos');
+Route::get('/my-videos', [VideoController::class, 'myVideos'])->middleware('auth');

@@ -60,6 +60,9 @@ class User extends Authenticatable
     public function subscriptions()
     {
         return $this->hasMany(Subscriber::class, 'subscriber_id');
+
+        return $this->hasMany(Subscriber::class, 'user_id');
+
     }
 
     // subscribers of this user

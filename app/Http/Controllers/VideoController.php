@@ -152,4 +152,16 @@ class VideoController extends Controller
 
         return view('liked-videos', compact('videos'));
     }
+
+    // getting the logged in user's videos
+    public function myVideos()
+    {
+        // Fetch videos where user_id is the logged-in user
+        $videos = Videos::where('user_id', Auth::id())
+            ->with(['views', 'user']) // Eager load views and user for the count/name
+            ->latest()
+            ->get();
+
+        return view('my-videos', compact('videos'));
+    }
 }
