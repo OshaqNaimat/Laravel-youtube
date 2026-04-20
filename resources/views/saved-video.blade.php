@@ -99,12 +99,6 @@
                     $('#main-content').removeClass('hidden').fadeIn(400);
                 });
             });
-
-            // 2. Your moment.js logic using jQuery's each
-            // $('.upload-time').each(function() {
-            //     const rawDate = $(this).text();
-            //     $(this).text(moment(rawDate).fromNow());
-            // });
         });
     </script>
 

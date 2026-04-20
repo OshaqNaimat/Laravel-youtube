@@ -6,8 +6,9 @@
     <x-sidebar />
 
     <main class="flex-1 p-6">
-
-        <x-savedVideo-skeleton />
+        <div id="skeleton-container">
+            <x-savedVideo-skeleton />
+        </div>
         <!-- Page Title -->
 
         <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
@@ -44,7 +45,7 @@
                                 </p>
 
                                 <div class="flex items-center gap-1 text-sm text-gray-400">
-                                    <span> {{ $item->views->first()->views ?? 0 }} views</span>
+                                    <span> {{ $item->views->first()->views }} views</span>
                                     <span>•</span>
                                     {{-- Shows how long ago the user LIKED the video --}}
                                     <span>Liked {{ $item->created_at->diffForHumans() }}</span>
@@ -67,7 +68,17 @@
                 <p class="text-lg">No saved videos found</p>
             </div>
         @endif
-
-
     </main>
+
+    <script>
+        $(document).ready(function() {
+            // 1. Wait for everything (images, etc.) to finish loading
+            $(window).on('load', function() {
+                // Fade out the skeleton then show the content
+                $('#skeleton-container').fadeOut(300, function() {
+                    $('#main-content').removeClass('hidden').fadeIn(400);
+                });
+            });
+        });
+    </script>
 </x-layout>
