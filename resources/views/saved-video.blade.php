@@ -61,7 +61,7 @@
                                         </p>
                                         <div class="flex">
                                             <p class="text-sm text-gray-400">
-                                                {{ $item->views->first()->views ?? 0 }} views ·
+                                                {{ $item->video->views->first()->views ?? 0 }} views ·
 
                                             </p>
                                             <span

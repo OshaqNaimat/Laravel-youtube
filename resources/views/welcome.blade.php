@@ -19,10 +19,7 @@
                     <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                             src="{{ asset('/storage/' . $item['thumbnail']) }}" alt="thumbnail">
-                        <span
-                            class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1.5 py-0.5 rounded">
-                            Time
-                        </span>
+
                     </div>
 
                     {{-- Info --}}

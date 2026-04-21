@@ -11,7 +11,7 @@
         </div>
         <!-- Page Title -->
 
-        <div class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
+        <div id="main-content" class="ml-0 md:ml-16 lg:ml-56 overflow-x-hidden min-h-screen">
             <h1 class="text-2xl font-bold mb-6 ">Liked Videos</h1>
 
             <!-- Videos Grid -->
@@ -45,7 +45,7 @@
                                 </p>
 
                                 <div class="flex items-center gap-1 text-sm text-gray-400">
-                                    <span> {{ $item->views->first()->views }} views</span>
+                                    <span> {{ $item->video->views->first()->views }} views</span>
                                     <span>•</span>
                                     {{-- Shows how long ago the user LIKED the video --}}
                                     <span>Liked {{ $item->created_at->diffForHumans() }}</span>
@@ -72,11 +72,11 @@
 
     <script>
         $(document).ready(function() {
-            // 1. Wait for everything (images, etc.) to finish loading
+            // Using $(window).on('load') ensures all images/assets are ready
             $(window).on('load', function() {
-                // Fade out the skeleton then show the content
                 $('#skeleton-container').fadeOut(300, function() {
-                    $('#main-content').removeClass('hidden').fadeIn(400);
+                    // Remove 'hidden' class and fade in
+                    $('#main-content').removeClass('hidden').hide().fadeIn(400);
                 });
             });
         });

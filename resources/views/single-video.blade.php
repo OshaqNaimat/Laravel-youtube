@@ -270,7 +270,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- left panel --}}
                         <div class="lg:w-1/3  w-full">
                             <div class="bg-[#0f0f0f] rounded-xl p-3 space-y-1">
                                 @foreach ($allSingleVideos as $item)
@@ -321,7 +320,7 @@
                     let $parent = $(this).closest('div'); // Adjust to correct parent container
 
                     $.ajax({
-                        url: '/video/like', // Your controller route
+                        url: '/video/like',
                         type: 'POST',
                         data: {
                             _token: $('meta[name="csrf-token"]').attr('content'),
